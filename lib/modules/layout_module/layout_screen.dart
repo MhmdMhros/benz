@@ -1,3 +1,4 @@
+import 'package:benz/modules/home_module/home_screen.dart';
 import 'package:benz/shared/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -9,16 +10,25 @@ class LayoutScreen extends StatefulWidget {
 }
 
 class _LayoutScreenState extends State<LayoutScreen> {
+  
+  List<Widget> currentScreen=[
+
+    HomeScreen(),
+  ];
+  
   @override
   Widget build(BuildContext context) {
+     int currentIndexScreen=0;
+
     return Scaffold(
+     
       body: SafeArea(
         top: true,
         child: Row(
           mainAxisSize: MainAxisSize.max,
           children: [
             Container(
-              width: 400,
+              width: MediaQuery.of(context).size.width*.25,
               height: double.infinity,
               decoration: BoxDecoration(
                 color: backGroundColor,
@@ -41,8 +51,8 @@ class _LayoutScreenState extends State<LayoutScreen> {
                             borderRadius: BorderRadius.circular(24),
                             child: Image.asset(
                               'assets/images/Logo-removebg-preview.png',
-                              width: 100,
-                              height: 100,
+                              width: MediaQuery.of(context).size.width*.06,
+                              height: MediaQuery.of(context).size.height*0.13,
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -53,8 +63,9 @@ class _LayoutScreenState extends State<LayoutScreen> {
                             'Car Benz',
                             style: TextStyle(
                               fontFamily: 'Readex Pro',
-                              color: mainColor,
-                              fontSize: 40,
+                              fontWeight: FontWeight.w500,
+                              color: appNameColor,
+                              fontSize: MediaQuery.of(context).size.width*.03,
                               letterSpacing: 0,
                             ),
                           ),
@@ -63,40 +74,46 @@ class _LayoutScreenState extends State<LayoutScreen> {
                     ),
                   ),
                   Expanded(
-                    child: Align(
-                      alignment: AlignmentDirectional(0, 0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Align(
-                            alignment: AlignmentDirectional(0, 0),
-                            child: Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: mainColor,
-                                  borderRadius: BorderRadius.circular(22),
-                                ),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding:
+                              EdgeInsetsDirectional.fromSTEB(MediaQuery.of(context).size.width*.015, 0, 0, 0),
+                          child: Container(
+                             height: MediaQuery.of(context).size.height*.08,
+                            decoration: BoxDecoration(
+                              color: mainColor,
+                              borderRadius: BorderRadius.circular(
+                                MediaQuery.of(context).size.width*.02
+                              ),
+                            ),
+                            child: MaterialButton(
+                              shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(MediaQuery.of(context).size.width*.02)),
+                              onPressed: (){},
+                              child: Padding(
+                                padding:   EdgeInsetsDirectional.fromSTEB(
+                                  MediaQuery.of(context).size.width*.02
+                                  , 0, 0, 0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Icon(
                                       Icons.settings_outlined,
                                       color: iconColor,
-                                      size: 50,
+                                      size: MediaQuery.of(context).size.width*.03,
                                     ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          20, 0, 0, 0),
+                                          MediaQuery.of(context).size.width*.015, 0, 0, 0),
                                       child: Text(
                                         'Search for a Car',
                                         style: TextStyle(
                                           fontFamily: 'Readex Pro',
                                           color: Colors.white,
-                                          fontSize: 30,
+                                          fontSize: MediaQuery.of(context).size.width*.02,
                                           letterSpacing: 0,
                                         ),
                                       ),
@@ -106,34 +123,46 @@ class _LayoutScreenState extends State<LayoutScreen> {
                               ),
                             ),
                           ),
-                          Align(
-                            alignment: AlignmentDirectional(0, 0),
-                            child: Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: mainColor,
-                                  borderRadius: BorderRadius.circular(22),
-                                ),
+                        ),
+                       SizedBox(
+                        height: MediaQuery.of(context).size.height*.03,
+                       ),
+                        Padding(
+                          padding:
+                              EdgeInsetsDirectional.fromSTEB(MediaQuery.of(context).size.width*.015, 0, 0, 0),
+                          child: Container(
+                             height: MediaQuery.of(context).size.height*.08,
+                            decoration: BoxDecoration(
+                              color: mainColor,
+                              borderRadius: BorderRadius.circular(
+                                MediaQuery.of(context).size.width*.02
+                              ),
+                            ),
+                            child: MaterialButton(
+                              shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(MediaQuery.of(context).size.width*.02)),
+                              onPressed: (){},
+                              child: Padding(
+                                padding:   EdgeInsetsDirectional.fromSTEB(
+                                  MediaQuery.of(context).size.width*.02
+                                  , 0, 0, 0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Icon(
                                       Icons.settings_outlined,
                                       color: iconColor,
-                                      size: 50,
+                                      size: MediaQuery.of(context).size.width*.03,
                                     ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          20, 0, 0, 0),
+                                          MediaQuery.of(context).size.width*.015, 0, 0, 0),
                                       child: Text(
                                         'Search for a Car',
                                         style: TextStyle(
                                           fontFamily: 'Readex Pro',
                                           color: Colors.white,
-                                          fontSize: 30,
+                                          fontSize: MediaQuery.of(context).size.width*.02,
                                           letterSpacing: 0,
                                         ),
                                       ),
@@ -143,34 +172,46 @@ class _LayoutScreenState extends State<LayoutScreen> {
                               ),
                             ),
                           ),
-                          Align(
-                            alignment: AlignmentDirectional(0, 0),
-                            child: Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: mainColor,
-                                  borderRadius: BorderRadius.circular(22),
-                                ),
+                        ),
+                          SizedBox(
+                        height: MediaQuery.of(context).size.height*.03,
+                       ),
+                        Padding(
+                          padding:
+                              EdgeInsetsDirectional.fromSTEB(MediaQuery.of(context).size.width*.015, 0, 0, 0),
+                          child: Container(
+                             height: MediaQuery.of(context).size.height*.08,
+                            decoration: BoxDecoration(
+                              color: mainColor,
+                              borderRadius: BorderRadius.circular(
+                                MediaQuery.of(context).size.width*.02
+                              ),
+                            ),
+                            child: MaterialButton(
+                              shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(MediaQuery.of(context).size.width*.02)),
+                              onPressed: (){},
+                              child: Padding(
+                                padding:   EdgeInsetsDirectional.fromSTEB(
+                                  MediaQuery.of(context).size.width*.02
+                                  , 0, 0, 0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Icon(
                                       Icons.settings_outlined,
                                       color: iconColor,
-                                      size: 50,
+                                      size: MediaQuery.of(context).size.width*.03,
                                     ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          20, 0, 0, 0),
+                                          MediaQuery.of(context).size.width*.015, 0, 0, 0),
                                       child: Text(
                                         'Search for a Car',
                                         style: TextStyle(
                                           fontFamily: 'Readex Pro',
                                           color: Colors.white,
-                                          fontSize: 30,
+                                          fontSize: MediaQuery.of(context).size.width*.02,
                                           letterSpacing: 0,
                                         ),
                                       ),
@@ -180,34 +221,46 @@ class _LayoutScreenState extends State<LayoutScreen> {
                               ),
                             ),
                           ),
-                          Align(
-                            alignment: AlignmentDirectional(0, 0),
-                            child: Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: mainColor,
-                                  borderRadius: BorderRadius.circular(22),
-                                ),
+                        ),
+                           SizedBox(
+                        height: MediaQuery.of(context).size.height*.03,
+                       ),
+                        Padding(
+                          padding:
+                              EdgeInsetsDirectional.fromSTEB(MediaQuery.of(context).size.width*.015, 0, 0, 0),
+                          child: Container(
+                             height: MediaQuery.of(context).size.height*.08,
+                            decoration: BoxDecoration(
+                              color: mainColor,
+                              borderRadius: BorderRadius.circular(
+                                MediaQuery.of(context).size.width*.02
+                              ),
+                            ),
+                            child: MaterialButton(
+                              shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(MediaQuery.of(context).size.width*.02)),
+                              onPressed: (){},
+                              child: Padding(
+                                padding:   EdgeInsetsDirectional.fromSTEB(
+                                  MediaQuery.of(context).size.width*.02
+                                  , 0, 0, 0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Icon(
                                       Icons.settings_outlined,
                                       color: iconColor,
-                                      size: 50,
+                                      size: MediaQuery.of(context).size.width*.03,
                                     ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          20, 0, 0, 0),
+                                          MediaQuery.of(context).size.width*.015, 0, 0, 0),
                                       child: Text(
                                         'Search for a Car',
                                         style: TextStyle(
                                           fontFamily: 'Readex Pro',
                                           color: Colors.white,
-                                          fontSize: 30,
+                                          fontSize: MediaQuery.of(context).size.width*.02,
                                           letterSpacing: 0,
                                         ),
                                       ),
@@ -217,34 +270,46 @@ class _LayoutScreenState extends State<LayoutScreen> {
                               ),
                             ),
                           ),
-                          Align(
-                            alignment: AlignmentDirectional(0, 0),
-                            child: Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: mainColor,
-                                  borderRadius: BorderRadius.circular(22),
-                                ),
+                        ),
+                        SizedBox(
+                        height: MediaQuery.of(context).size.height*.03,
+                       ),
+                        Padding(
+                          padding:
+                              EdgeInsetsDirectional.fromSTEB(MediaQuery.of(context).size.width*.015, 0, 0, 0),
+                          child: Container(
+                             height: MediaQuery.of(context).size.height*.08,
+                            decoration: BoxDecoration(
+                              color: mainColor,
+                              borderRadius: BorderRadius.circular(
+                                MediaQuery.of(context).size.width*.02
+                              ),
+                            ),
+                            child: MaterialButton(
+                              shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(MediaQuery.of(context).size.width*.02)),
+                              onPressed: (){},
+                              child: Padding(
+                                padding:   EdgeInsetsDirectional.fromSTEB(
+                                  MediaQuery.of(context).size.width*.02
+                                  , 0, 0, 0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Icon(
                                       Icons.settings_outlined,
                                       color: iconColor,
-                                      size: 50,
+                                      size: MediaQuery.of(context).size.width*.03,
                                     ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          20, 0, 0, 0),
+                                          MediaQuery.of(context).size.width*.015, 0, 0, 0),
                                       child: Text(
                                         'Search for a Car',
                                         style: TextStyle(
                                           fontFamily: 'Readex Pro',
                                           color: Colors.white,
-                                          fontSize: 30,
+                                          fontSize: MediaQuery.of(context).size.width*.02,
                                           letterSpacing: 0,
                                         ),
                                       ),
@@ -254,34 +319,46 @@ class _LayoutScreenState extends State<LayoutScreen> {
                               ),
                             ),
                           ),
-                          Align(
-                            alignment: AlignmentDirectional(0, 0),
-                            child: Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: mainColor,
-                                  borderRadius: BorderRadius.circular(22),
-                                ),
+                        ),
+                        SizedBox(
+                        height: MediaQuery.of(context).size.height*.03,
+                       ),
+                        Padding(
+                          padding:
+                              EdgeInsetsDirectional.fromSTEB(MediaQuery.of(context).size.width*.015, 0, 0, 0),
+                          child: Container(
+                             height: MediaQuery.of(context).size.height*.08,
+                            decoration: BoxDecoration(
+                              color: mainColor,
+                              borderRadius: BorderRadius.circular(
+                                MediaQuery.of(context).size.width*.02
+                              ),
+                            ),
+                            child: MaterialButton(
+                              shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(MediaQuery.of(context).size.width*.02)),
+                              onPressed: (){},
+                              child: Padding(
+                                padding:   EdgeInsetsDirectional.fromSTEB(
+                                  MediaQuery.of(context).size.width*.02
+                                  , 0, 0, 0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Icon(
                                       Icons.settings_outlined,
                                       color: iconColor,
-                                      size: 50,
+                                      size: MediaQuery.of(context).size.width*.03,
                                     ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          20, 0, 0, 0),
+                                          MediaQuery.of(context).size.width*.015, 0, 0, 0),
                                       child: Text(
                                         'Search for a Car',
                                         style: TextStyle(
                                           fontFamily: 'Readex Pro',
                                           color: Colors.white,
-                                          fontSize: 30,
+                                          fontSize: MediaQuery.of(context).size.width*.02,
                                           letterSpacing: 0,
                                         ),
                                       ),
@@ -291,32 +368,15 @@ class _LayoutScreenState extends State<LayoutScreen> {
                               ),
                             ),
                           ),
-                        ],
-                      ),
+                        ),
+                     
+                      ],
                     ),
                   ),
                 ],
               ),
             ),
-            Align(
-              alignment: AlignmentDirectional(0, 0),
-              child: Container(
-                width: 1040,
-                height: double.infinity,
-                decoration: BoxDecoration(
-                  color: backGroundColor,
-                ),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(8),
-                  child: Image.asset(
-                    'assets/images/Front_Image-removebg-preview.png',
-                    width: 300,
-                    height: 200,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-            ),
+           HomeScreen(),
           ],
         ),
       ),
