@@ -2,6 +2,7 @@ import 'package:benz/models/service_model/service_model.dart';
 import 'package:benz/modules/databases_module/database.dart';
 import 'package:benz/shared/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 
 class AddServiceScreen extends StatefulWidget {
@@ -63,7 +64,7 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
             carNumber: carNumber,
             name: nameControllers[i].text,
             price: double.tryParse(priceControllers[i].text) ?? 0,
-            startDate: '2025-07-01',
+            startDate: DateFormat('yyyy-MM-dd').format(DateTime.now()),
             endDate: DateFormat('yyyy-MM-dd')
                 .format(DateTime.now()) // or any date you want to use
             );
@@ -73,7 +74,7 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
           const SnackBar(content: Text('Services added successfully')));
     } catch (e) {
       ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('Error adding services: $e')));
+          .showSnackBar(SnackBar(content: Text('Failed!!!')));
       print(e);
     } finally {
       setState(() {
@@ -161,6 +162,10 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                                   ),
                                 ),
                                 keyboardType: TextInputType.number,
+                                inputFormatters: [
+                                  FilteringTextInputFormatter
+                                      .digitsOnly, // Allow only digits
+                                ],
                               ),
                             ),
                             IconButton(

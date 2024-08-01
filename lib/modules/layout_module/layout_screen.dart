@@ -23,6 +23,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
               height: double.infinity,
               decoration: BoxDecoration(
                 color: backGroundColor,
+                border: Border.all(color: backGroundColor),
               ),
               child: Column(
                 mainAxisSize: MainAxisSize.max,

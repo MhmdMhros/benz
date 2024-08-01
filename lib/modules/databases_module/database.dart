@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:benz/models/car_model/car_model.dart';
 import 'package:benz/models/dismissed_model/dismissed_model.dart';
 import 'package:benz/models/service_model/service_model.dart';
+import 'package:flutter/material.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 class DatabaseHelper {
@@ -62,10 +63,18 @@ class DatabaseHelper {
     return _database!;
   }
 
-  Future<void> insertCar(CarModel carModel) async {
+  Future<void> insertCar(CarModel carModel, BuildContext context) async {
     final db = await createDatabase();
-    await db.insert('Car', carModel.toMap(),
-        conflictAlgorithm: ConflictAlgorithm.replace);
+    await db
+        .insert('Car', carModel.toMap(),
+            conflictAlgorithm: ConflictAlgorithm.replace)
+        .then((value) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text('Car added successfully')));
+    }).catchError((Error) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text('Failed!!!')));
+    });
   }
 
   Future<void> insertService(ServiceModel serviceModel) async {
@@ -74,16 +83,25 @@ class DatabaseHelper {
         conflictAlgorithm: ConflictAlgorithm.replace);
   }
 
-  Future<void> insertDismissed(DismissedModel dismissedModel) async {
+  Future<void> insertDismissed(
+      DismissedModel dismissedModel, BuildContext context) async {
     // Get a reference to the database.
     final db = await createDatabase();
 
     // Insert the DismissedModel instance into the database.
-    await db.insert(
+    await db
+        .insert(
       'Dismissed',
       dismissedModel.toMap(),
       conflictAlgorithm: ConflictAlgorithm.replace,
-    );
+    )
+        .then((value) {
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Dismissed added successfully')));
+    }).catchError((Error) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text('Failed!!!')));
+    });
   }
 
   Future<List<CarModel>> getAllCars() async {
