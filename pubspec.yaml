@@ -39,6 +39,8 @@ dependencies:
   sqflite: ^2.3.3+1
   intl: ^0.19.0
 
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -49,6 +51,23 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^3.0.0
+  flutter_launcher_icons: ^0.13.1
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/Logo-removebg-preview.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  background_color: "#D9D9D9"
+  web:
+    generate: true
+    image_path: "assets/images/Logo-removebg-preview.png"
+    background_color: "#D9D9D9"
+    theme_color: "#D9D9D9"
+  windows:
+    generate: true
+    image_path: "assets/images/Logo-removebg-preview.png"
+    icon_size: 48 # min:48, max:256, default: 48
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
