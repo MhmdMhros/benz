@@ -49,7 +49,6 @@ class _LayoutScreenState extends State<LayoutScreen> {
                               'assets/images/Logo-removebg-preview.png',
                               width: MediaQuery.of(context).size.width * .06,
                               height: MediaQuery.of(context).size.height * 0.13,
-                              fit: BoxFit.cover,
                             ),
                           ),
                         ),
@@ -108,25 +107,27 @@ class _LayoutScreenState extends State<LayoutScreen> {
                                       Icons.search,
                                       color: iconColor,
                                       size: MediaQuery.of(context).size.width *
-                                          .04,
+                                          .035,
                                     ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          MediaQuery.of(context).size.width *
-                                              .01,
-                                          0,
-                                          0,
-                                          0),
-                                      child: Text(
-                                        'Search for a Car',
-                                        style: TextStyle(
-                                          fontFamily: 'Readex Pro',
-                                          color: Colors.white,
-                                          fontSize: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              .02,
-                                          letterSpacing: 0,
+                                    Expanded(
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            MediaQuery.of(context).size.width *
+                                                .01,
+                                            0,
+                                            0,
+                                            0),
+                                        child: Text(
+                                          'Search for a Car',
+                                          style: TextStyle(
+                                            fontFamily: 'Readex Pro',
+                                            color: Colors.white,
+                                            fontSize: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                .02,
+                                            letterSpacing: 0,
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -161,6 +162,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
                                   currentIndexScreen = 2;
                                 });
                               },
+
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     MediaQuery.of(context).size.width * .02,
@@ -194,10 +196,33 @@ class _LayoutScreenState extends State<LayoutScreen> {
                                               .02,
                                           letterSpacing: 0,
                                         ),
+
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Image.asset(
+                                    width:
+                                        MediaQuery.of(context).size.width * .07,
+                                    height: MediaQuery.of(context).size.height *
+                                        .08,
+                                    "assets/icons/add_car.png",
+                                  ),
+                                  Expanded(
+                                    child: Text(
+                                      'Add Car',
+                                      style: TextStyle(
+                                        fontFamily: 'Readex Pro',
+                                        color: Colors.white,
+                                        fontSize:
+                                            MediaQuery.of(context).size.width *
+                                                .02,
+                                        letterSpacing: 0,
+
                                       ),
                                     ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
                             ),
                           ),
@@ -227,6 +252,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
                                   currentIndexScreen = 3;
                                 });
                               },
+
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     MediaQuery.of(context).size.width * .02,
@@ -260,10 +286,33 @@ class _LayoutScreenState extends State<LayoutScreen> {
                                               .02,
                                           letterSpacing: 0,
                                         ),
+
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Image.asset(
+                                    width:
+                                        MediaQuery.of(context).size.width * .07,
+                                    height: MediaQuery.of(context).size.height *
+                                        .08,
+                                    "assets/icons/add_service.png",
+                                  ),
+                                  Expanded(
+                                    child: Text(
+                                      'Add Service',
+                                      style: TextStyle(
+                                        fontFamily: 'Readex Pro',
+                                        color: Colors.white,
+                                        fontSize:
+                                            MediaQuery.of(context).size.width *
+                                                .02,
+                                        letterSpacing: 0,
+
                                       ),
                                     ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
                             ),
                           ),
@@ -293,6 +342,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
                                   currentIndexScreen = 4;
                                 });
                               },
+
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     MediaQuery.of(context).size.width * .02,
@@ -326,10 +376,33 @@ class _LayoutScreenState extends State<LayoutScreen> {
                                               .02,
                                           letterSpacing: 0,
                                         ),
+
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Image.asset(
+                                    width:
+                                        MediaQuery.of(context).size.width * .07,
+                                    height: MediaQuery.of(context).size.height *
+                                        .08,
+                                    "assets/icons/add_dismissed.png",
+                                  ),
+                                  Expanded(
+                                    child: Text(
+                                      'Add Dismissed',
+                                      style: TextStyle(
+                                        fontFamily: 'Readex Pro',
+                                        color: Colors.white,
+                                        fontSize:
+                                            MediaQuery.of(context).size.width *
+                                                .02,
+                                        letterSpacing: 0,
+
                                       ),
                                     ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
                             ),
                           ),
@@ -359,6 +432,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
                                   currentIndexScreen = 5;
                                 });
                               },
+
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     MediaQuery.of(context).size.width * .02,
@@ -392,10 +466,33 @@ class _LayoutScreenState extends State<LayoutScreen> {
                                               .02,
                                           letterSpacing: 0,
                                         ),
+
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Image.asset(
+                                    width:
+                                        MediaQuery.of(context).size.width * .07,
+                                    height: MediaQuery.of(context).size.height *
+                                        .08,
+                                    "assets/icons/show_services.png",
+                                  ),
+                                  Expanded(
+                                    child: Text(
+                                      'Show Services',
+                                      style: TextStyle(
+                                        fontFamily: 'Readex Pro',
+                                        color: Colors.white,
+                                        fontSize:
+                                            MediaQuery.of(context).size.width *
+                                                .02,
+                                        letterSpacing: 0,
+
                                       ),
                                     ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
                             ),
                           ),
@@ -410,6 +507,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
                               0,
                               0),
                           child: Container(
+                            width: double.infinity,
                             height: MediaQuery.of(context).size.height * .08,
                             decoration: BoxDecoration(
                               color: mainColor,
@@ -458,10 +556,33 @@ class _LayoutScreenState extends State<LayoutScreen> {
                                               .02,
                                           letterSpacing: 0,
                                         ),
+
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Image.asset(
+                                    width:
+                                        MediaQuery.of(context).size.width * .07,
+                                    height: MediaQuery.of(context).size.height *
+                                        .08,
+                                    "assets/icons/show_dismissals.png",
+                                  ),
+                                  Expanded(
+                                    child: Text(
+                                      'Show Dismissals',
+                                      style: TextStyle(
+                                        fontFamily: 'Readex Pro',
+                                        color: Colors.white,
+                                        fontSize:
+                                            MediaQuery.of(context).size.width *
+                                                .02,
+                                        letterSpacing: 0,
+
                                       ),
                                     ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
                             ),
                           ),
@@ -507,23 +628,25 @@ class _LayoutScreenState extends State<LayoutScreen> {
                                       size: MediaQuery.of(context).size.width *
                                           .03,
                                     ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          MediaQuery.of(context).size.width *
-                                              .015,
-                                          0,
-                                          0,
-                                          0),
-                                      child: Text(
-                                        'Exit',
-                                        style: TextStyle(
-                                          fontFamily: 'Readex Pro',
-                                          color: Colors.white,
-                                          fontSize: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              .02,
-                                          letterSpacing: 0,
+                                    Expanded(
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            MediaQuery.of(context).size.width *
+                                                .018,
+                                            0,
+                                            0,
+                                            0),
+                                        child: Text(
+                                          'Exit',
+                                          style: TextStyle(
+                                            fontFamily: 'Readex Pro',
+                                            color: Colors.white,
+                                            fontSize: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                .02,
+                                            letterSpacing: 0,
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -539,7 +662,16 @@ class _LayoutScreenState extends State<LayoutScreen> {
                 ],
               ),
             ),
-            currentScreen[currentIndexScreen],
+            Container(
+              width: MediaQuery.of(context).size.width * 0.01,
+              color: backGroundColor,
+            ),
+            Container(
+              width: 1, // Width of the vertical line
+              height: double.infinity, // Height of the vertical line
+              color: Colors.black, // Color of the vertical line
+            ),
+            Expanded(child: currentScreen[currentIndexScreen]),
           ],
         ),
       ),
