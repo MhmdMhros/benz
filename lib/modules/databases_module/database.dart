@@ -46,9 +46,9 @@ class DatabaseHelper {
         ''');
         await database.execute('''
   CREATE TABLE IF NOT EXISTS Dismissed (
-    dismissedId TEXT PRIMARY KEY, 
+    dismissedId INTEGER PRIMARY KEY AUTOINCREMENT, 
     date TEXT NOT NULL, 
-    cost TEXT NOT NULL, 
+    cost REAL NOT NULL, 
     titleName TEXT NOT NULL, 
     note TEXT NOT NULL
   );

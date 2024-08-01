@@ -79,6 +79,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
                               0),
                           child: Container(
                             height: MediaQuery.of(context).size.height * .08,
+                            
                             decoration: BoxDecoration(
                               color: mainColor,
                               borderRadius: BorderRadius.circular(
@@ -171,6 +172,8 @@ class _LayoutScreenState extends State<LayoutScreen> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Image.asset(
+                                      width: MediaQuery.of(context).size.width*.05,
+                                       height: MediaQuery.of(context).size.height*.06,
                                       "assets/icons/add_car.png",
                                     ),
                                     Padding(
@@ -235,6 +238,8 @@ class _LayoutScreenState extends State<LayoutScreen> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Image.asset(
+                                      width: MediaQuery.of(context).size.width*.05,
+                                       height: MediaQuery.of(context).size.height*.06,
                                       "assets/icons/add_service.png",
                                     ),
                                     Padding(
@@ -299,6 +304,8 @@ class _LayoutScreenState extends State<LayoutScreen> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Image.asset(
+                                      width: MediaQuery.of(context).size.width*.05,
+                                       height: MediaQuery.of(context).size.height*.06,
                                       "assets/icons/add_dismissed.png",
                                     ),
                                     Padding(
@@ -363,6 +370,8 @@ class _LayoutScreenState extends State<LayoutScreen> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Image.asset(
+                                      width: MediaQuery.of(context).size.width*.05,
+                                       height: MediaQuery.of(context).size.height*.06,
                                       "assets/icons/show_services.png",
                                     ),
                                     Padding(
@@ -427,6 +436,8 @@ class _LayoutScreenState extends State<LayoutScreen> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Image.asset(
+                                      width: MediaQuery.of(context).size.width*.05,
+                                       height: MediaQuery.of(context).size.height*.06,
                                       "assets/icons/show_dismissals.png",
                                     ),
                                     Padding(

@@ -1,12 +1,12 @@
 class DismissedModel {
-  final String dismissedId;
+  final int? dismissedId;
   final String date;
-  final String cost;
+  final double cost;
   final String titleName;
   final String note;
 
   DismissedModel({
-    required this.dismissedId,
+     this.dismissedId,
     required this.date,
     required this.cost,
     required this.titleName,
