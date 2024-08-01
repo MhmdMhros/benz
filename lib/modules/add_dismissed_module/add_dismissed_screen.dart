@@ -1,6 +1,3 @@
-import 'dart:ffi';
-
-import 'package:benz/models/car_model/car_model.dart';
 import 'package:benz/models/dismissed_model/dismissed_model.dart';
 import 'package:benz/modules/databases_module/database.dart';
 import 'package:benz/shared/constants.dart';
@@ -17,21 +14,21 @@ class _AddDismissedScreenState extends State<AddDismissedScreen> {
   final _cost = TextEditingController();
   final _titleName = TextEditingController();
   final _note = TextEditingController();
- 
 
   Future<void> _insert_dismissed() async {
     if (_formKey.currentState!.validate()) {
       final Dismissed = DismissedModel(
-        note:_note.text,
-        titleName:_titleName.text,
-        cost:double.parse(_cost.text),
-        date:DateFormat('yyyy-MM-dd')
-                .format(DateTime.now()),
-      
-   );
+        note: _note.text,
+        titleName: _titleName.text,
+        cost: double.parse(_cost.text),
+        date: DateFormat('yyyy-MM-dd').format(DateTime.now()),
+      );
 
       DatabaseHelper dp = new DatabaseHelper();
-      dp.insertDismissed(Dismissed);
+      dp.insertDismissed(Dismissed, context);
+      _titleName.text = "";
+      _cost.text = "";
+      _note.text = "";
     }
   }
 
@@ -62,7 +59,7 @@ class _AddDismissedScreenState extends State<AddDismissedScreen> {
               TextFormField(
                 controller: _titleName,
                 decoration: InputDecoration(
-                  hintText: 'title name',
+                  hintText: 'Dismissed Name',
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(20.0)),
                     borderSide: BorderSide(color: mainColor),
@@ -88,7 +85,7 @@ class _AddDismissedScreenState extends State<AddDismissedScreen> {
               TextFormField(
                 controller: _cost,
                 decoration: InputDecoration(
-                  hintText: 'cosr',
+                  hintText: 'Cost',
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(20.0)),
                     borderSide: BorderSide(color: mainColor),
@@ -114,7 +111,7 @@ class _AddDismissedScreenState extends State<AddDismissedScreen> {
               TextFormField(
                 controller: _note,
                 decoration: InputDecoration(
-                  hintText: 'note',
+                  hintText: 'Note',
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(20.0)),
                     borderSide: BorderSide(color: mainColor),
@@ -137,8 +134,7 @@ class _AddDismissedScreenState extends State<AddDismissedScreen> {
                 },
               ),
               SizedBox(height: MediaQuery.of(context).size.height * .04),
-             
-           SizedBox(height: MediaQuery.of(context).size.height * .1),
+              SizedBox(height: MediaQuery.of(context).size.height * .1),
               Container(
                 width: MediaQuery.of(context).size.width * 0.5,
                 height: MediaQuery.of(context).size.height * .07,
@@ -153,7 +149,7 @@ class _AddDismissedScreenState extends State<AddDismissedScreen> {
                           MediaQuery.of(context).size.width * .02)),
                   onPressed: _insert_dismissed,
                   child: Text(
-                    'Add Car',
+                    'Add Dismissed',
                     style: TextStyle(
                       fontFamily: 'Readex Pro',
                       color: Colors.white,

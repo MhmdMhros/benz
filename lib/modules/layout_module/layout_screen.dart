@@ -23,6 +23,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
               height: double.infinity,
               decoration: BoxDecoration(
                 color: backGroundColor,
+                border: Border.all(color: backGroundColor),
               ),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
@@ -78,7 +79,6 @@ class _LayoutScreenState extends State<LayoutScreen> {
                               0),
                           child: Container(
                             height: MediaQuery.of(context).size.height * .08,
-                            
                             decoration: BoxDecoration(
                               color: mainColor,
                               borderRadius: BorderRadius.circular(
@@ -162,41 +162,6 @@ class _LayoutScreenState extends State<LayoutScreen> {
                                   currentIndexScreen = 2;
                                 });
                               },
-
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    MediaQuery.of(context).size.width * .02,
-                                    0,
-                                    0,
-                                    0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Image.asset(
-                                      width: MediaQuery.of(context).size.width*.05,
-                                       height: MediaQuery.of(context).size.height*.06,
-                                      "assets/icons/add_car.png",
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          MediaQuery.of(context).size.width *
-                                              .015,
-                                          0,
-                                          0,
-                                          0),
-                                      child: Text(
-                                        'Add Car',
-                                        style: TextStyle(
-                                          fontFamily: 'Readex Pro',
-                                          color: Colors.white,
-                                          fontSize: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              .02,
-                                          letterSpacing: 0,
-                                        ),
-
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -218,7 +183,6 @@ class _LayoutScreenState extends State<LayoutScreen> {
                                             MediaQuery.of(context).size.width *
                                                 .02,
                                         letterSpacing: 0,
-
                                       ),
                                     ),
                                   ),
@@ -252,41 +216,6 @@ class _LayoutScreenState extends State<LayoutScreen> {
                                   currentIndexScreen = 3;
                                 });
                               },
-
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    MediaQuery.of(context).size.width * .02,
-                                    0,
-                                    0,
-                                    0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Image.asset(
-                                      width: MediaQuery.of(context).size.width*.05,
-                                       height: MediaQuery.of(context).size.height*.06,
-                                      "assets/icons/add_service.png",
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          MediaQuery.of(context).size.width *
-                                              .015,
-                                          0,
-                                          0,
-                                          0),
-                                      child: Text(
-                                        'Add Service',
-                                        style: TextStyle(
-                                          fontFamily: 'Readex Pro',
-                                          color: Colors.white,
-                                          fontSize: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              .02,
-                                          letterSpacing: 0,
-                                        ),
-
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -308,7 +237,6 @@ class _LayoutScreenState extends State<LayoutScreen> {
                                             MediaQuery.of(context).size.width *
                                                 .02,
                                         letterSpacing: 0,
-
                                       ),
                                     ),
                                   ),
@@ -342,41 +270,6 @@ class _LayoutScreenState extends State<LayoutScreen> {
                                   currentIndexScreen = 4;
                                 });
                               },
-
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    MediaQuery.of(context).size.width * .02,
-                                    0,
-                                    0,
-                                    0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Image.asset(
-                                      width: MediaQuery.of(context).size.width*.05,
-                                       height: MediaQuery.of(context).size.height*.06,
-                                      "assets/icons/add_dismissed.png",
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          MediaQuery.of(context).size.width *
-                                              .015,
-                                          0,
-                                          0,
-                                          0),
-                                      child: Text(
-                                        'Add Dismissed',
-                                        style: TextStyle(
-                                          fontFamily: 'Readex Pro',
-                                          color: Colors.white,
-                                          fontSize: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              .02,
-                                          letterSpacing: 0,
-                                        ),
-
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -398,7 +291,6 @@ class _LayoutScreenState extends State<LayoutScreen> {
                                             MediaQuery.of(context).size.width *
                                                 .02,
                                         letterSpacing: 0,
-
                                       ),
                                     ),
                                   ),
@@ -432,41 +324,6 @@ class _LayoutScreenState extends State<LayoutScreen> {
                                   currentIndexScreen = 5;
                                 });
                               },
-
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    MediaQuery.of(context).size.width * .02,
-                                    0,
-                                    0,
-                                    0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Image.asset(
-                                      width: MediaQuery.of(context).size.width*.05,
-                                       height: MediaQuery.of(context).size.height*.06,
-                                      "assets/icons/show_services.png",
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          MediaQuery.of(context).size.width *
-                                              .015,
-                                          0,
-                                          0,
-                                          0),
-                                      child: Text(
-                                        'Show Services',
-                                        style: TextStyle(
-                                          fontFamily: 'Readex Pro',
-                                          color: Colors.white,
-                                          fontSize: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              .02,
-                                          letterSpacing: 0,
-                                        ),
-
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -488,7 +345,6 @@ class _LayoutScreenState extends State<LayoutScreen> {
                                             MediaQuery.of(context).size.width *
                                                 .02,
                                         letterSpacing: 0,
-
                                       ),
                                     ),
                                   ),
@@ -523,40 +379,6 @@ class _LayoutScreenState extends State<LayoutScreen> {
                                   currentIndexScreen = 6;
                                 });
                               },
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    MediaQuery.of(context).size.width * .02,
-                                    0,
-                                    0,
-                                    0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Image.asset(
-                                      width: MediaQuery.of(context).size.width*.05,
-                                       height: MediaQuery.of(context).size.height*.06,
-                                      "assets/icons/show_dismissals.png",
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          MediaQuery.of(context).size.width *
-                                              .015,
-                                          0,
-                                          0,
-                                          0),
-                                      child: Text(
-                                        'Show Dismissals',
-                                        style: TextStyle(
-                                          fontFamily: 'Readex Pro',
-                                          color: Colors.white,
-                                          fontSize: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              .02,
-                                          letterSpacing: 0,
-                                        ),
-
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -578,7 +400,6 @@ class _LayoutScreenState extends State<LayoutScreen> {
                                             MediaQuery.of(context).size.width *
                                                 .02,
                                         letterSpacing: 0,
-
                                       ),
                                     ),
                                   ),
