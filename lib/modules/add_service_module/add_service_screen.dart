@@ -1,5 +1,7 @@
+import 'package:benz/models/car_model/car_model.dart';
 import 'package:benz/models/service_model/service_model.dart';
 import 'package:benz/modules/databases_module/database.dart';
+import 'package:benz/shared/components.dart';
 import 'package:benz/shared/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -19,14 +21,31 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
   List<TextEditingController> priceControllers = [];
   bool _isLoading = false;
 
-  void _addServiceField() {
+  void _addServiceField() async {
+    String carNumber = _carNumberController.text;
+    print(carNumber);
+    if (carNumber.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Car number must not be empty')));
+      return;
+    }
+    carNumber = addSpaceBetweenEachLetter(carNumber);
+    final dbHelper = DatabaseHelper();
+    CarModel? car = await dbHelper.getCarByNumber(carNumber);
+    if (car == null) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text('Car not found')));
+      return;
+    }
+
     setState(() {
       services.add(ServiceModel(
-          carNumber: '',
-          name: '',
-          price: 0,
-          startDate: DateTime.now().toIso8601String(),
-          endDate: DateTime.now().toIso8601String()));
+        carNumber: '',
+        name: '',
+        price: 0,
+        startDate: DateFormat('yyyy-MM-dd').format(DateTime.now()),
+        endDate: DateFormat('yyyy-MM-dd').format(DateTime.now()),
+      ));
       nameControllers.add(TextEditingController());
       priceControllers.add(TextEditingController());
     });
@@ -59,19 +78,30 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
     }
 
     try {
+      bool done = false;
       for (int i = 0; i < services.length; i++) {
-        services[i] = ServiceModel(
-            carNumber: carNumber,
-            name: nameControllers[i].text,
-            price: double.tryParse(priceControllers[i].text) ?? 0,
-            startDate: DateFormat('yyyy-MM-dd').format(DateTime.now()),
-            endDate: DateFormat('yyyy-MM-dd')
-                .format(DateTime.now()) // or any date you want to use
-            );
-        await dbHelper.insertService(services[i]);
+        if (nameControllers[i].text.isNotEmpty &&
+            priceControllers[i].text.isNotEmpty) {
+          services[i] = ServiceModel(
+              carNumber: carNumber,
+              name: nameControllers[i].text,
+              price: double.tryParse(priceControllers[i].text) ?? 0,
+              startDate: DateFormat('yyyy-MM-dd').format(DateTime.now()),
+              endDate: DateFormat('yyyy-MM-dd')
+                  .format(DateTime.now()) // or any date you want to use
+              );
+          await dbHelper.insertService(services[i]);
+          done = true;
+        }
       }
-      ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Services added successfully')));
+
+      if (done) {
+        ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Services added successfully')));
+      } else {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(const SnackBar(content: Text('Failed!!!')));
+      }
     } catch (e) {
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text('Failed!!!')));
@@ -103,7 +133,7 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                     TextFormField(
                       controller: _carNumberController,
                       decoration: InputDecoration(
-                        hintText: 'Enter Car Number',
+                        hintText: "Car Number",
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(20.0)),
                           borderSide: BorderSide(color: mainColor),
@@ -117,12 +147,49 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                           borderSide: BorderSide(
                               color: const Color.fromARGB(255, 172, 13, 2)),
                         ),
+                        counterText: '', // Hide the counter text
+                        prefixIcon: Padding(
+                          padding: EdgeInsets.all(
+                              10.0), // Add padding to align segments properly
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: List.generate(8, (index) {
+                              return Container(
+                                width: MediaQuery.of(context).size.width * 0.02,
+                                alignment: Alignment.center,
+                                child: Text(
+                                  _carNumberController.text.length > index
+                                      ? _carNumberController.text[index]
+                                      : '',
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                                decoration: BoxDecoration(
+                                  border: Border(
+                                    bottom: BorderSide(
+                                      width: 2,
+                                      color:
+                                          mainColor, // The color for the bottom border
+                                    ),
+                                  ),
+                                ),
+                              );
+                            }),
+                          ),
+                        ),
                       ),
+                      inputFormatters: [
+                        LengthLimitingTextInputFormatter(
+                            8), // Limit to 8 digits
+                      ],
                       validator: (value) {
-                        if (value!.isEmpty) {
-                          return 'Car number must not be empty';
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter mileage';
                         }
                         return null;
+                      },
+                      onChanged: (value) {
+                        // Trigger a rebuild to update the segmented display
+                        (context as Element).markNeedsBuild();
                       },
                     ),
                     SizedBox(height: 16.0),

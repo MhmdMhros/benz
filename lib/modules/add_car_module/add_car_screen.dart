@@ -86,7 +86,7 @@ class _AddCarScreenState extends State<AddCarScreen> {
                         mainAxisSize: MainAxisSize.min,
                         children: List.generate(8, (index) {
                           return Container(
-                            width: 20,
+                            width: MediaQuery.of(context).size.width * 0.02,
                             alignment: Alignment.center,
                             child: Text(
                               _carNumberController.text.length > index

@@ -196,6 +196,13 @@ class DatabaseHelper {
     });
   }
 
+  Future<bool> checkCarByNumber(String carNumber) async {
+    final db = await createDatabase();
+    final List<Map<String, dynamic>> maps =
+        await db.query('Car', where: 'carNumber = ?', whereArgs: [carNumber]);
+    return maps.isNotEmpty;
+  }
+
   Future<CarModel?> getCarByNumber(String carNumber) async {
     final db = await createDatabase();
     final List<Map<String, dynamic>> maps =
