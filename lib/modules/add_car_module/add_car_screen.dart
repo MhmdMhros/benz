@@ -25,7 +25,7 @@ class _AddCarScreenState extends State<AddCarScreen> {
         carModel: _carModelController.text,
         ownerName: _ownerNameController.text,
         phoneNumber: _phoneNumberController.text,
-        mileage: int.parse(_mileageController.text),
+        mileage: double.parse(_mileageController.text),
       );
 
       DatabaseHelper dp = new DatabaseHelper();

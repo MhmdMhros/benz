@@ -3,7 +3,7 @@ class CarModel {
   final String carModel;
   final String ownerName;
   final String phoneNumber;
-  final int mileage;
+  final double mileage;
 
   CarModel({
     required this.carNumber,

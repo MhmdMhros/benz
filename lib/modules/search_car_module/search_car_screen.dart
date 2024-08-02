@@ -16,6 +16,7 @@ class SearchCarScreen extends StatefulWidget {
 class _SearchCarScreenState extends State<SearchCarScreen> {
   TextEditingController _controller = TextEditingController();
   Widget _widgetToShow = Container();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -79,11 +80,11 @@ class _SearchCarScreenState extends State<SearchCarScreen> {
                 ),
               ),
               inputFormatters: [
-                LengthLimitingTextInputFormatter(8), // Limit to 6 digits
+                LengthLimitingTextInputFormatter(8), // Limit to 8 digits
               ],
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please enter mileage';
+                  return 'Please enter car number';
                 }
                 return null;
               },
@@ -116,56 +117,72 @@ class _SearchCarScreenState extends State<SearchCarScreen> {
                   ),
                 ),
                 onPressed: () async {
-                  String carNumber = "";
-                  carNumber = addSpaceBetweenEachLetter(_controller.text);
+                  String carNumber =
+                      addSpaceBetweenEachLetter(_controller.text);
                   final dbHelper = DatabaseHelper();
                   CarModel? car = await dbHelper.getCarByNumber(carNumber);
 
-                  print(carNumber);
                   if (car == null) {
                     setState(() {
                       _widgetToShow = Container(
                         child: Center(
                           child: Text(
-                            'Car not found ',
+                            'Car not found',
                             style: TextStyle(color: Colors.grey, fontSize: 40),
                           ),
                         ),
                       );
                     });
                   } else {
-                    String Ownername = car.ownerName;
-                    String phoneNumber = car.phoneNumber;
-                    String carmodel = car.carModel;
-                    int Millage = car.mileage;
-
                     List<ServiceModel> services =
                         await dbHelper.getServicesByCarNumber(carNumber);
+
                     setState(() {
-                      _widgetToShow = Container(
-                        padding: EdgeInsets.all(16.0),
-                        decoration: BoxDecoration(
-                          color: Colors.grey,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Column(
-                          children: [
-                            SizedBox(height: 16.0),
-                            Text("Services"),
-                            SizedBox(height: 16.0),
-                            Expanded(
-                              child: ListView.separated(
-                                itemBuilder: (context, index) => buildservice(
-                                  services[index],
+                      _widgetToShow = SingleChildScrollView(
+                        child: Container(
+                          padding: EdgeInsets.all(16.0),
+                          decoration: BoxDecoration(
+                            color: Colors.grey,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Car Details',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
                                 ),
-                                separatorBuilder: (context, index) => SizedBox(
-                                  height:
-                                      MediaQuery.of(context).size.height * .01,
+                              ),
+                              SizedBox(height: 8.0),
+                              _buildCarDetailRow('Owner Name', car.ownerName),
+                              _buildCarDetailRow(
+                                  'Phone Number', car.phoneNumber),
+                              _buildCarDetailRow('Car Model', car.carModel),
+                              _buildCarDetailRow(
+                                  'Mileage', car.mileage.toString()),
+                              Divider(color: Colors.grey),
+                              SizedBox(height: 8.0),
+                              Text(
+                                'Services',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
                                 ),
+                              ),
+                              SizedBox(height: 8.0),
+                              ListView.separated(
+                                shrinkWrap: true,
+                                physics: NeverScrollableScrollPhysics(),
+                                itemBuilder: (context, index) =>
+                                    _buildServiceItem(services[index]),
+                                separatorBuilder: (context, index) =>
+                                    SizedBox(height: 8.0),
                                 itemCount: services.length,
                               ),
-                            )
-                          ],
+                            ],
+                          ),
                         ),
                       );
                     });
@@ -179,16 +196,50 @@ class _SearchCarScreenState extends State<SearchCarScreen> {
     );
   }
 
-  Widget buildservice(ServiceModel service) {
-    return Container(
-      color: Colors.red,
+  Widget _buildCarDetailRow(String label, String value) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4.0),
       child: Row(
         children: [
-          Text(service.name),
-          SizedBox(width: 50),
-          Text(service.price.toString()),
-          SizedBox(width: 50),
-          Text(service.startDate)
+          Text(
+            '$label:',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+          SizedBox(width: 8.0),
+          Text(value),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildServiceItem(ServiceModel service) {
+    return Container(
+      padding: EdgeInsets.all(8.0),
+      decoration: BoxDecoration(
+        color: Color(0xff5c5e60),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Expanded(
+            child: Text(
+              service.name,
+              style:
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.black87),
+            ),
+          ),
+          SizedBox(width: 8.0),
+          Text(
+            service.price.toString(),
+            style: TextStyle(fontWeight: FontWeight.bold, color: mainColor),
+          ),
+          SizedBox(width: 8.0),
+          Text(
+            service.startDate,
+            style:
+                TextStyle(fontWeight: FontWeight.bold, color: Colors.black87),
+          ),
         ],
       ),
     );

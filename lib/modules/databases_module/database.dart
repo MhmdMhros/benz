@@ -30,7 +30,7 @@ class DatabaseHelper {
             carModel TEXT NOT NULL, 
             ownerName TEXT NOT NULL, 
             phoneNumber TEXT NOT NULL, 
-            mileage INTEGER NOT NULL
+            mileage REAL NOT NULL
           );
         ''');
         await database.execute('''
@@ -194,13 +194,6 @@ class DatabaseHelper {
         note: maps[i]['note'],
       );
     });
-  }
-
-  Future<bool> checkCarByNumber(String carNumber) async {
-    final db = await createDatabase();
-    final List<Map<String, dynamic>> maps =
-        await db.query('Car', where: 'carNumber = ?', whereArgs: [carNumber]);
-    return maps.isNotEmpty;
   }
 
   Future<CarModel?> getCarByNumber(String carNumber) async {

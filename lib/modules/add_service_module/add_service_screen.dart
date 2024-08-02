@@ -66,7 +66,7 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
 
     final dbHelper = DatabaseHelper();
     String carNumber = _carNumberController.text;
-
+    carNumber = addSpaceBetweenEachLetter(_carNumberController.text);
     if (carNumber.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Car number must not be empty')));
