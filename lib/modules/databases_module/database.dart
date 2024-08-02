@@ -166,6 +166,33 @@ class DatabaseHelper {
     });
   }
 
+  Future<List<DismissedModel>> getAllDismissedByYearDate(int year) async {
+    // Get a reference to the database.
+    final db = await createDatabase();
+
+    // Convert the day, month, and year to strings with leading zero if necessary
+    // String dayString = day.toString().padLeft(2, '0');
+    // String monthString = month.toString().padLeft(2, '0');
+    String yearString = year.toString();
+
+    // Query the table for the specified day, month, and year.
+    final List<Map<String, dynamic>> maps = await db.rawQuery('''
+    SELECT * FROM Dismissed 
+    WHERE strftime('%Y', date) = ?
+  ''', [yearString]);
+
+    // Convert the List<Map<String, dynamic>> to List<DismissedModel>.
+    return List.generate(maps.length, (i) {
+      return DismissedModel(
+        dismissedId: maps[i]['dismissedId'],
+        date: maps[i]['date'],
+        cost: maps[i]['cost'],
+        titleName: maps[i]['titleName'],
+        note: maps[i]['note'],
+      );
+    });
+  }
+
   Future<List<DismissedModel>> getDismissedByDayDate(
       int year, int month, int day) async {
     // Get a reference to the database.
