@@ -53,14 +53,17 @@ class _LayoutScreenState extends State<LayoutScreen> {
                             ),
                           ),
                         ),
-                        Text(
-                          'Car Benz',
-                          style: TextStyle(
-                            fontFamily: 'Readex Pro',
-                            fontWeight: FontWeight.w500,
-                            color: appNameColor,
-                            fontSize: MediaQuery.of(context).size.width * .035,
-                            letterSpacing: 0,
+                        Expanded(
+                          child: Text(
+                            'Car Benz',
+                            style: TextStyle(
+                              fontFamily: 'Readex Pro',
+                              fontWeight: FontWeight.w500,
+                              color: appNameColor,
+                              fontSize:
+                                  MediaQuery.of(context).size.width * .035,
+                              letterSpacing: 0,
+                            ),
                           ),
                         ),
                       ],

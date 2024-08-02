@@ -47,7 +47,7 @@ class _SearchCarScreenState extends State<SearchCarScreen> {
                   mainAxisSize: MainAxisSize.min,
                   children: List.generate(8, (index) {
                     return Container(
-                      width: 20,
+                      width: MediaQuery.of(context).size.width * 0.02,
                       alignment: Alignment.center,
                       child: Text(
                         _controller.text.length > index
@@ -92,14 +92,12 @@ class _SearchCarScreenState extends State<SearchCarScreen> {
                 carNumber = addSpaceBetweenEachLetter(_controller.text);
                 final dbHelper = DatabaseHelper();
                 CarModel? car = await dbHelper.getCarByNumber(carNumber);
-
-                print(carNumber);
                 if (car == null) {
                   setState(() {
                     _widgetToShow = Container(
                       child: Center(
                         child: Text(
-                          'Car not found ',
+                          'Car not found',
                           style: TextStyle(color: Colors.grey, fontSize: 40),
                         ),
                       ),
