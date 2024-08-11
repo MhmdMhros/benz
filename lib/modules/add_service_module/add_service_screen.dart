@@ -1,6 +1,7 @@
 import 'package:benz/models/car_model/car_model.dart';
 import 'package:benz/models/service_model/service_model.dart';
 import 'package:benz/modules/databases_module/database.dart';
+import 'package:benz/modules/printing_module/printing_screen.dart';
 import 'package:benz/shared/components.dart';
 import 'package:benz/shared/constants.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +9,7 @@ import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 
 class AddServiceScreen extends StatefulWidget {
-  const AddServiceScreen({super.key});
+  AddServiceScreen({super.key});
 
   @override
   State<AddServiceScreen> createState() => _AddServiceScreenState();
@@ -59,7 +60,7 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
     });
   }
 
-  Future<void> _saveServices() async {
+  Future<void> confirm() async {
     setState(() {
       _isLoading = true;
     });
@@ -96,8 +97,15 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
       }
 
       if (done) {
+        CarModel? carModel = await dbHelper.getCarByNumber(carNumber);
         ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(content: Text('Services added successfully')));
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) =>
+                  PrintScreen(carModel: carModel!, serviceModelList: services)),
+        );
       } else {
         ScaffoldMessenger.of(context)
             .showSnackBar(const SnackBar(content: Text('Failed!!!')));
@@ -115,6 +123,10 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
 
   @override
   Widget build(BuildContext context) {
+    if (currentIndexScreen == 7) {
+      _carNumberController.text = serviceNavigation;
+    }
+
     return _isLoading
         ? Center(child: CircularProgressIndicator())
         : Container(
@@ -183,7 +195,7 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                       ],
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Please enter mileage';
+                          return 'Please enter car number';
                         }
                         return null;
                       },
@@ -284,9 +296,9 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(
                                     MediaQuery.of(context).size.width * .02)),
-                            onPressed: _saveServices,
+                            onPressed: confirm,
                             child: Text(
-                              'Save Service',
+                              'Confirm',
                               style: TextStyle(
                                 fontFamily: 'Readex Pro',
                                 color: Colors.white,

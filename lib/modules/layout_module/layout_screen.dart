@@ -1,4 +1,5 @@
 import 'package:benz/modules/login_module/login_screen.dart';
+import 'package:benz/shared/components.dart';
 import 'package:benz/shared/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +12,6 @@ class LayoutScreen extends StatefulWidget {
 }
 
 class _LayoutScreenState extends State<LayoutScreen> {
-  int currentIndexScreen = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(

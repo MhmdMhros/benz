@@ -10,3 +10,9 @@ String addSpaceBetweenEachLetter(String text) {
 }
 
 String password = "";
+
+String serviceNavigation = "";
+
+int currentIndexScreen = 0;
+
+bool isAdmin = true;

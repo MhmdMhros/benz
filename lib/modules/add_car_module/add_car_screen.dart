@@ -1,5 +1,7 @@
 import 'package:benz/models/car_model/car_model.dart';
+import 'package:benz/modules/add_service_module/add_service_screen.dart';
 import 'package:benz/modules/databases_module/database.dart';
+import 'package:benz/modules/layout_module/layout_screen.dart';
 import 'package:benz/shared/components.dart';
 import 'package:benz/shared/constants.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +31,17 @@ class _AddCarScreenState extends State<AddCarScreen> {
       );
 
       DatabaseHelper dp = DatabaseHelper();
-      dp.insertCar(car, context);
+      await dp.insertCar(car, context).then((onValue) {
+        serviceNavigation = _carNumberController.text;
+        currentIndexScreen = 7;
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => LayoutScreen(
+                    isAdmin: isAdmin,
+                  )),
+        );
+      });
     }
   }
 

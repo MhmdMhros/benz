@@ -16,14 +16,14 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _passwordController = TextEditingController();
   bool passwordVisible = true;
 
-  void _login1() {
+  void loginAsAdmin() {
     if (_formKey.currentState!.validate()) {
       print(password);
 // Check if the password field is empty or not
       if (_passwordController.text == password) {
         ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(content: Text('Login as an admin successfully!!!')));
-
+        isAdmin = true;
         Navigator.push(
           context,
           MaterialPageRoute(
@@ -38,9 +38,10 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
-  void _login2() {
+  void loginAsUser() {
     // Navigate to layout screen without any checks
     // Replace `LayoutScreen` with your actual layout screen
+    isAdmin = false;
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -151,7 +152,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(
                                 MediaQuery.of(context).size.width * .02)),
-                        onPressed: _login1,
+                        onPressed: loginAsAdmin,
                         child: Text(
                           'Login as an admin',
                           style: TextStyle(
@@ -176,7 +177,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(
                                 MediaQuery.of(context).size.width * .02)),
-                        onPressed: _login2,
+                        onPressed: loginAsUser,
                         child: Text(
                           'Login as a user',
                           style: TextStyle(

@@ -1,6 +1,8 @@
 import 'package:benz/models/user_model/user_model.dart';
 import 'package:benz/modules/login_module/login_screen.dart';
+import 'package:benz/modules/printing_module/printing_screen.dart';
 import 'package:benz/shared/components.dart';
+import 'package:benz/shared/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:benz/modules/databases_module/database.dart';
 
@@ -26,7 +28,12 @@ class MyApp extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             // Show loading indicator while waiting for data
-            return Center(child: CircularProgressIndicator());
+            return Container(
+                color: backGroundColor,
+                child: Center(
+                    child: CircularProgressIndicator(
+                  color: appNameColor,
+                )));
           } else if (snapshot.hasError) {
             // Handle error scenario
             return Center(child: Text('Error: ${snapshot.error}'));
