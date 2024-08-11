@@ -55,13 +55,15 @@ class DatabaseHelper {
     note TEXT NOT NULL
   );
 ''');
-await database.execute('''
-CREATE TABLE users ( 
-  userName TEXT NOT NULL,
+        await database.execute('''
+CREATE TABLE User ( 
+  userName TEXT NOT NULL PRIMARY KEY,
   password TEXT NOT NULL
   )
 ''');
         print("Tables created");
+        UserModel user = UserModel(userName: "admin", password: "Admin12345");
+        await database.insert('User', user.toMap());
       },
       onOpen: (database) {
         print("Opened database");
@@ -356,26 +358,28 @@ CREATE TABLE users (
       );
     });
   }
+
   Future<int> insertUser(UserModel user) async {
     final db = await createDatabase();
 
-    return await db.insert('users', user.toMap());
+    return await db.insert('User', user.toMap());
   }
 
   Future<int> updateUserPassword(String userName, String newPassword) async {
     final db = await createDatabase();
 
     return await db.update(
-      'users',
+      'User',
       {'password': newPassword},
       where: 'userName = ?',
       whereArgs: [userName],
     );
   }
-Future<UserModel?> getUser(String userName) async {
+
+  Future<UserModel?> getUser(String userName) async {
     final db = await createDatabase();
     final List<Map<String, dynamic>> maps = await db.query(
-      'users',
+      'User',
       where: 'userName = ?',
       whereArgs: [userName],
     );
@@ -387,5 +391,5 @@ Future<UserModel?> getUser(String userName) async {
       );
     }
     return null;
- }
+  }
 }

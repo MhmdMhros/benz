@@ -8,5 +8,5 @@ String addSpaceBetweenEachLetter(String text) {
   }
   return spacedText;
 }
-String pasword="Safafa21";
-String Admin="";
+
+String password = "";

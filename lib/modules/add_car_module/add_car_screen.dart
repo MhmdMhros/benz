@@ -28,7 +28,7 @@ class _AddCarScreenState extends State<AddCarScreen> {
         mileage: double.parse(_mileageController.text),
       );
 
-      DatabaseHelper dp = new DatabaseHelper();
+      DatabaseHelper dp = DatabaseHelper();
       dp.insertCar(car, context);
     }
   }
