@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:benz/models/car_model/car_model.dart';
 import 'package:benz/models/dismissed_model/dismissed_model.dart';
 import 'package:benz/models/service_model/service_model.dart';
+import 'package:benz/models/user_model/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
@@ -53,6 +54,12 @@ class DatabaseHelper {
     titleName TEXT NOT NULL, 
     note TEXT NOT NULL
   );
+''');
+await database.execute('''
+CREATE TABLE users ( 
+  userName TEXT NOT NULL,
+  password TEXT NOT NULL
+  )
 ''');
         print("Tables created");
       },
@@ -349,4 +356,36 @@ class DatabaseHelper {
       );
     });
   }
+  Future<int> insertUser(UserModel user) async {
+    final db = await createDatabase();
+
+    return await db.insert('users', user.toMap());
+  }
+
+  Future<int> updateUserPassword(String userName, String newPassword) async {
+    final db = await createDatabase();
+
+    return await db.update(
+      'users',
+      {'password': newPassword},
+      where: 'userName = ?',
+      whereArgs: [userName],
+    );
+  }
+Future<UserModel?> getUser(String userName) async {
+    final db = await createDatabase();
+    final List<Map<String, dynamic>> maps = await db.query(
+      'users',
+      where: 'userName = ?',
+      whereArgs: [userName],
+    );
+
+    if (maps.isNotEmpty) {
+      return UserModel(
+        userName: maps.first['userName'],
+        password: maps.first['password'],
+      );
+    }
+    return null;
+ }
 }

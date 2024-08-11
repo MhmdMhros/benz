@@ -57,7 +57,7 @@ class _SearchCarScreenState extends State<SearchCarScreen> {
                     mainAxisSize: MainAxisSize.min,
                     children: List.generate(8, (index) {
                       return Container(
-                        width: 20,
+                       width: MediaQuery.of(context).size.width * 0.02,
                         alignment: Alignment.center,
                         child: Text(
                           _controller.text.length > index
@@ -93,11 +93,11 @@ class _SearchCarScreenState extends State<SearchCarScreen> {
                 (context as Element).markNeedsBuild();
               },
             ),
-            SizedBox(height: 16.0),
+            SizedBox(height:MediaQuery.of(context).size.height*.01),
             Expanded(
               child: _widgetToShow,
             ),
-            SizedBox(height: 16.0),
+            SizedBox(height:MediaQuery.of(context).size.height*.01),
             Container(
               width: MediaQuery.of(context).size.width * 0.5,
               height: MediaQuery.of(context).size.height * .07,
@@ -112,7 +112,7 @@ class _SearchCarScreenState extends State<SearchCarScreen> {
                   style: TextStyle(
                     fontFamily: 'Readex Pro',
                     color: Colors.white,
-                    fontSize: MediaQuery.of(context).size.width * .02,
+                    fontSize: MediaQuery.of(context).size.height * .02,
                     letterSpacing: 0,
                   ),
                 ),
@@ -205,7 +205,7 @@ class _SearchCarScreenState extends State<SearchCarScreen> {
             '$label:',
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
-          SizedBox(width: 8.0),
+          SizedBox(width: MediaQuery.of(context).size.width * 0.02,),
           Text(value),
         ],
       ),
