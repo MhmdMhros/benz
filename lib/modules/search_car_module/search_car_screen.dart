@@ -20,7 +20,7 @@ class _SearchCarScreenState extends State<SearchCarScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: backGroundColor,
+      color: backgroundColor,
       width: MediaQuery.of(context).size.width * .75,
       height: double.infinity,
       child: Padding(
@@ -57,7 +57,7 @@ class _SearchCarScreenState extends State<SearchCarScreen> {
                     mainAxisSize: MainAxisSize.min,
                     children: List.generate(8, (index) {
                       return Container(
-                       width: MediaQuery.of(context).size.width * 0.02,
+                        width: MediaQuery.of(context).size.width * 0.02,
                         alignment: Alignment.center,
                         child: Text(
                           _controller.text.length > index
@@ -93,11 +93,11 @@ class _SearchCarScreenState extends State<SearchCarScreen> {
                 (context as Element).markNeedsBuild();
               },
             ),
-            SizedBox(height:MediaQuery.of(context).size.height*.01),
+            SizedBox(height: MediaQuery.of(context).size.height * .01),
             Expanded(
               child: _widgetToShow,
             ),
-            SizedBox(height:MediaQuery.of(context).size.height*.01),
+            SizedBox(height: MediaQuery.of(context).size.height * .01),
             Container(
               width: MediaQuery.of(context).size.width * 0.5,
               height: MediaQuery.of(context).size.height * .07,
@@ -205,7 +205,9 @@ class _SearchCarScreenState extends State<SearchCarScreen> {
             '$label:',
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
-          SizedBox(width: MediaQuery.of(context).size.width * 0.02,),
+          SizedBox(
+            width: MediaQuery.of(context).size.width * 0.02,
+          ),
           Text(value),
         ],
       ),

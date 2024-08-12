@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class AddDismissedScreen extends StatefulWidget {
+  const AddDismissedScreen({super.key});
+
   @override
   _AddDismissedScreenState createState() => _AddDismissedScreenState();
 }
@@ -45,7 +47,7 @@ class _AddDismissedScreenState extends State<AddDismissedScreen> {
     return Container(
       width: MediaQuery.of(context).size.width * .75,
       height: double.infinity,
-      color: backGroundColor,
+      color: backgroundColor,
       child: Padding(
         padding: EdgeInsetsDirectional.fromSTEB(
             MediaQuery.of(context).size.width * .01,
@@ -61,17 +63,17 @@ class _AddDismissedScreenState extends State<AddDismissedScreen> {
                 decoration: InputDecoration(
                   hintText: 'Dismissed Name',
                   enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                    borderRadius: const BorderRadius.all(Radius.circular(20.0)),
                     borderSide: BorderSide(color: mainColor),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                    borderRadius: const BorderRadius.all(Radius.circular(20.0)),
                     borderSide: BorderSide(color: mainColor),
                   ),
-                  errorBorder: OutlineInputBorder(
+                  errorBorder: const OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                    borderSide: BorderSide(
-                        color: const Color.fromARGB(255, 172, 13, 2)),
+                    borderSide:
+                        BorderSide(color: Color.fromARGB(255, 172, 13, 2)),
                   ),
                 ),
                 validator: (value) {
@@ -87,17 +89,17 @@ class _AddDismissedScreenState extends State<AddDismissedScreen> {
                 decoration: InputDecoration(
                   hintText: 'Cost',
                   enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                    borderRadius: const BorderRadius.all(Radius.circular(20.0)),
                     borderSide: BorderSide(color: mainColor),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                    borderRadius: const BorderRadius.all(Radius.circular(20.0)),
                     borderSide: BorderSide(color: mainColor),
                   ),
-                  errorBorder: OutlineInputBorder(
+                  errorBorder: const OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                    borderSide: BorderSide(
-                        color: const Color.fromARGB(255, 172, 13, 2)),
+                    borderSide:
+                        BorderSide(color: Color.fromARGB(255, 172, 13, 2)),
                   ),
                 ),
                 validator: (value) {
@@ -113,17 +115,17 @@ class _AddDismissedScreenState extends State<AddDismissedScreen> {
                 decoration: InputDecoration(
                   hintText: 'Note',
                   enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                    borderRadius: const BorderRadius.all(Radius.circular(20.0)),
                     borderSide: BorderSide(color: mainColor),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                    borderRadius: const BorderRadius.all(Radius.circular(20.0)),
                     borderSide: BorderSide(color: mainColor),
                   ),
-                  errorBorder: OutlineInputBorder(
+                  errorBorder: const OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                    borderSide: BorderSide(
-                        color: const Color.fromARGB(255, 172, 13, 2)),
+                    borderSide:
+                        BorderSide(color: Color.fromARGB(255, 172, 13, 2)),
                   ),
                 ),
                 validator: (value) {

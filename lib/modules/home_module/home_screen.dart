@@ -10,7 +10,7 @@ class HomeScreen extends StatelessWidget {
       width: MediaQuery.of(context).size.width * .75,
       height: double.infinity,
       decoration: BoxDecoration(
-        color: backGroundColor,
+        color: backgroundColor,
       ),
       child: Image.asset(
         'assets/images/Front_Image-removebg-preview.png',

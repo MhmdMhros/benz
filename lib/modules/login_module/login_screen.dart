@@ -59,7 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
       child: Container(
         width: double.infinity,
         height: double.infinity,
-        color: backGroundColor,
+        color: backgroundColor,
         child: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsetsDirectional.fromSTEB(

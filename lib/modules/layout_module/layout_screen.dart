@@ -24,8 +24,8 @@ class _LayoutScreenState extends State<LayoutScreen> {
               width: MediaQuery.of(context).size.width * .25,
               height: double.infinity,
               decoration: BoxDecoration(
-                color: backGroundColor,
-                border: Border.all(color: backGroundColor),
+                color: backgroundColor,
+                border: Border.all(color: backgroundColor),
               ),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
@@ -34,7 +34,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
                     width: double.infinity,
                     height: MediaQuery.of(context).size.height * .19,
                     decoration: BoxDecoration(
-                      color: backGroundColor,
+                      color: backgroundColor,
                     ),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
@@ -524,7 +524,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
             ),
             Container(
               width: MediaQuery.of(context).size.width * 0.01,
-              color: backGroundColor,
+              color: backgroundColor,
             ),
             Container(
               width: 1, // Width of the vertical line

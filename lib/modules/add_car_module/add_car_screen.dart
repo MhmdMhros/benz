@@ -1,5 +1,4 @@
 import 'package:benz/models/car_model/car_model.dart';
-import 'package:benz/modules/add_service_module/add_service_screen.dart';
 import 'package:benz/modules/databases_module/database.dart';
 import 'package:benz/modules/layout_module/layout_screen.dart';
 import 'package:benz/shared/components.dart';
@@ -8,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class AddCarScreen extends StatefulWidget {
+  const AddCarScreen({super.key});
+
   @override
   _AddCarScreenState createState() => _AddCarScreenState();
 }
@@ -60,7 +61,7 @@ class _AddCarScreenState extends State<AddCarScreen> {
     return Container(
       width: MediaQuery.of(context).size.width * .75,
       height: double.infinity,
-      color: backGroundColor,
+      color: backgroundColor,
       child: Padding(
         padding: EdgeInsetsDirectional.fromSTEB(
           MediaQuery.of(context).size.width * .01,
@@ -78,21 +79,23 @@ class _AddCarScreenState extends State<AddCarScreen> {
                   decoration: InputDecoration(
                     hintText: "Car Number",
                     enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(20.0)),
                       borderSide: BorderSide(color: mainColor),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(20.0)),
                       borderSide: BorderSide(color: mainColor),
                     ),
-                    errorBorder: OutlineInputBorder(
+                    errorBorder: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                      borderSide: BorderSide(
-                          color: const Color.fromARGB(255, 172, 13, 2)),
+                      borderSide:
+                          BorderSide(color: Color.fromARGB(255, 172, 13, 2)),
                     ),
                     counterText: '', // Hide the counter text
                     prefixIcon: Padding(
-                      padding: EdgeInsets.all(
+                      padding: const EdgeInsets.all(
                           10.0), // Add padding to align segments properly
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
@@ -140,17 +143,19 @@ class _AddCarScreenState extends State<AddCarScreen> {
                   decoration: InputDecoration(
                     hintText: 'Car Model',
                     enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(20.0)),
                       borderSide: BorderSide(color: mainColor),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(20.0)),
                       borderSide: BorderSide(color: mainColor),
                     ),
-                    errorBorder: OutlineInputBorder(
+                    errorBorder: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                      borderSide: BorderSide(
-                          color: const Color.fromARGB(255, 172, 13, 2)),
+                      borderSide:
+                          BorderSide(color: Color.fromARGB(255, 172, 13, 2)),
                     ),
                   ),
                   validator: (value) {
@@ -166,17 +171,19 @@ class _AddCarScreenState extends State<AddCarScreen> {
                   decoration: InputDecoration(
                     hintText: 'Owner Name',
                     enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(20.0)),
                       borderSide: BorderSide(color: mainColor),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(20.0)),
                       borderSide: BorderSide(color: mainColor),
                     ),
-                    errorBorder: OutlineInputBorder(
+                    errorBorder: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                      borderSide: BorderSide(
-                          color: const Color.fromARGB(255, 172, 13, 2)),
+                      borderSide:
+                          BorderSide(color: Color.fromARGB(255, 172, 13, 2)),
                     ),
                   ),
                   validator: (value) {
@@ -192,17 +199,19 @@ class _AddCarScreenState extends State<AddCarScreen> {
                   decoration: InputDecoration(
                     hintText: 'Phone Number',
                     enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(20.0)),
                       borderSide: BorderSide(color: mainColor),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(20.0)),
                       borderSide: BorderSide(color: mainColor),
                     ),
-                    errorBorder: OutlineInputBorder(
+                    errorBorder: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                      borderSide: BorderSide(
-                          color: const Color.fromARGB(255, 172, 13, 2)),
+                      borderSide:
+                          BorderSide(color: Color.fromARGB(255, 172, 13, 2)),
                     ),
                   ),
                   keyboardType: TextInputType.phone,
@@ -222,17 +231,19 @@ class _AddCarScreenState extends State<AddCarScreen> {
                   decoration: InputDecoration(
                     hintText: 'Mileage',
                     enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(20.0)),
                       borderSide: BorderSide(color: mainColor),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(20.0)),
                       borderSide: BorderSide(color: mainColor),
                     ),
-                    errorBorder: OutlineInputBorder(
+                    errorBorder: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                      borderSide: BorderSide(
-                          color: const Color.fromARGB(255, 172, 13, 2)),
+                      borderSide:
+                          BorderSide(color: Color.fromARGB(255, 172, 13, 2)),
                     ),
                   ),
                   keyboardType: TextInputType.number,

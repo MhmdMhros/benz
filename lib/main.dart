@@ -1,10 +1,11 @@
+import 'package:benz/generated/l10n.dart';
 import 'package:benz/models/user_model/user_model.dart';
 import 'package:benz/modules/login_module/login_screen.dart';
-import 'package:benz/modules/printing_module/printing_screen.dart';
 import 'package:benz/shared/components.dart';
 import 'package:benz/shared/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:benz/modules/databases_module/database.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,6 +23,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      locale: const Locale('en'),
+      localizationsDelegates: const [
+        S.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: S.delegate.supportedLocales,
       debugShowCheckedModeBanner: false,
       home: FutureBuilder<String>(
         future: _getPassword(),
@@ -29,7 +38,7 @@ class MyApp extends StatelessWidget {
           if (snapshot.connectionState == ConnectionState.waiting) {
             // Show loading indicator while waiting for data
             return Container(
-                color: backGroundColor,
+                color: backgroundColor,
                 child: Center(
                     child: CircularProgressIndicator(
                   color: appNameColor,
@@ -40,7 +49,7 @@ class MyApp extends StatelessWidget {
           } else {
             // Data is ready
             password = snapshot.data ?? '';
-            return LoginScreen();
+            return const LoginScreen();
           }
         },
       ),

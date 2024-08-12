@@ -235,7 +235,7 @@ class _ShowDismissalsScreenState extends State<ShowDismissalsScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: backGroundColor,
+      color: backgroundColor,
       width: MediaQuery.of(context).size.width * .75,
       height: double.infinity,
       child: Padding(
@@ -305,7 +305,7 @@ class _ShowDismissalsScreenState extends State<ShowDismissalsScreen> {
                   SizedBox(width: MediaQuery.of(context).size.width * .04),
                   Expanded(
                     child: Text(
-                      'Total Cost: \$$_totalCost',
+                      'Total Cost: $_totalCost',
                       style: TextStyle(
                         fontFamily: 'Readex Pro',
                         fontSize: MediaQuery.of(context).size.width * .018,
@@ -327,7 +327,7 @@ class _ShowDismissalsScreenState extends State<ShowDismissalsScreen> {
                   return ListTile(
                     title: Text(dismissal.titleName),
                     subtitle: Text(
-                        'Price: \$${dismissal.cost}, Date: ${dismissal.date}'),
+                        'Price: ${dismissal.cost}, Date: ${dismissal.date}'),
                   );
                 },
                 separatorBuilder: (context, index) => Container(

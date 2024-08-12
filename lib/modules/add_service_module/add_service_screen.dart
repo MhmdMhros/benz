@@ -9,7 +9,7 @@ import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 
 class AddServiceScreen extends StatefulWidget {
-  AddServiceScreen({super.key});
+  const AddServiceScreen({super.key});
 
   @override
   State<AddServiceScreen> createState() => _AddServiceScreenState();
@@ -100,11 +100,17 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
         CarModel? carModel = await dbHelper.getCarByNumber(carNumber);
         ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(content: Text('Services added successfully')));
-        Navigator.push(
+
+        Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(
-              builder: (context) =>
-                  PrintScreen(carModel: carModel!, serviceModelList: services)),
+            builder: (context) => PrintScreen(
+              carModel: carModel!,
+              serviceModelList: services,
+            ),
+          ),
+          (Route<dynamic> route) =>
+              false, // This condition removes all previous routes
         );
       } else {
         ScaffoldMessenger.of(context)
@@ -132,7 +138,7 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
         : Container(
             width: MediaQuery.of(context).size.width * .75,
             height: double.infinity,
-            color: backGroundColor,
+            color: backgroundColor,
             child: SingleChildScrollView(
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(
@@ -147,21 +153,23 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                       decoration: InputDecoration(
                         hintText: "Car Number",
                         enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(20.0)),
                           borderSide: BorderSide(color: mainColor),
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(20.0)),
                           borderSide: BorderSide(color: mainColor),
                         ),
-                        errorBorder: OutlineInputBorder(
+                        errorBorder: const OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(20.0)),
                           borderSide: BorderSide(
-                              color: const Color.fromARGB(255, 172, 13, 2)),
+                              color: Color.fromARGB(255, 172, 13, 2)),
                         ),
                         counterText: '', // Hide the counter text
                         prefixIcon: Padding(
-                          padding: EdgeInsets.all(
+                          padding: const EdgeInsets.all(
                               10.0), // Add padding to align segments properly
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
@@ -204,7 +212,7 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                         (context as Element).markNeedsBuild();
                       },
                     ),
-                    SizedBox(height: 16.0),
+                    const SizedBox(height: 16.0),
                     ...services.asMap().entries.map((entry) {
                       int index = entry.key;
                       return Padding(
@@ -216,7 +224,7 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                                 controller: nameControllers[index],
                                 decoration: InputDecoration(
                                   hintText: 'Service Name',
-                                  border: OutlineInputBorder(),
+                                  border: const OutlineInputBorder(),
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(color: mainColor),
                                   ),
@@ -226,13 +234,13 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                                 ),
                               ),
                             ),
-                            SizedBox(width: 8.0),
+                            const SizedBox(width: 8.0),
                             Expanded(
                               child: TextFormField(
                                 controller: priceControllers[index],
                                 decoration: InputDecoration(
                                   hintText: 'Price',
-                                  border: OutlineInputBorder(),
+                                  border: const OutlineInputBorder(),
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(color: mainColor),
                                   ),
@@ -248,14 +256,14 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                               ),
                             ),
                             IconButton(
-                              icon: Icon(Icons.remove_circle),
+                              icon: const Icon(Icons.remove_circle),
                               onPressed: () => _removeServiceField(index),
                             ),
                           ],
                         ),
                       );
                     }).toList(),
-                    SizedBox(height: 16.0),
+                    const SizedBox(height: 16.0),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [

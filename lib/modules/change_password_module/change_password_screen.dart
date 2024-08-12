@@ -47,14 +47,14 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: backGroundColor,
+          backgroundColor: backgroundColor,
         ),
         body: Form(
           key: _formKey,
           child: Container(
             width: double.infinity,
             height: double.infinity,
-            color: backGroundColor,
+            color: backgroundColor,
             child: SingleChildScrollView(
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(

@@ -235,7 +235,7 @@ class _ShowServicesScreenState extends State<ShowServicesScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: backGroundColor,
+      color: backgroundColor,
       width: MediaQuery.of(context).size.width * .75,
       height: double.infinity,
       child: Padding(
@@ -305,7 +305,7 @@ class _ShowServicesScreenState extends State<ShowServicesScreen> {
                   SizedBox(width: MediaQuery.of(context).size.width * .04),
                   Expanded(
                     child: Text(
-                      'Total Price: \$$_totalPrice',
+                      'Total Price: $_totalPrice',
                       style: TextStyle(
                         fontFamily: 'Readex Pro',
                         fontSize: MediaQuery.of(context).size.width * .018,
@@ -327,7 +327,7 @@ class _ShowServicesScreenState extends State<ShowServicesScreen> {
                   return ListTile(
                     title: Text(service.name),
                     subtitle: Text(
-                        'Price: \$${service.price}, Date: ${service.startDate}'),
+                        'Price: ${service.price}, Date: ${service.startDate}'),
                   );
                 },
                 separatorBuilder: (context, index) => Container(
