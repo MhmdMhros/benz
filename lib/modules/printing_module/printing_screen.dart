@@ -154,7 +154,7 @@ class _PrintScreenState extends State<PrintScreen> {
                   children: [
                     pw.Image(logoImage, width: 70), // Adjust width as needed
                     pw.SizedBox(width: 10),
-                    pw.Text('Welcome to Benz',
+                    pw.Text('BENZ SERVICE CENTER',
                         style: pw.TextStyle(
                             fontSize: 24,
                             fontWeight: pw.FontWeight.bold,
@@ -192,8 +192,11 @@ class _PrintScreenState extends State<PrintScreen> {
                   children: [
                     pw.Directionality(
                       textDirection: pw.TextDirection.rtl,
-                      child: pw.Text('Mileage:   ${carModel.mileage}',
-                          style: pw.TextStyle(fontSize: 16, font: font)),
+                      child: carModel.mileage != 0
+                          ? pw.Text('Mileage:   ${carModel.mileage}',
+                              style: pw.TextStyle(fontSize: 16, font: font))
+                          : pw.Text('Mileage:   _',
+                              style: pw.TextStyle(fontSize: 16, font: font)),
                     ),
                     pw.SizedBox(width: 30),
                     // Service details

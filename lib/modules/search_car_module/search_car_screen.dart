@@ -112,7 +112,7 @@ class _SearchCarScreenState extends State<SearchCarScreen> {
                   style: TextStyle(
                     fontFamily: 'Readex Pro',
                     color: Colors.white,
-                    fontSize: MediaQuery.of(context).size.height * .02,
+                    fontSize: MediaQuery.of(context).size.height * .032,
                     letterSpacing: 0,
                   ),
                 ),
@@ -160,8 +160,10 @@ class _SearchCarScreenState extends State<SearchCarScreen> {
                               _buildCarDetailRow(
                                   'Phone Number', car.phoneNumber),
                               _buildCarDetailRow('Car Model', car.carModel),
-                              _buildCarDetailRow(
-                                  'Mileage', car.mileage.toString()),
+                              car.mileage != 0
+                                  ? _buildCarDetailRow(
+                                      'Mileage', car.mileage.toString())
+                                  : _buildCarDetailRow('Mileage', "_"),
                               Divider(color: Colors.grey),
                               SizedBox(height: 8.0),
                               Text(

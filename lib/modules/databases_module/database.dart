@@ -86,6 +86,61 @@ CREATE TABLE User (
     });
   }
 
+  Future<void> updateCar({
+    required String carNumber,
+    String? newOwnerName,
+    String? newPhoneNumber,
+    String? newMileage,
+    required BuildContext context,
+  }) async {
+    final db = await createDatabase();
+    // Create a map to store the fields to update
+    Map<String, dynamic> updatedValues = {};
+
+    if (newOwnerName!.isNotEmpty) {
+      updatedValues['ownerName'] = newOwnerName;
+    }
+
+    if (newPhoneNumber!.isNotEmpty) {
+      updatedValues['phoneNumber'] = newPhoneNumber;
+    }
+
+    if (newMileage!.isNotEmpty) {
+      updatedValues['mileage'] = double.parse(newMileage);
+    }
+
+    // If there's nothing to update, return early
+    if (updatedValues.isEmpty) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text('No fields to update!')));
+      return;
+    }
+    print(updatedValues);
+    await db
+        .update(
+            'Car', // The table to update
+            updatedValues, // The values to update
+            where: 'carNumber = ?', // Specify the car to update
+            whereArgs: [carNumber],
+            conflictAlgorithm:
+                ConflictAlgorithm.replace // The carNumber of the car to update
+            )
+        .then((value) {
+      if (value > 0) {
+        // Car was found and updated
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text('Car updated successfully')));
+      } else {
+        // Car number not found
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Car not found with this car number')));
+      }
+    }).catchError((error) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text('Update failed!!!')));
+    });
+  }
+
   Future<void> insertService(ServiceModel serviceModel) async {
     final db = await createDatabase();
     await db.insert('Service', serviceModel.toMap(),
@@ -135,7 +190,8 @@ CREATE TABLE User (
     final List<Map<String, dynamic>> maps = await db.query('Dismissed');
 
     // Convert the List<Map<String, dynamic>> to List<DismissedModel>.
-    return List.generate(maps.length, (i) {
+    // Convert the List<Map<String, dynamic>> to List<DismissedModel>.
+    List<DismissedModel> dismissedList = List.generate(maps.length, (i) {
       return DismissedModel(
         dismissedId: maps[i]['dismissedId'],
         date: maps[i]['date'],
@@ -144,6 +200,12 @@ CREATE TABLE User (
         note: maps[i]['note'],
       );
     });
+
+    // Sort the list by date.
+    dismissedList.sort(
+        (a, b) => DateTime.parse(a.date).compareTo(DateTime.parse(b.date)));
+
+    return dismissedList;
   }
 
   Future<List<DismissedModel>> getAllDismissedByMonthDate(
@@ -164,7 +226,8 @@ CREATE TABLE User (
   ''', [yearString, monthString]);
 
     // Convert the List<Map<String, dynamic>> to List<DismissedModel>.
-    return List.generate(maps.length, (i) {
+    // Convert the List<Map<String, dynamic>> to List<DismissedModel>.
+    List<DismissedModel> dismissedList = List.generate(maps.length, (i) {
       return DismissedModel(
         dismissedId: maps[i]['dismissedId'],
         date: maps[i]['date'],
@@ -173,6 +236,12 @@ CREATE TABLE User (
         note: maps[i]['note'],
       );
     });
+
+    // Sort the list by date.
+    dismissedList.sort(
+        (a, b) => DateTime.parse(a.date).compareTo(DateTime.parse(b.date)));
+
+    return dismissedList;
   }
 
   Future<List<DismissedModel>> getAllDismissedByYearDate(int year) async {
@@ -191,7 +260,8 @@ CREATE TABLE User (
   ''', [yearString]);
 
     // Convert the List<Map<String, dynamic>> to List<DismissedModel>.
-    return List.generate(maps.length, (i) {
+    // Convert the List<Map<String, dynamic>> to List<DismissedModel>.
+    List<DismissedModel> dismissedList = List.generate(maps.length, (i) {
       return DismissedModel(
         dismissedId: maps[i]['dismissedId'],
         date: maps[i]['date'],
@@ -200,6 +270,12 @@ CREATE TABLE User (
         note: maps[i]['note'],
       );
     });
+
+    // Sort the list by date.
+    dismissedList.sort(
+        (a, b) => DateTime.parse(a.date).compareTo(DateTime.parse(b.date)));
+
+    return dismissedList;
   }
 
   Future<List<DismissedModel>> getDismissedByDayDate(
@@ -221,7 +297,8 @@ CREATE TABLE User (
   ''', [yearString, monthString, dayString]);
 
     // Convert the List<Map<String, dynamic>> to List<DismissedModel>.
-    return List.generate(maps.length, (i) {
+    // Convert the List<Map<String, dynamic>> to List<DismissedModel>.
+    List<DismissedModel> dismissedList = List.generate(maps.length, (i) {
       return DismissedModel(
         dismissedId: maps[i]['dismissedId'],
         date: maps[i]['date'],
@@ -230,6 +307,12 @@ CREATE TABLE User (
         note: maps[i]['note'],
       );
     });
+
+    // Sort the list by date.
+    dismissedList.sort(
+        (a, b) => DateTime.parse(a.date).compareTo(DateTime.parse(b.date)));
+
+    return dismissedList;
   }
 
   Future<CarModel?> getCarByNumber(String carNumber) async {
@@ -253,15 +336,22 @@ CREATE TABLE User (
     final db = await createDatabase();
     final List<Map<String, dynamic>> maps = await db
         .query('Service', where: 'carNumber = ?', whereArgs: [carNumber]);
-    return List.generate(maps.length, (i) {
+    // Convert the retrieved maps to a list of ServiceModel objects
+    List<ServiceModel> services = List.generate(maps.length, (i) {
       return ServiceModel(
-          serviceID: maps[i]['serviceID'],
-          carNumber: maps[i]['carNumber'],
-          name: maps[i]['name'],
-          price: maps[i]['price'],
-          startDate: maps[i]['start_date'],
-          endDate: maps[i]['end_date']);
+        serviceID: maps[i]['serviceID'],
+        carNumber: maps[i]['carNumber'],
+        name: maps[i]['name'],
+        price: maps[i]['price'],
+        startDate: maps[i]['start_date'],
+        endDate: maps[i]['end_date'],
+      );
     });
+
+    // Sort the list based on the startDate
+    services.sort((a, b) => a.startDate.compareTo(b.startDate));
+
+    return services;
   }
 
   Future<List<ServiceModel>> getServicesByMonthDate(int year, int month) async {
@@ -284,7 +374,8 @@ CREATE TABLE User (
   ''', [yearString, monthString]);
 
     // Convert the List<Map<String, dynamic>> to List<Servicee>.
-    return List.generate(maps.length, (i) {
+    // Convert the retrieved maps to a list of ServiceModel objects
+    List<ServiceModel> services = List.generate(maps.length, (i) {
       return ServiceModel(
         serviceID: maps[i]['serviceID'],
         carNumber: maps[i]['carNumber'],
@@ -294,6 +385,11 @@ CREATE TABLE User (
         endDate: maps[i]['end_date'],
       );
     });
+
+    // Sort the list based on the startDate
+    services.sort((a, b) => b.startDate.compareTo(a.startDate));
+
+    return services;
   }
 
   Future<List<ServiceModel>> getServicesByDayDate(
@@ -318,7 +414,8 @@ CREATE TABLE User (
   ''', [yearString, monthString, dayString]);
 
     // Convert the List<Map<String, dynamic>> to List<Servicee>.
-    return List.generate(maps.length, (i) {
+    // Convert the retrieved maps to a list of ServiceModel objects
+    List<ServiceModel> services = List.generate(maps.length, (i) {
       return ServiceModel(
         serviceID: maps[i]['serviceID'],
         carNumber: maps[i]['carNumber'],
@@ -328,6 +425,11 @@ CREATE TABLE User (
         endDate: maps[i]['end_date'],
       );
     });
+
+    // Sort the list based on the startDate
+    services.sort((a, b) => a.startDate.compareTo(b.startDate));
+
+    return services;
   }
 
   Future<List<ServiceModel>> getServicesByYearDate(int year) async {
@@ -347,7 +449,8 @@ CREATE TABLE User (
   ''', [yearString]);
 
     // Convert the List<Map<String, dynamic>> to List<Servicee>.
-    return List.generate(maps.length, (i) {
+    // Convert the retrieved maps to a list of ServiceModel objects
+    List<ServiceModel> services = List.generate(maps.length, (i) {
       return ServiceModel(
         serviceID: maps[i]['serviceID'],
         carNumber: maps[i]['carNumber'],
@@ -357,6 +460,11 @@ CREATE TABLE User (
         endDate: maps[i]['end_date'],
       );
     });
+
+    // Sort the list based on the startDate
+    services.sort((a, b) => a.startDate.compareTo(b.startDate));
+
+    return services;
   }
 
   Future<int> insertUser(UserModel user) async {

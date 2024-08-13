@@ -130,7 +130,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         );
                       },
                       child: Text(
-                        'Forget Password!',
+                        'Change Password!',
                         style: TextStyle(color: appNameColor),
                       ),
                     ),

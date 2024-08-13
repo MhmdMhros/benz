@@ -327,7 +327,7 @@ class _ShowDismissalsScreenState extends State<ShowDismissalsScreen> {
                   return ListTile(
                     title: Text(dismissal.titleName),
                     subtitle: Text(
-                        'Price: ${dismissal.cost}, Date: ${dismissal.date}'),
+                        'Price: ${dismissal.cost}, Date: ${dismissal.date}\n  Note:${dismissal.note}'),
                   );
                 },
                 separatorBuilder: (context, index) => Container(

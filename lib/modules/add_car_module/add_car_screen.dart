@@ -28,7 +28,9 @@ class _AddCarScreenState extends State<AddCarScreen> {
         carModel: _carModelController.text,
         ownerName: _ownerNameController.text,
         phoneNumber: _phoneNumberController.text,
-        mileage: double.parse(_mileageController.text),
+        mileage: _mileageController.text == ""
+            ? 0
+            : double.parse(_mileageController.text),
       );
 
       DatabaseHelper dp = DatabaseHelper();
@@ -43,6 +45,21 @@ class _AddCarScreenState extends State<AddCarScreen> {
                   )),
         );
       });
+    }
+  }
+
+  Future<void> _updateCar() async {
+    if (_carNumberController.text.isNotEmpty) {
+      DatabaseHelper dp = DatabaseHelper();
+      await dp.updateCar(
+          carNumber: addSpaceBetweenEachLetter(_carNumberController.text),
+          newOwnerName: _ownerNameController.text,
+          newPhoneNumber: _phoneNumberController.text,
+          newMileage: _mileageController.text,
+          context: context);
+    } else {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text('Car Number is empty')));
     }
   }
 
@@ -250,12 +267,6 @@ class _AddCarScreenState extends State<AddCarScreen> {
                   inputFormatters: [
                     FilteringTextInputFormatter.digitsOnly, // Allow only digits
                   ],
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter mileage';
-                    }
-                    return null;
-                  },
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height * .1),
                 Container(
@@ -273,6 +284,31 @@ class _AddCarScreenState extends State<AddCarScreen> {
                     onPressed: _insertCar,
                     child: Text(
                       'Add Car',
+                      style: TextStyle(
+                        fontFamily: 'Readex Pro',
+                        color: Colors.white,
+                        fontSize: MediaQuery.of(context).size.width * .015,
+                        letterSpacing: 0,
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: MediaQuery.of(context).size.height * .02),
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.5,
+                  height: MediaQuery.of(context).size.height * .07,
+                  decoration: BoxDecoration(
+                    color: appNameColor,
+                    borderRadius: BorderRadius.circular(
+                        MediaQuery.of(context).size.width * .02),
+                  ),
+                  child: MaterialButton(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(
+                            MediaQuery.of(context).size.width * .02)),
+                    onPressed: _updateCar,
+                    child: Text(
+                      'Update Car',
                       style: TextStyle(
                         fontFamily: 'Readex Pro',
                         color: Colors.white,

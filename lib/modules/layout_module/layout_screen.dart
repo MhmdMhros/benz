@@ -27,52 +27,54 @@ class _LayoutScreenState extends State<LayoutScreen> {
                 color: backgroundColor,
                 border: Border.all(color: backgroundColor),
               ),
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Container(
-                    width: double.infinity,
-                    height: MediaQuery.of(context).size.height * .19,
-                    decoration: BoxDecoration(
-                      color: backgroundColor,
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              MediaQuery.of(context).size.width * .015,
-                              0,
-                              MediaQuery.of(context).size.width * .02,
-                              0),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(
-                                MediaQuery.of(context).size.aspectRatio * 0.05),
-                            child: Image.asset(
-                              'assets/images/Logo-removebg-preview.png',
-                              width: MediaQuery.of(context).size.width * .06,
-                              height: MediaQuery.of(context).size.height * 0.13,
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      height: MediaQuery.of(context).size.height * .19,
+                      decoration: BoxDecoration(
+                        color: backgroundColor,
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                MediaQuery.of(context).size.width * .015,
+                                0,
+                                MediaQuery.of(context).size.width * .02,
+                                0),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(
+                                  MediaQuery.of(context).size.aspectRatio *
+                                      0.05),
+                              child: Image.asset(
+                                'assets/images/Logo-removebg-preview.png',
+                                width: MediaQuery.of(context).size.width * .06,
+                                height:
+                                    MediaQuery.of(context).size.height * 0.13,
+                              ),
                             ),
                           ),
-                        ),
-                        Expanded(
-                          child: Text(
-                            'Car Benz',
-                            style: TextStyle(
-                              fontFamily: 'Readex Pro',
-                              fontWeight: FontWeight.w500,
-                              color: appNameColor,
-                              fontSize:
-                                  MediaQuery.of(context).size.width * .035,
-                              letterSpacing: 0,
+                          Expanded(
+                            child: Text(
+                              'Car Benz',
+                              style: TextStyle(
+                                fontFamily: 'Readex Pro',
+                                fontWeight: FontWeight.w500,
+                                color: appNameColor,
+                                fontSize:
+                                    MediaQuery.of(context).size.width * .035,
+                                letterSpacing: 0,
+                              ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                  Expanded(
-                    child: Column(
+                    Column(
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
@@ -518,8 +520,8 @@ class _LayoutScreenState extends State<LayoutScreen> {
                         ),
                       ],
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
             Container(
