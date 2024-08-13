@@ -94,9 +94,7 @@ class _SearchCarScreenState extends State<SearchCarScreen> {
               },
             ),
             SizedBox(height: MediaQuery.of(context).size.height * .01),
-            Expanded(
-              child: _widgetToShow,
-            ),
+            Expanded(child: _widgetToShow),
             SizedBox(height: MediaQuery.of(context).size.height * .01),
             Container(
               width: MediaQuery.of(context).size.width * 0.5,
@@ -121,10 +119,11 @@ class _SearchCarScreenState extends State<SearchCarScreen> {
                       addSpaceBetweenEachLetter(_controller.text);
                   final dbHelper = DatabaseHelper();
                   CarModel? car = await dbHelper.getCarByNumber(carNumber);
-
+        
                   if (car == null) {
                     setState(() {
                       _widgetToShow = Container(
+                       
                         child: Center(
                           child: Text(
                             'Car not found',
@@ -136,10 +135,11 @@ class _SearchCarScreenState extends State<SearchCarScreen> {
                   } else {
                     List<ServiceModel> services =
                         await dbHelper.getServicesByCarNumber(carNumber);
-
+        
                     setState(() {
                       _widgetToShow = SingleChildScrollView(
                         child: Container(
+                         
                           padding: EdgeInsets.all(16.0),
                           decoration: BoxDecoration(
                             color: Colors.grey,
