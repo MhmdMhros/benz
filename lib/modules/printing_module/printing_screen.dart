@@ -117,29 +117,39 @@ class _PrintScreenState extends State<PrintScreen> {
       ),
     );
   }
+Future<void> printWidget({
+  required CarModel carModel,
+  required List<ServiceModel> services,
+  required String comment,
+}) async {
+  final doc = pw.Document();
 
-  Future<void> printWidget({
-    required CarModel carModel,
-    required List<ServiceModel> services,
-    required String comment,
-  }) async {
-    final doc = pw.Document();
+  // Load the custom font
+  final fontData =
+      await rootBundle.load("assets/fonts/Cairo-VariableFont_slnt,wght.ttf");
+  final font = pw.Font.ttf(fontData);
 
-    // Load the custom font
-    final fontData =
-        await rootBundle.load("assets/fonts/Cairo-VariableFont_slnt,wght.ttf");
-    final font = pw.Font.ttf(fontData);
+  // Load the logo
+  final logoData =
+      await rootBundle.load('assets/images/Logo-removebg-preview.png');
+  final logoImage = pw.MemoryImage(logoData.buffer.asUint8List());
 
-    // Load the logo
-    final logoData =
-        await rootBundle.load('assets/images/Logo-removebg-preview.png');
-    final logoImage = pw.MemoryImage(logoData.buffer.asUint8List());
+  // Calculate total price of services
+  final double totalPrice = services.fold(0, (sum, item) => sum + item.price);
 
-    // Calculate total price of services
-    final double totalPrice = services.fold(0, (sum, item) => sum + item.price);
+  // Assuming all services have the same start date
+  final String startDate = services.isNotEmpty ? services[0].startDate : '';
 
-    // Assuming all services have the same start date
-    final String startDate = services.isNotEmpty ? services[0].startDate : '';
+  // Define maximum services per page
+  const int maxServicesPerPage = 10;
+
+  // Determine how many pages are needed
+  final int pageCount = (services.length / maxServicesPerPage).ceil();
+
+  for (int pageIndex = 0; pageIndex < pageCount; pageIndex++) {
+    final currentServices =
+        services.skip(pageIndex * maxServicesPerPage).take(maxServicesPerPage).toList();
+
     doc.addPage(
       pw.Page(
         build: (pw.Context context) {
@@ -149,72 +159,72 @@ class _PrintScreenState extends State<PrintScreen> {
             child: pw.Column(
               crossAxisAlignment: pw.CrossAxisAlignment.start,
               children: [
-                // Logo and welcome message
-                pw.Row(
-                  children: [
-                    pw.Image(logoImage, width: 70), // Adjust width as needed
-                    pw.SizedBox(width: 10),
-                    pw.Text('BENZ SERVICE CENTER',
-                        style: pw.TextStyle(
-                            fontSize: 24,
-                            fontWeight: pw.FontWeight.bold,
-                            font: font)),
-                  ],
-                ),
-                pw.SizedBox(height: 20),
-                pw.Directionality(
-                  textDirection: pw.TextDirection.ltr,
-                  child: pw.Text('Car Number:   ${carModel.carNumber}',
-                      style: pw.TextStyle(fontSize: 16, font: font)),
-                ),
-                pw.SizedBox(height: 5),
-                pw.Directionality(
-                  textDirection: pw.TextDirection.rtl,
-                  child: pw.Text('Car Model:   ${carModel.carModel}',
-                      style: pw.TextStyle(fontSize: 16, font: font)),
-                ),
-
-                // CarModel attributes
-                pw.SizedBox(height: 5),
-                pw.Directionality(
-                  textDirection: pw.TextDirection.rtl,
-                  child: pw.Text('Owner Name:   ${carModel.ownerName}',
-                      style: pw.TextStyle(fontSize: 16, font: font)),
-                ),
-                pw.SizedBox(height: 5),
-                pw.Directionality(
-                  textDirection: pw.TextDirection.rtl,
-                  child: pw.Text('Phone Number:   ${carModel.phoneNumber}',
-                      style: pw.TextStyle(fontSize: 16, font: font)),
-                ),
-                pw.SizedBox(height: 5),
-                pw.Row(
-                  children: [
-                    pw.Directionality(
-                      textDirection: pw.TextDirection.rtl,
-                      child: carModel.mileage != 0
-                          ? pw.Text('Mileage:   ${carModel.mileage}',
-                              style: pw.TextStyle(fontSize: 16, font: font))
-                          : pw.Text('Mileage:   _',
-                              style: pw.TextStyle(fontSize: 16, font: font)),
-                    ),
-                    pw.SizedBox(width: 30),
-                    // Service details
-                    pw.Directionality(
-                      textDirection: pw.TextDirection.rtl,
-                      child: pw.Text(
-                          'Total:   ${totalPrice.toStringAsFixed(2)}',
-                          style: pw.TextStyle(fontSize: 16, font: font)),
-                    ),
-                    pw.SizedBox(width: 30),
-                    pw.Directionality(
-                      textDirection: pw.TextDirection.rtl,
-                      child: pw.Text('Date:   $startDate',
-                          style: pw.TextStyle(fontSize: 16, font: font)),
-                    ),
-                  ],
-                ),
-                pw.SizedBox(height: 10),
+                // Include the header (logo, car details) only on the first page
+                if (pageIndex == 0) ...[
+                  pw.Row(
+                    children: [
+                      pw.Image(logoImage, width: 70), // Adjust width as needed
+                      pw.SizedBox(width: 10),
+                      pw.Text('BENZ SERVICE CENTER',
+                          style: pw.TextStyle(
+                              fontSize: 24,
+                              fontWeight: pw.FontWeight.bold,
+                              font: font)),
+                    ],
+                  ),
+                  pw.SizedBox(height: 20),
+                  pw.Directionality(
+                    textDirection: pw.TextDirection.ltr,
+                    child: pw.Text('Car Number:   ${carModel.carNumber}',
+                        style: pw.TextStyle(fontSize: 16, font: font)),
+                  ),
+                  pw.SizedBox(height: 5),
+                  pw.Directionality(
+                    textDirection: pw.TextDirection.rtl,
+                    child: pw.Text('Car Model:   ${carModel.carModel}',
+                        style: pw.TextStyle(fontSize: 16, font: font)),
+                  ),
+                  pw.SizedBox(height: 5),
+                  pw.Directionality(
+                    textDirection: pw.TextDirection.rtl,
+                    child: pw.Text('Owner Name:   ${carModel.ownerName}',
+                        style: pw.TextStyle(fontSize: 16, font: font)),
+                  ),
+                  pw.SizedBox(height: 5),
+                  pw.Directionality(
+                    textDirection: pw.TextDirection.rtl,
+                    child: pw.Text('Phone Number:   ${carModel.phoneNumber}',
+                        style: pw.TextStyle(fontSize: 16, font: font)),
+                  ),
+                  pw.SizedBox(height: 5),
+                  pw.Row(
+                    children: [
+                      pw.Directionality(
+                        textDirection: pw.TextDirection.rtl,
+                        child: carModel.mileage != 0
+                            ? pw.Text('Mileage:   ${carModel.mileage}',
+                                style: pw.TextStyle(fontSize: 16, font: font))
+                            : pw.Text('Mileage:   _',
+                                style: pw.TextStyle(fontSize: 16, font: font)),
+                      ),
+                      pw.SizedBox(width: 30),
+                      // Service details
+                      pw.Directionality(
+                        textDirection: pw.TextDirection.rtl,
+                        child: pw.Text(
+                            'Total:   ${totalPrice.toStringAsFixed(2)}',
+                            style: pw.TextStyle(fontSize: 16, font: font)),
+                      ),
+                      pw.SizedBox(width: 30),
+                      pw.Directionality(
+                        textDirection: pw.TextDirection.rtl,
+                        child: pw.Text('Date:   $startDate',
+                            style: pw.TextStyle(fontSize: 16, font: font)),
+                      ),
+                    ],
+                  ),
+                  pw.SizedBox(height: 10),
+                ],
                 // Services Table
                 pw.Table(
                   border: pw.TableBorder.all(width: 1, color: PdfColors.black),
@@ -235,7 +245,7 @@ class _PrintScreenState extends State<PrintScreen> {
                         ),
                       ],
                     ),
-                    ...services.map(
+                    ...currentServices.map(
                       (service) => pw.TableRow(
                         children: [
                           pw.Padding(
@@ -256,8 +266,56 @@ class _PrintScreenState extends State<PrintScreen> {
                     ),
                   ],
                 ),
-                pw.SizedBox(height: 10),
-                // Comment (Arabic text support with RTL)
+                // Check if it's the last page for services
+                if (pageIndex == pageCount - 1) ...[
+                  pw.SizedBox(height: 10),
+                  // Comment
+                  if (comment.isNotEmpty)
+                    pw.Text('Comment:',
+                        style: pw.TextStyle(
+                            fontSize: 16,
+                            fontWeight: pw.FontWeight.bold,
+                            font: font)),
+                  if (comment.isEmpty)
+                    pw.Text('Comment:',
+                        style: pw.TextStyle(
+                            fontSize: 16,
+                            fontWeight: pw.FontWeight.bold,
+                            font: font)),          
+                  pw.SizedBox(height: 10),
+                  pw.Directionality(
+                    textDirection: pw.TextDirection.rtl,
+                    child: pw.Text(comment,
+                        style: pw.TextStyle(fontSize: 14, font: font)),
+                  ),
+                ],
+              ],
+            ),
+          );
+        },
+      ),
+    );
+  }
+
+  // If comment is still not fully printed, continue on new pages
+  int commentIndex = 0;
+  final int maxCommentLengthPerPage = 300; // Estimate and adjust as needed
+  while (commentIndex < comment.length) {
+    final remainingComment = comment.substring(commentIndex);
+    final currentPageComment = remainingComment.length > maxCommentLengthPerPage
+        ? remainingComment.substring(0, maxCommentLengthPerPage)
+        : remainingComment;
+
+    doc.addPage(
+      pw.Page(
+        build: (pw.Context context) {
+          return pw.Container(
+            width: double.infinity,
+            height: double.infinity,
+            child: pw.Column(
+              crossAxisAlignment: pw.CrossAxisAlignment.start,
+              children: [
+                // Additional pages for comment only
                 pw.Text('Comment:',
                     style: pw.TextStyle(
                         fontSize: 16,
@@ -266,7 +324,7 @@ class _PrintScreenState extends State<PrintScreen> {
                 pw.SizedBox(height: 10),
                 pw.Directionality(
                   textDirection: pw.TextDirection.rtl,
-                  child: pw.Text(comment,
+                  child: pw.Text(currentPageComment,
                       style: pw.TextStyle(fontSize: 14, font: font)),
                 ),
               ],
@@ -276,11 +334,15 @@ class _PrintScreenState extends State<PrintScreen> {
       ),
     );
 
-    final pdfBytes = await doc.save();
-
-    await Printing.sharePdf(
-      bytes: pdfBytes,
-      filename: 'car_invoice.pdf',
-    );
+    commentIndex += currentPageComment.length;
   }
+
+  final pdfBytes = await doc.save();
+
+  await Printing.sharePdf(
+    bytes: pdfBytes,
+    filename: 'car_invoice.pdf',
+  );
+}
+
 }
