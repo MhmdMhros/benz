@@ -264,60 +264,64 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                       );
                     }).toList(),
                     const SizedBox(height: 16.0),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                          width: MediaQuery.of(context).size.width * .15,
-                          height: MediaQuery.of(context).size.height * .045,
-                          decoration: BoxDecoration(
-                            color: appNameColor,
-                            borderRadius: BorderRadius.circular(
-                                MediaQuery.of(context).size.width * .02),
-                          ),
-                          child: MaterialButton(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(
-                                    MediaQuery.of(context).size.width * .02)),
-                            onPressed: _addServiceField,
-                            child: Text(
-                              'Add Service',
-                              style: TextStyle(
-                                fontFamily: 'Readex Pro',
-                                color: Colors.white,
-                                fontSize:
-                                    MediaQuery.of(context).size.width * .015,
-                                letterSpacing: 0,
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(
+                          0, 0, 0, MediaQuery.of(context).size.width * .01),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            width: MediaQuery.of(context).size.width * .15,
+                            height: MediaQuery.of(context).size.height * .045,
+                            decoration: BoxDecoration(
+                              color: appNameColor,
+                              borderRadius: BorderRadius.circular(
+                                  MediaQuery.of(context).size.width * .02),
+                            ),
+                            child: MaterialButton(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(
+                                      MediaQuery.of(context).size.width * .02)),
+                              onPressed: _addServiceField,
+                              child: Text(
+                                'Add Service',
+                                style: TextStyle(
+                                  fontFamily: 'Readex Pro',
+                                  color: Colors.white,
+                                  fontSize:
+                                      MediaQuery.of(context).size.width * .015,
+                                  letterSpacing: 0,
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                        Container(
-                          width: MediaQuery.of(context).size.width * .15,
-                          height: MediaQuery.of(context).size.height * .045,
-                          decoration: BoxDecoration(
-                            color: appNameColor,
-                            borderRadius: BorderRadius.circular(
-                                MediaQuery.of(context).size.width * .02),
-                          ),
-                          child: MaterialButton(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(
-                                    MediaQuery.of(context).size.width * .02)),
-                            onPressed: confirm,
-                            child: Text(
-                              'Confirm',
-                              style: TextStyle(
-                                fontFamily: 'Readex Pro',
-                                color: Colors.white,
-                                fontSize:
-                                    MediaQuery.of(context).size.width * .015,
-                                letterSpacing: 0,
+                          Container(
+                            width: MediaQuery.of(context).size.width * .15,
+                            height: MediaQuery.of(context).size.height * .045,
+                            decoration: BoxDecoration(
+                              color: appNameColor,
+                              borderRadius: BorderRadius.circular(
+                                  MediaQuery.of(context).size.width * .02),
+                            ),
+                            child: MaterialButton(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(
+                                      MediaQuery.of(context).size.width * .02)),
+                              onPressed: confirm,
+                              child: Text(
+                                'Confirm',
+                                style: TextStyle(
+                                  fontFamily: 'Readex Pro',
+                                  color: Colors.white,
+                                  fontSize:
+                                      MediaQuery.of(context).size.width * .015,
+                                  letterSpacing: 0,
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ],
                 ),

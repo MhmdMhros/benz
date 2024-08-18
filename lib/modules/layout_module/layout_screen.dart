@@ -60,7 +60,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
                           ),
                           Expanded(
                             child: Text(
-                              'Car Benz',
+                              'BENZ',
                               style: TextStyle(
                                 fontFamily: 'Readex Pro',
                                 fontWeight: FontWeight.w500,
@@ -73,6 +73,9 @@ class _LayoutScreenState extends State<LayoutScreen> {
                           ),
                         ],
                       ),
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * .02,
                     ),
                     Column(
                       mainAxisSize: MainAxisSize.max,
