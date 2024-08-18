@@ -1,13 +1,15 @@
 import 'package:benz/generated/l10n.dart';
 import 'package:benz/models/user_model/user_model.dart';
 import 'package:benz/modules/login_module/login_screen.dart';
+import 'package:benz/shared/cache_helper.dart';
 import 'package:benz/shared/components.dart';
 import 'package:benz/shared/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:benz/modules/databases_module/database.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-void main() {
+void main() async {
+  await CacheHelper.init();
   runApp(const MyApp());
 }
 

@@ -1,3 +1,5 @@
+import 'package:benz/shared/cache_helper.dart';
+
 String addSpaceBetweenEachLetter(String text) {
   String spacedText = '';
   for (int i = 0; i < text.length; i++) {
