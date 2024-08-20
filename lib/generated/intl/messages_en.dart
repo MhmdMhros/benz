@@ -22,6 +22,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "add_car_CarNumberisEmpty":
+            MessageLookupByLibrary.simpleMessage("Car Number is empty"),
         "add_car_addCar": MessageLookupByLibrary.simpleMessage("Add Car"),
         "add_car_carModel": MessageLookupByLibrary.simpleMessage("Car Model"),
         "add_car_carModelEmpty":
@@ -46,10 +48,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "add_dismissed_note": MessageLookupByLibrary.simpleMessage("Note"),
         "add_dismissed_pleaseEnterCost":
             MessageLookupByLibrary.simpleMessage("Please enter cost"),
+        "add_dismissed_pleaseEnterDismissedName":
+            MessageLookupByLibrary.simpleMessage("Please enter dismissed name"),
         "add_dismissed_pleaseEnterNote":
             MessageLookupByLibrary.simpleMessage("Please enter note"),
-        "add_dismissed_pleaseEnterTitleName":
-            MessageLookupByLibrary.simpleMessage("Please enter title name"),
         "add_service_addService":
             MessageLookupByLibrary.simpleMessage("Add Service"),
         "add_service_carNotFound":
@@ -80,6 +82,22 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Old password is not correct"),
         "change_passwordChangedSuccess": MessageLookupByLibrary.simpleMessage(
             "Change password successfully!!!"),
+        "database_carNotFound": MessageLookupByLibrary.simpleMessage(
+            "Car not found with this car number"),
+        "database_failedAddCar":
+            MessageLookupByLibrary.simpleMessage("Car added failed!!!"),
+        "database_failedAddDismissed":
+            MessageLookupByLibrary.simpleMessage("Dismissed added failed!!!"),
+        "database_failedUpdateCar":
+            MessageLookupByLibrary.simpleMessage("Update added failed!!!"),
+        "database_noFieldstoUpdate":
+            MessageLookupByLibrary.simpleMessage("No fields to update!"),
+        "database_successAddCar":
+            MessageLookupByLibrary.simpleMessage("Car added successfully"),
+        "database_successAddDismissed": MessageLookupByLibrary.simpleMessage(
+            "Dismissed added successfully"),
+        "database_successUpdateCar":
+            MessageLookupByLibrary.simpleMessage("Car updated successfully"),
         "layout_add_car": MessageLookupByLibrary.simpleMessage("Add Car"),
         "layout_add_dismissed":
             MessageLookupByLibrary.simpleMessage("Add Dismissed"),
@@ -106,7 +124,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Password for admin only"),
         "login_passwordIncorrect":
             MessageLookupByLibrary.simpleMessage("Password is not correct"),
-        "print_comment": MessageLookupByLibrary.simpleMessage("Comment:"),
         "print_enterComment":
             MessageLookupByLibrary.simpleMessage("Enter Comment"),
         "print_printInvoice":
@@ -117,24 +134,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "search_car_not_found":
             MessageLookupByLibrary.simpleMessage("Car not found"),
         "search_car_number": MessageLookupByLibrary.simpleMessage("Car Number"),
-        "search_change_password":
-            MessageLookupByLibrary.simpleMessage("Change password"),
-        "search_change_password_success": MessageLookupByLibrary.simpleMessage(
-            "Change password successfully!!!"),
         "search_mileage": MessageLookupByLibrary.simpleMessage("Mileage"),
-        "search_new_password":
-            MessageLookupByLibrary.simpleMessage("New password"),
-        "search_old_password":
-            MessageLookupByLibrary.simpleMessage("Old password"),
-        "search_old_password_incorrect":
-            MessageLookupByLibrary.simpleMessage("Old password is not correct"),
         "search_owner_name": MessageLookupByLibrary.simpleMessage("Owner Name"),
         "search_phone_number":
             MessageLookupByLibrary.simpleMessage("Phone Number"),
-        "search_please_enter_new_password":
-            MessageLookupByLibrary.simpleMessage("Please enter new password"),
-        "search_please_enter_old_password":
-            MessageLookupByLibrary.simpleMessage("Please enter old password"),
+        "search_please_enter_car_number":
+            MessageLookupByLibrary.simpleMessage("Please enter car number"),
         "search_search": MessageLookupByLibrary.simpleMessage("Search"),
         "search_services": MessageLookupByLibrary.simpleMessage("Services"),
         "show_dismissals_date": MessageLookupByLibrary.simpleMessage("Date: "),
@@ -162,6 +167,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Total Cost: "),
         "show_dismissals_yearHint":
             MessageLookupByLibrary.simpleMessage("Year"),
+        "show_services_date": MessageLookupByLibrary.simpleMessage("Date: "),
         "show_services_day": MessageLookupByLibrary.simpleMessage("Day"),
         "show_services_enterDay":
             MessageLookupByLibrary.simpleMessage("Please enter day"),
@@ -174,6 +180,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "show_services_month": MessageLookupByLibrary.simpleMessage("Month"),
         "show_services_numberOfServices":
             MessageLookupByLibrary.simpleMessage("Number of Services: "),
+        "show_services_price": MessageLookupByLibrary.simpleMessage("Price: "),
         "show_services_selectDateType":
             MessageLookupByLibrary.simpleMessage("Select Date Type"),
         "show_services_showServices":

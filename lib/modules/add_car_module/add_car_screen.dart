@@ -1,3 +1,4 @@
+import 'package:benz/generated/l10n.dart';
 import 'package:benz/models/car_model/car_model.dart';
 import 'package:benz/modules/databases_module/database.dart';
 import 'package:benz/modules/layout_module/layout_screen.dart';
@@ -58,8 +59,8 @@ class _AddCarScreenState extends State<AddCarScreen> {
           newMileage: _mileageController.text,
           context: context);
     } else {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('Car Number is empty')));
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(S.of(context).add_car_CarNumberisEmpty)));
     }
   }
 
@@ -94,7 +95,7 @@ class _AddCarScreenState extends State<AddCarScreen> {
                 TextFormField(
                   controller: _carNumberController,
                   decoration: InputDecoration(
-                    hintText: "Car Number",
+                    hintText: S.of(context).add_car_carNumber,
                     enabledBorder: OutlineInputBorder(
                       borderRadius:
                           const BorderRadius.all(Radius.circular(20.0)),
@@ -145,7 +146,7 @@ class _AddCarScreenState extends State<AddCarScreen> {
                   ],
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter mileage';
+                      return S.of(context).add_car_carNumberEmpty;
                     }
                     return null;
                   },
@@ -158,7 +159,7 @@ class _AddCarScreenState extends State<AddCarScreen> {
                 TextFormField(
                   controller: _carModelController,
                   decoration: InputDecoration(
-                    hintText: 'Car Model',
+                    hintText: S.of(context).add_car_carModel,
                     enabledBorder: OutlineInputBorder(
                       borderRadius:
                           const BorderRadius.all(Radius.circular(20.0)),
@@ -177,7 +178,7 @@ class _AddCarScreenState extends State<AddCarScreen> {
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter car model';
+                      return S.of(context).add_car_carModelEmpty;
                     }
                     return null;
                   },
@@ -186,7 +187,7 @@ class _AddCarScreenState extends State<AddCarScreen> {
                 TextFormField(
                   controller: _ownerNameController,
                   decoration: InputDecoration(
-                    hintText: 'Owner Name',
+                    hintText: S.of(context).add_car_ownerName,
                     enabledBorder: OutlineInputBorder(
                       borderRadius:
                           const BorderRadius.all(Radius.circular(20.0)),
@@ -205,7 +206,7 @@ class _AddCarScreenState extends State<AddCarScreen> {
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter owner name';
+                      return S.of(context).add_car_ownerNameEmpty;
                     }
                     return null;
                   },
@@ -214,7 +215,7 @@ class _AddCarScreenState extends State<AddCarScreen> {
                 TextFormField(
                   controller: _phoneNumberController,
                   decoration: InputDecoration(
-                    hintText: 'Phone Number',
+                    hintText: S.of(context).add_car_phoneNumber,
                     enabledBorder: OutlineInputBorder(
                       borderRadius:
                           const BorderRadius.all(Radius.circular(20.0)),
@@ -237,7 +238,7 @@ class _AddCarScreenState extends State<AddCarScreen> {
                   ],
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Please enter phone number';
+                      return S.of(context).add_car_phoneNumberEmpty;
                     }
                     return null;
                   },
@@ -246,7 +247,7 @@ class _AddCarScreenState extends State<AddCarScreen> {
                 TextFormField(
                   controller: _mileageController,
                   decoration: InputDecoration(
-                    hintText: 'Mileage',
+                    hintText: S.of(context).add_car_mileage,
                     enabledBorder: OutlineInputBorder(
                       borderRadius:
                           const BorderRadius.all(Radius.circular(20.0)),
@@ -283,7 +284,7 @@ class _AddCarScreenState extends State<AddCarScreen> {
                             MediaQuery.of(context).size.width * .02)),
                     onPressed: _insertCar,
                     child: Text(
-                      'Add Car',
+                      S.of(context).add_car_addCar,
                       style: TextStyle(
                         fontFamily: 'Readex Pro',
                         color: Colors.white,
@@ -308,7 +309,7 @@ class _AddCarScreenState extends State<AddCarScreen> {
                             MediaQuery.of(context).size.width * .02)),
                     onPressed: _updateCar,
                     child: Text(
-                      'Update Car',
+                      S.of(context).add_car_updateCar,
                       style: TextStyle(
                         fontFamily: 'Readex Pro',
                         color: Colors.white,

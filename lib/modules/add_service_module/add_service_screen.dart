@@ -1,3 +1,4 @@
+import 'package:benz/generated/l10n.dart';
 import 'package:benz/models/car_model/car_model.dart';
 import 'package:benz/models/service_model/service_model.dart';
 import 'package:benz/modules/databases_module/database.dart';
@@ -27,15 +28,15 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
     print(carNumber);
     if (carNumber.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Car number must not be empty')));
+          SnackBar(content: Text(S.of(context).add_service_carNumberEmpty)));
       return;
     }
     carNumber = addSpaceBetweenEachLetter(carNumber);
     final dbHelper = DatabaseHelper();
     CarModel? car = await dbHelper.getCarByNumber(carNumber);
     if (car == null) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(const SnackBar(content: Text('Car not found')));
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(S.of(context).add_service_carNotFound)));
       return;
     }
 
@@ -70,7 +71,7 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
     carNumber = addSpaceBetweenEachLetter(_carNumberController.text);
     if (carNumber.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Car number must not be empty')));
+          SnackBar(content: Text(S.of(context).add_service_carNumberEmpty)));
       setState(() {
         _isLoading = false;
       });
@@ -99,7 +100,7 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
       if (done) {
         CarModel? carModel = await dbHelper.getCarByNumber(carNumber);
         ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Services added successfully')));
+            SnackBar(content: Text(S.of(context).add_service_servicesAdded)));
 
         Navigator.pushAndRemoveUntil(
           context,
@@ -113,12 +114,12 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
               false, // This condition removes all previous routes
         );
       } else {
-        ScaffoldMessenger.of(context)
-            .showSnackBar(const SnackBar(content: Text('Failed!!!')));
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(S.of(context).add_service_failed)));
       }
     } catch (e) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('Failed!!!')));
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(S.of(context).add_service_failed)));
       print(e);
     } finally {
       setState(() {
@@ -151,7 +152,7 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                     TextFormField(
                       controller: _carNumberController,
                       decoration: InputDecoration(
-                        hintText: "Car Number",
+                        hintText: S.of(context).add_service_carNumber,
                         enabledBorder: OutlineInputBorder(
                           borderRadius:
                               const BorderRadius.all(Radius.circular(20.0)),
@@ -203,7 +204,7 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                       ],
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Please enter car number';
+                          return S.of(context).add_car_carNumberEmpty;
                         }
                         return null;
                       },
@@ -223,7 +224,8 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                               child: TextFormField(
                                 controller: nameControllers[index],
                                 decoration: InputDecoration(
-                                  hintText: 'Service Name',
+                                  hintText:
+                                      S.of(context).add_service_serviceName,
                                   border: const OutlineInputBorder(),
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(color: mainColor),
@@ -239,7 +241,7 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                               child: TextFormField(
                                 controller: priceControllers[index],
                                 decoration: InputDecoration(
-                                  hintText: 'Price',
+                                  hintText: S.of(context).add_service_price,
                                   border: const OutlineInputBorder(),
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(color: mainColor),
@@ -284,7 +286,7 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                                       MediaQuery.of(context).size.width * .02)),
                               onPressed: _addServiceField,
                               child: Text(
-                                'Add Service',
+                                S.of(context).add_service_addService,
                                 style: TextStyle(
                                   fontFamily: 'Readex Pro',
                                   color: Colors.white,
@@ -309,7 +311,7 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                                       MediaQuery.of(context).size.width * .02)),
                               onPressed: confirm,
                               child: Text(
-                                'Confirm',
+                                S.of(context).add_service_confirm,
                                 style: TextStyle(
                                   fontFamily: 'Readex Pro',
                                   color: Colors.white,

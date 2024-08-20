@@ -360,71 +360,11 @@ class S {
     );
   }
 
-  /// `Change password`
-  String get search_change_password {
+  /// `Please enter car number`
+  String get search_please_enter_car_number {
     return Intl.message(
-      'Change password',
-      name: 'search_change_password',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Old password`
-  String get search_old_password {
-    return Intl.message(
-      'Old password',
-      name: 'search_old_password',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `New password`
-  String get search_new_password {
-    return Intl.message(
-      'New password',
-      name: 'search_new_password',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Change password successfully!!!`
-  String get search_change_password_success {
-    return Intl.message(
-      'Change password successfully!!!',
-      name: 'search_change_password_success',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Old password is not correct`
-  String get search_old_password_incorrect {
-    return Intl.message(
-      'Old password is not correct',
-      name: 'search_old_password_incorrect',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Please enter old password`
-  String get search_please_enter_old_password {
-    return Intl.message(
-      'Please enter old password',
-      name: 'search_please_enter_old_password',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Please enter new password`
-  String get search_please_enter_new_password {
-    return Intl.message(
-      'Please enter new password',
-      name: 'search_please_enter_new_password',
+      'Please enter car number',
+      name: 'search_please_enter_car_number',
       desc: '',
       args: [],
     );
@@ -535,6 +475,16 @@ class S {
     return Intl.message(
       'Update Car',
       name: 'add_car_updateCar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Car Number is empty`
+  String get add_car_CarNumberisEmpty {
+    return Intl.message(
+      'Car Number is empty',
+      name: 'add_car_CarNumberisEmpty',
       desc: '',
       args: [],
     );
@@ -660,11 +610,11 @@ class S {
     );
   }
 
-  /// `Please enter title name`
-  String get add_dismissed_pleaseEnterTitleName {
+  /// `Please enter dismissed name`
+  String get add_dismissed_pleaseEnterDismissedName {
     return Intl.message(
-      'Please enter title name',
-      name: 'add_dismissed_pleaseEnterTitleName',
+      'Please enter dismissed name',
+      name: 'add_dismissed_pleaseEnterDismissedName',
       desc: '',
       args: [],
     );
@@ -735,6 +685,26 @@ class S {
     return Intl.message(
       'Total Price: ',
       name: 'show_services_totalPrice',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Price: `
+  String get show_services_price {
+    return Intl.message(
+      'Price: ',
+      name: 'show_services_price',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Date: `
+  String get show_services_date {
+    return Intl.message(
+      'Date: ',
+      name: 'show_services_date',
       desc: '',
       args: [],
     );
@@ -970,11 +940,81 @@ class S {
     );
   }
 
-  /// `Comment:`
-  String get print_comment {
+  /// `Car added successfully`
+  String get database_successAddCar {
     return Intl.message(
-      'Comment:',
-      name: 'print_comment',
+      'Car added successfully',
+      name: 'database_successAddCar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Car added failed!!!`
+  String get database_failedAddCar {
+    return Intl.message(
+      'Car added failed!!!',
+      name: 'database_failedAddCar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No fields to update!`
+  String get database_noFieldstoUpdate {
+    return Intl.message(
+      'No fields to update!',
+      name: 'database_noFieldstoUpdate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Car updated successfully`
+  String get database_successUpdateCar {
+    return Intl.message(
+      'Car updated successfully',
+      name: 'database_successUpdateCar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Car not found with this car number`
+  String get database_carNotFound {
+    return Intl.message(
+      'Car not found with this car number',
+      name: 'database_carNotFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Update added failed!!!`
+  String get database_failedUpdateCar {
+    return Intl.message(
+      'Update added failed!!!',
+      name: 'database_failedUpdateCar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dismissed added successfully`
+  String get database_successAddDismissed {
+    return Intl.message(
+      'Dismissed added successfully',
+      name: 'database_successAddDismissed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dismissed added failed!!!`
+  String get database_failedAddDismissed {
+    return Intl.message(
+      'Dismissed added failed!!!',
+      name: 'database_failedAddDismissed',
       desc: '',
       args: [],
     );

@@ -33,13 +33,7 @@
     "search_mileage": "المسافة المقطوعة",
     "search_services": "الخدمات",
     "search_car_not_found": "السيارة غير موجودة",
-    "search_change_password": "تغيير كلمة المرور",
-    "search_old_password": "كلمة المرور القديمة",
-    "search_new_password": "كلمة المرور الجديدة",
-    "search_change_password_success": "تم تغيير كلمة المرور بنجاح!!!",
-    "search_old_password_incorrect": "كلمة المرور القديمة غير صحيحة",
-    "search_please_enter_old_password": "يرجى إدخال كلمة المرور القديمة",
-    "search_please_enter_new_password": "يرجى إدخال كلمة المرور الجديدة",
+    "search_please_enter_car_number": "يرجى إدخال رقم السيارة",
 
     "add_car_carNumber": "رقم السيارة",
     "add_car_carModel": "موديل السيارة",
@@ -52,6 +46,8 @@
     "add_car_phoneNumberEmpty": "يرجى إدخال رقم الهاتف",
     "add_car_addCar": "إضافة سيارة",
     "add_car_updateCar": "تحديث السيارة",
+    "add_car_CarNumberisEmpty": "رقم السيارة فارغًا",
+
 
     "add_service_carNumber": "رقم السيارة",
     "add_service_serviceName": "اسم الخدمة",
@@ -63,18 +59,20 @@
     "add_service_servicesAdded": "تمت إضافة الخدمات بنجاح",
     "add_service_failed": "فشل!!!",
 
-    "add_dismissed_dismissedName": "اسم الحالة المرفوضة",
+    "add_dismissed_dismissedName": "اسم المصروف",
     "add_dismissed_cost": "التكلفة",
     "add_dismissed_note": "ملاحظة",
-    "add_dismissed_pleaseEnterTitleName": "يرجى إدخال اسم الحالة",
+    "add_dismissed_pleaseEnterDismissedName": "يرجى إدخال اسم المصروف",
     "add_dismissed_pleaseEnterCost": "يرجى إدخال التكلفة",
     "add_dismissed_pleaseEnterNote": "يرجى إدخال الملاحظة",
-    "add_dismissed_addDismissed": "إضافة حالة مرفوضة",
+    "add_dismissed_addDismissed": "إضافة مصروف",
 
     "show_services_selectDateType": "حدد نوع التاريخ",
     "show_services_showServices": "عرض الخدمات",
     "show_services_numberOfServices": "عدد الخدمات: ",
     "show_services_totalPrice": "إجمالي السعر: ",
+    "show_services_price": "السعر: ",
+    "show_services_date": "التاريخ: ",
     "show_services_day": "يوم",
     "show_services_month": "شهر",
     "show_services_year": "سنة",
@@ -87,8 +85,8 @@
     "show_dismissals_dayHint": "يوم",
     "show_dismissals_monthHint": "شهر",
     "show_dismissals_yearHint": "سنة",
-    "show_dismissals_showDismissals": "عرض حالات الرفض",
-    "show_dismissals_numberOfDismissals": "عدد حالات الرفض: ",
+    "show_dismissals_showDismissals": "عرض المصروفات",
+    "show_dismissals_numberOfDismissals": "عدد المصروفات: ",
     "show_dismissals_totalCost": "إجمالي التكلفة: ",
     "show_dismissals_price": "السعر: ",
     "show_dismissals_date": "التاريخ: ",
@@ -100,5 +98,13 @@
 
     "print_printInvoice": "طباعة الفاتورة",
     "print_enterComment": "إدخال تعليق",
-    "print_comment": "تعليق:"
+
+    "database_successAddCar": "تمت إضافة السيارة بنجاح",
+    "database_failedAddCar": "فشل في إضافة السيارة!!!",
+    "database_noFieldstoUpdate": "لا توجد حقول للتحديث!",
+    "database_successUpdateCar": "تم تحديث السيارة بنجاح",
+    "database_carNotFound": "لم يتم العثور على سيارة بهذا الرقم",
+    "database_failedUpdateCar": "فشل في تحديث السيارة!!!",
+    "database_successAddDismissed": "تمت إضافة المصروف بنجاح",
+    "database_failedAddDismissed": "فشل في إضافة المصروف!!!"
 }

@@ -1,3 +1,4 @@
+import 'package:benz/generated/l10n.dart';
 import 'package:benz/modules/databases_module/database.dart';
 import 'package:benz/modules/login_module/login_screen.dart';
 import 'package:benz/shared/components.dart';
@@ -27,8 +28,8 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
             .updateUserPassword('admin', _newPasswordController.text)
             .then((value) {
           password = _newPasswordController.text;
-          ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text('Change password successfully!!!')));
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text(S.of(context).change_passwordChangedSuccess)));
           Navigator.push(
             context,
             MaterialPageRoute(
@@ -38,7 +39,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
         });
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Old password is not correct')));
+            SnackBar(content: Text(S.of(context).change_oldPasswordIncorrect)));
       }
     }
   }
@@ -67,7 +68,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                     TextFormField(
                       controller: _oldPasswordController,
                       decoration: InputDecoration(
-                        hintText: "Old password",
+                        hintText: S.of(context).change_oldPasswordHint,
                         enabledBorder: OutlineInputBorder(
                           borderRadius:
                               const BorderRadius.all(Radius.circular(20.0)),
@@ -100,7 +101,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                       ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Please enter old password';
+                          return S.of(context).change_oldPasswordError;
                         }
                         return null;
                       },
@@ -110,7 +111,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                     TextFormField(
                       controller: _newPasswordController,
                       decoration: InputDecoration(
-                        hintText: "New password",
+                        hintText: S.of(context).change_newPasswordHint,
                         enabledBorder: OutlineInputBorder(
                           borderRadius:
                               const BorderRadius.all(Radius.circular(20.0)),
@@ -143,7 +144,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                       ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Please enter new password';
+                          return S.of(context).change_newPasswordError;
                         }
                         return null;
                       },
@@ -164,7 +165,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                                 MediaQuery.of(context).size.width * .02)),
                         onPressed: changePassword,
                         child: Text(
-                          'Change password',
+                          S.of(context).change_changePasswordButton,
                           style: TextStyle(
                             fontFamily: 'Readex Pro',
                             color: Colors.white,

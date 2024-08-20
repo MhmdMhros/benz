@@ -22,6 +22,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "add_car_CarNumberisEmpty":
+            MessageLookupByLibrary.simpleMessage("رقم السيارة فارغًا"),
         "add_car_addCar": MessageLookupByLibrary.simpleMessage("إضافة سيارة"),
         "add_car_carModel":
             MessageLookupByLibrary.simpleMessage("موديل السيارة"),
@@ -43,17 +45,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "add_car_updateCar":
             MessageLookupByLibrary.simpleMessage("تحديث السيارة"),
         "add_dismissed_addDismissed":
-            MessageLookupByLibrary.simpleMessage("إضافة حالة مرفوضة"),
+            MessageLookupByLibrary.simpleMessage("إضافة مصروف"),
         "add_dismissed_cost": MessageLookupByLibrary.simpleMessage("التكلفة"),
         "add_dismissed_dismissedName":
-            MessageLookupByLibrary.simpleMessage("اسم الحالة المرفوضة"),
+            MessageLookupByLibrary.simpleMessage("اسم المصروف"),
         "add_dismissed_note": MessageLookupByLibrary.simpleMessage("ملاحظة"),
         "add_dismissed_pleaseEnterCost":
             MessageLookupByLibrary.simpleMessage("يرجى إدخال التكلفة"),
+        "add_dismissed_pleaseEnterDismissedName":
+            MessageLookupByLibrary.simpleMessage("يرجى إدخال اسم المصروف"),
         "add_dismissed_pleaseEnterNote":
             MessageLookupByLibrary.simpleMessage("يرجى إدخال الملاحظة"),
-        "add_dismissed_pleaseEnterTitleName":
-            MessageLookupByLibrary.simpleMessage("يرجى إدخال اسم الحالة"),
         "add_service_addService":
             MessageLookupByLibrary.simpleMessage("إضافة خدمة"),
         "add_service_carNotFound":
@@ -84,6 +86,22 @@ class MessageLookup extends MessageLookupByLibrary {
             "كلمة المرور القديمة غير صحيحة"),
         "change_passwordChangedSuccess": MessageLookupByLibrary.simpleMessage(
             "تم تغيير كلمة المرور بنجاح!!!"),
+        "database_carNotFound": MessageLookupByLibrary.simpleMessage(
+            "لم يتم العثور على سيارة بهذا الرقم"),
+        "database_failedAddCar":
+            MessageLookupByLibrary.simpleMessage("فشل في إضافة السيارة!!!"),
+        "database_failedAddDismissed":
+            MessageLookupByLibrary.simpleMessage("فشل في إضافة المصروف!!!"),
+        "database_failedUpdateCar":
+            MessageLookupByLibrary.simpleMessage("فشل في تحديث السيارة!!!"),
+        "database_noFieldstoUpdate":
+            MessageLookupByLibrary.simpleMessage("لا توجد حقول للتحديث!"),
+        "database_successAddCar":
+            MessageLookupByLibrary.simpleMessage("تمت إضافة السيارة بنجاح"),
+        "database_successAddDismissed":
+            MessageLookupByLibrary.simpleMessage("تمت إضافة المصروف بنجاح"),
+        "database_successUpdateCar":
+            MessageLookupByLibrary.simpleMessage("تم تحديث السيارة بنجاح"),
         "layout_add_car": MessageLookupByLibrary.simpleMessage("إضافة سيارة"),
         "layout_add_dismissed":
             MessageLookupByLibrary.simpleMessage("إضافة مصروف"),
@@ -110,7 +128,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("كلمة مرور للمسؤول فقط"),
         "login_passwordIncorrect":
             MessageLookupByLibrary.simpleMessage("كلمة المرور غير صحيحة"),
-        "print_comment": MessageLookupByLibrary.simpleMessage("تعليق:"),
         "print_enterComment":
             MessageLookupByLibrary.simpleMessage("إدخال تعليق"),
         "print_printInvoice":
@@ -123,27 +140,13 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("السيارة غير موجودة"),
         "search_car_number":
             MessageLookupByLibrary.simpleMessage("رقم السيارة"),
-        "search_change_password":
-            MessageLookupByLibrary.simpleMessage("تغيير كلمة المرور"),
-        "search_change_password_success": MessageLookupByLibrary.simpleMessage(
-            "تم تغيير كلمة المرور بنجاح!!!"),
         "search_mileage":
             MessageLookupByLibrary.simpleMessage("المسافة المقطوعة"),
-        "search_new_password":
-            MessageLookupByLibrary.simpleMessage("كلمة المرور الجديدة"),
-        "search_old_password":
-            MessageLookupByLibrary.simpleMessage("كلمة المرور القديمة"),
-        "search_old_password_incorrect": MessageLookupByLibrary.simpleMessage(
-            "كلمة المرور القديمة غير صحيحة"),
         "search_owner_name": MessageLookupByLibrary.simpleMessage("اسم المالك"),
         "search_phone_number":
             MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
-        "search_please_enter_new_password":
-            MessageLookupByLibrary.simpleMessage(
-                "يرجى إدخال كلمة المرور الجديدة"),
-        "search_please_enter_old_password":
-            MessageLookupByLibrary.simpleMessage(
-                "يرجى إدخال كلمة المرور القديمة"),
+        "search_please_enter_car_number":
+            MessageLookupByLibrary.simpleMessage("يرجى إدخال رقم السيارة"),
         "search_search": MessageLookupByLibrary.simpleMessage("بحث"),
         "search_services": MessageLookupByLibrary.simpleMessage("الخدمات"),
         "show_dismissals_date":
@@ -162,16 +165,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "show_dismissals_note":
             MessageLookupByLibrary.simpleMessage("ملاحظة: "),
         "show_dismissals_numberOfDismissals":
-            MessageLookupByLibrary.simpleMessage("عدد حالات الرفض: "),
+            MessageLookupByLibrary.simpleMessage("عدد المصروفات: "),
         "show_dismissals_price":
             MessageLookupByLibrary.simpleMessage("السعر: "),
         "show_dismissals_selectDateType":
             MessageLookupByLibrary.simpleMessage("حدد نوع التاريخ"),
         "show_dismissals_showDismissals":
-            MessageLookupByLibrary.simpleMessage("عرض حالات الرفض"),
+            MessageLookupByLibrary.simpleMessage("عرض المصروفات"),
         "show_dismissals_totalCost":
             MessageLookupByLibrary.simpleMessage("إجمالي التكلفة: "),
         "show_dismissals_yearHint": MessageLookupByLibrary.simpleMessage("سنة"),
+        "show_services_date": MessageLookupByLibrary.simpleMessage("التاريخ: "),
         "show_services_day": MessageLookupByLibrary.simpleMessage("يوم"),
         "show_services_enterDay":
             MessageLookupByLibrary.simpleMessage("يرجى إدخال اليوم"),
@@ -184,6 +188,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "show_services_month": MessageLookupByLibrary.simpleMessage("شهر"),
         "show_services_numberOfServices":
             MessageLookupByLibrary.simpleMessage("عدد الخدمات: "),
+        "show_services_price": MessageLookupByLibrary.simpleMessage("السعر: "),
         "show_services_selectDateType":
             MessageLookupByLibrary.simpleMessage("حدد نوع التاريخ"),
         "show_services_showServices":

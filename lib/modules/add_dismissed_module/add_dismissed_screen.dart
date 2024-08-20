@@ -1,3 +1,4 @@
+import 'package:benz/generated/l10n.dart';
 import 'package:benz/models/dismissed_model/dismissed_model.dart';
 import 'package:benz/modules/databases_module/database.dart';
 import 'package:benz/shared/constants.dart';
@@ -61,7 +62,7 @@ class _AddDismissedScreenState extends State<AddDismissedScreen> {
               TextFormField(
                 controller: _titleName,
                 decoration: InputDecoration(
-                  hintText: 'Dismissed Name',
+                  hintText: S.of(context).add_dismissed_dismissedName,
                   enabledBorder: OutlineInputBorder(
                     borderRadius: const BorderRadius.all(Radius.circular(20.0)),
                     borderSide: BorderSide(color: mainColor),
@@ -78,7 +79,7 @@ class _AddDismissedScreenState extends State<AddDismissedScreen> {
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter title name ';
+                    return S.of(context).add_dismissed_pleaseEnterDismissedName;
                   }
                   return null;
                 },
@@ -87,7 +88,7 @@ class _AddDismissedScreenState extends State<AddDismissedScreen> {
               TextFormField(
                 controller: _cost,
                 decoration: InputDecoration(
-                  hintText: 'Cost',
+                  hintText: S.of(context).add_dismissed_cost,
                   enabledBorder: OutlineInputBorder(
                     borderRadius: const BorderRadius.all(Radius.circular(20.0)),
                     borderSide: BorderSide(color: mainColor),
@@ -104,7 +105,7 @@ class _AddDismissedScreenState extends State<AddDismissedScreen> {
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter cost';
+                    return S.of(context).add_dismissed_pleaseEnterCost;
                   }
                   return null;
                 },
@@ -113,7 +114,7 @@ class _AddDismissedScreenState extends State<AddDismissedScreen> {
               TextFormField(
                 controller: _note,
                 decoration: InputDecoration(
-                  hintText: 'Note',
+                  hintText: S.of(context).add_dismissed_note,
                   enabledBorder: OutlineInputBorder(
                     borderRadius: const BorderRadius.all(Radius.circular(20.0)),
                     borderSide: BorderSide(color: mainColor),
@@ -130,7 +131,7 @@ class _AddDismissedScreenState extends State<AddDismissedScreen> {
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter note';
+                    return S.of(context).add_dismissed_pleaseEnterNote;
                   }
                   return null;
                 },
@@ -151,7 +152,7 @@ class _AddDismissedScreenState extends State<AddDismissedScreen> {
                           MediaQuery.of(context).size.width * .02)),
                   onPressed: _insert_dismissed,
                   child: Text(
-                    'Add Dismissed',
+                    S.of(context).add_dismissed_addDismissed,
                     style: TextStyle(
                       fontFamily: 'Readex Pro',
                       color: Colors.white,

@@ -1,3 +1,4 @@
+import 'package:benz/generated/l10n.dart';
 import 'package:benz/models/dismissed_model/dismissed_model.dart';
 import 'package:benz/modules/databases_module/database.dart';
 import 'package:benz/shared/constants.dart';
@@ -39,7 +40,7 @@ class _ShowDismissalsScreenState extends State<ShowDismissalsScreen> {
       dismissals = await _dbHelper.getAllDismissedByYearDate(year);
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Please enter a valid date')),
+        SnackBar(content: Text(S.of(context).show_dismissals_enterValidDate)),
       );
       return;
     }
@@ -63,7 +64,7 @@ class _ShowDismissalsScreenState extends State<ShowDismissalsScreen> {
             TextFormField(
               controller: _dayController,
               decoration: InputDecoration(
-                hintText: 'Day',
+                hintText: S.of(context).show_dismissals_dayHint,
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(20.0)),
                   borderSide: BorderSide(color: mainColor),
@@ -80,7 +81,7 @@ class _ShowDismissalsScreenState extends State<ShowDismissalsScreen> {
               ),
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please enter day';
+                  return S.of(context).show_dismissals_enterDay;
                 }
                 return null;
               },
@@ -90,7 +91,7 @@ class _ShowDismissalsScreenState extends State<ShowDismissalsScreen> {
             TextFormField(
               controller: _monthController,
               decoration: InputDecoration(
-                hintText: 'Month',
+                hintText: S.of(context).show_dismissals_monthHint,
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(20.0)),
                   borderSide: BorderSide(color: mainColor),
@@ -107,7 +108,7 @@ class _ShowDismissalsScreenState extends State<ShowDismissalsScreen> {
               ),
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please enter month';
+                  return S.of(context).show_dismissals_enterMonth;
                 }
                 return null;
               },
@@ -117,7 +118,7 @@ class _ShowDismissalsScreenState extends State<ShowDismissalsScreen> {
             TextFormField(
               controller: _yearController,
               decoration: InputDecoration(
-                hintText: 'Year',
+                hintText: S.of(context).show_dismissals_yearHint,
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(20.0)),
                   borderSide: BorderSide(color: mainColor),
@@ -134,7 +135,7 @@ class _ShowDismissalsScreenState extends State<ShowDismissalsScreen> {
               ),
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please enter year';
+                  return S.of(context).show_dismissals_enterYear;
                 }
                 return null;
               },
@@ -148,7 +149,7 @@ class _ShowDismissalsScreenState extends State<ShowDismissalsScreen> {
             TextFormField(
               controller: _monthController,
               decoration: InputDecoration(
-                hintText: 'Month',
+                hintText: S.of(context).show_dismissals_monthHint,
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(20.0)),
                   borderSide: BorderSide(color: mainColor),
@@ -165,7 +166,7 @@ class _ShowDismissalsScreenState extends State<ShowDismissalsScreen> {
               ),
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please enter month';
+                  return S.of(context).show_dismissals_enterMonth;
                 }
                 return null;
               },
@@ -175,7 +176,7 @@ class _ShowDismissalsScreenState extends State<ShowDismissalsScreen> {
             TextFormField(
               controller: _yearController,
               decoration: InputDecoration(
-                hintText: 'Year',
+                hintText: S.of(context).show_dismissals_yearHint,
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(20.0)),
                   borderSide: BorderSide(color: mainColor),
@@ -192,7 +193,7 @@ class _ShowDismissalsScreenState extends State<ShowDismissalsScreen> {
               ),
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please enter year';
+                  return S.of(context).show_dismissals_enterYear;
                 }
                 return null;
               },
@@ -204,7 +205,7 @@ class _ShowDismissalsScreenState extends State<ShowDismissalsScreen> {
         return TextFormField(
           controller: _yearController,
           decoration: InputDecoration(
-            hintText: 'Year',
+            hintText: S.of(context).show_dismissals_yearHint,
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(20.0)),
               borderSide: BorderSide(color: mainColor),
@@ -221,7 +222,7 @@ class _ShowDismissalsScreenState extends State<ShowDismissalsScreen> {
           ),
           validator: (value) {
             if (value == null || value.isEmpty) {
-              return 'Please enter year';
+              return S.of(context).show_dismissals_enterYear;
             }
             return null;
           },
@@ -250,7 +251,7 @@ class _ShowDismissalsScreenState extends State<ShowDismissalsScreen> {
           children: [
             DropdownButton<String>(
               value: _selectedDateType,
-              hint: Text('Select Date Type'),
+              hint: Text(S.of(context).show_dismissals_selectDateType),
               onChanged: (String? newValue) {
                 setState(() {
                   _selectedDateType = newValue;
@@ -278,7 +279,7 @@ class _ShowDismissalsScreenState extends State<ShowDismissalsScreen> {
               child: MaterialButton(
                 onPressed: _fetchDismissals,
                 child: Text(
-                  'Show Dismissals',
+                  S.of(context).show_dismissals_showDismissals,
                   style: TextStyle(
                     fontFamily: 'Readex Pro',
                     color: Colors.white,
@@ -294,7 +295,7 @@ class _ShowDismissalsScreenState extends State<ShowDismissalsScreen> {
               child: Row(
                 children: [
                   Text(
-                    'Number of Dismissals: $_numDismissals',
+                    '${S.of(context).show_dismissals_numberOfDismissals} $_numDismissals',
                     style: TextStyle(
                       fontFamily: 'Readex Pro',
                       fontSize: MediaQuery.of(context).size.width * .018,
@@ -305,7 +306,7 @@ class _ShowDismissalsScreenState extends State<ShowDismissalsScreen> {
                   SizedBox(width: MediaQuery.of(context).size.width * .04),
                   Expanded(
                     child: Text(
-                      'Total Cost: $_totalCost',
+                      '${S.of(context).show_dismissals_totalCost} $_totalCost',
                       style: TextStyle(
                         fontFamily: 'Readex Pro',
                         fontSize: MediaQuery.of(context).size.width * .018,
@@ -327,7 +328,7 @@ class _ShowDismissalsScreenState extends State<ShowDismissalsScreen> {
                   return ListTile(
                     title: Text(dismissal.titleName),
                     subtitle: Text(
-                        'Price: ${dismissal.cost}, Date: ${dismissal.date}\n  Note:${dismissal.note}'),
+                        '${S.of(context).show_dismissals_price} ${dismissal.cost}, ${S.of(context).show_dismissals_date} ${dismissal.date}\n  ${S.of(context).show_dismissals_note} ${dismissal.note}'),
                   );
                 },
                 separatorBuilder: (context, index) => Container(

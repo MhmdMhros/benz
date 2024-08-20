@@ -1,3 +1,4 @@
+import 'package:benz/generated/l10n.dart';
 import 'package:benz/models/service_model/service_model.dart';
 import 'package:benz/modules/databases_module/database.dart';
 import 'package:benz/shared/constants.dart';
@@ -39,7 +40,7 @@ class _ShowServicesScreenState extends State<ShowServicesScreen> {
       services = await _dbHelper.getServicesByYearDate(year);
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Please enter a valid date')),
+        SnackBar(content: Text(S.of(context).show_services_enterValidDate)),
       );
       return;
     }
@@ -63,7 +64,7 @@ class _ShowServicesScreenState extends State<ShowServicesScreen> {
             TextFormField(
               controller: _dayController,
               decoration: InputDecoration(
-                hintText: 'Day',
+                hintText: S.of(context).show_services_day,
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(20.0)),
                   borderSide: BorderSide(color: mainColor),
@@ -80,7 +81,7 @@ class _ShowServicesScreenState extends State<ShowServicesScreen> {
               ),
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please enter day';
+                  return S.of(context).show_services_enterDay;
                 }
                 return null;
               },
@@ -90,7 +91,7 @@ class _ShowServicesScreenState extends State<ShowServicesScreen> {
             TextFormField(
               controller: _monthController,
               decoration: InputDecoration(
-                hintText: 'Month',
+                hintText: S.of(context).show_services_month,
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(20.0)),
                   borderSide: BorderSide(color: mainColor),
@@ -107,7 +108,7 @@ class _ShowServicesScreenState extends State<ShowServicesScreen> {
               ),
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please enter month';
+                  return S.of(context).show_services_enterMonth;
                 }
                 return null;
               },
@@ -117,7 +118,7 @@ class _ShowServicesScreenState extends State<ShowServicesScreen> {
             TextFormField(
               controller: _yearController,
               decoration: InputDecoration(
-                hintText: 'Year',
+                hintText: S.of(context).show_services_year,
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(20.0)),
                   borderSide: BorderSide(color: mainColor),
@@ -134,7 +135,7 @@ class _ShowServicesScreenState extends State<ShowServicesScreen> {
               ),
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please enter year';
+                  return S.of(context).show_services_enterYear;
                 }
                 return null;
               },
@@ -148,7 +149,7 @@ class _ShowServicesScreenState extends State<ShowServicesScreen> {
             TextFormField(
               controller: _monthController,
               decoration: InputDecoration(
-                hintText: 'Month',
+                hintText: S.of(context).show_services_month,
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(20.0)),
                   borderSide: BorderSide(color: mainColor),
@@ -165,7 +166,7 @@ class _ShowServicesScreenState extends State<ShowServicesScreen> {
               ),
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please enter month';
+                  return S.of(context).show_services_enterMonth;
                 }
                 return null;
               },
@@ -175,7 +176,7 @@ class _ShowServicesScreenState extends State<ShowServicesScreen> {
             TextFormField(
               controller: _yearController,
               decoration: InputDecoration(
-                hintText: 'Year',
+                hintText: S.of(context).show_services_year,
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(20.0)),
                   borderSide: BorderSide(color: mainColor),
@@ -192,7 +193,7 @@ class _ShowServicesScreenState extends State<ShowServicesScreen> {
               ),
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please enter year';
+                  return S.of(context).show_services_enterYear;
                 }
                 return null;
               },
@@ -204,7 +205,7 @@ class _ShowServicesScreenState extends State<ShowServicesScreen> {
         return TextFormField(
           controller: _yearController,
           decoration: InputDecoration(
-            hintText: 'Year',
+            hintText: S.of(context).show_services_year,
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(20.0)),
               borderSide: BorderSide(color: mainColor),
@@ -221,7 +222,7 @@ class _ShowServicesScreenState extends State<ShowServicesScreen> {
           ),
           validator: (value) {
             if (value == null || value.isEmpty) {
-              return 'Please enter year';
+              return S.of(context).show_services_enterYear;
             }
             return null;
           },
@@ -250,7 +251,7 @@ class _ShowServicesScreenState extends State<ShowServicesScreen> {
           children: [
             DropdownButton<String>(
               value: _selectedDateType,
-              hint: Text('Select Date Type'),
+              hint: Text(S.of(context).show_services_selectDateType),
               onChanged: (String? newValue) {
                 setState(() {
                   _selectedDateType = newValue;
@@ -278,7 +279,7 @@ class _ShowServicesScreenState extends State<ShowServicesScreen> {
               child: MaterialButton(
                 onPressed: _fetchServices,
                 child: Text(
-                  'Show Services',
+                  S.of(context).show_services_showServices,
                   style: TextStyle(
                     fontFamily: 'Readex Pro',
                     color: Colors.white,
@@ -294,7 +295,7 @@ class _ShowServicesScreenState extends State<ShowServicesScreen> {
               child: Row(
                 children: [
                   Text(
-                    'Number of Services: $_numServices',
+                    '${S.of(context).show_services_numberOfServices} $_numServices',
                     style: TextStyle(
                       fontFamily: 'Readex Pro',
                       fontSize: MediaQuery.of(context).size.width * .018,
@@ -305,7 +306,7 @@ class _ShowServicesScreenState extends State<ShowServicesScreen> {
                   SizedBox(width: MediaQuery.of(context).size.width * .04),
                   Expanded(
                     child: Text(
-                      'Total Price: $_totalPrice',
+                      '${S.of(context).show_services_totalPrice} $_totalPrice',
                       style: TextStyle(
                         fontFamily: 'Readex Pro',
                         fontSize: MediaQuery.of(context).size.width * .018,
@@ -327,7 +328,7 @@ class _ShowServicesScreenState extends State<ShowServicesScreen> {
                   return ListTile(
                     title: Text(service.name),
                     subtitle: Text(
-                        'Price: ${service.price}, Date: ${service.startDate}'),
+                        '${S.of(context).show_services_price} ${service.price}, ${S.of(context).show_services_date} ${service.startDate}'),
                   );
                 },
                 separatorBuilder: (context, index) => Container(

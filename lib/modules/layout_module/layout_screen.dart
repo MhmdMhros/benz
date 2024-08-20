@@ -1,3 +1,6 @@
+import 'dart:math';
+
+import 'package:benz/generated/l10n.dart';
 import 'package:benz/modules/login_module/login_screen.dart';
 import 'package:benz/shared/components.dart';
 import 'package:benz/shared/constants.dart';
@@ -60,7 +63,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
                           ),
                           Expanded(
                             child: Text(
-                              'BENZ',
+                              S.of(context).app_name,
                               style: TextStyle(
                                 fontFamily: 'Readex Pro',
                                 fontWeight: FontWeight.w500,
@@ -116,8 +119,13 @@ class _LayoutScreenState extends State<LayoutScreen> {
                                     Icon(
                                       Icons.search,
                                       color: iconColor,
-                                      size: MediaQuery.of(context).size.width *
-                                          .035,
+                                      size: sqrt(MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              MediaQuery.of(context)
+                                                  .size
+                                                  .height) *
+                                          0.047,
                                     ),
                                     Expanded(
                                       child: Padding(
@@ -128,7 +136,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
                                             0,
                                             0),
                                         child: Text(
-                                          'Search for a Car',
+                                          S.of(context).layout_search_for_a_car,
                                           style: TextStyle(
                                             fontFamily: 'Readex Pro',
                                             color: Colors.white,
@@ -185,7 +193,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
                                   ),
                                   Expanded(
                                     child: Text(
-                                      'Add Car',
+                                      S.of(context).layout_add_car,
                                       style: TextStyle(
                                         fontFamily: 'Readex Pro',
                                         color: Colors.white,
@@ -239,7 +247,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
                                   ),
                                   Expanded(
                                     child: Text(
-                                      'Add Service',
+                                      S.of(context).layout_add_service,
                                       style: TextStyle(
                                         fontFamily: 'Readex Pro',
                                         color: Colors.white,
@@ -293,7 +301,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
                                   ),
                                   Expanded(
                                     child: Text(
-                                      'Add Dismissed',
+                                      S.of(context).layout_add_dismissed,
                                       style: TextStyle(
                                         fontFamily: 'Readex Pro',
                                         color: Colors.white,
@@ -359,7 +367,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
                                         ),
                                         Expanded(
                                           child: Text(
-                                            'Show Services',
+                                            S.of(context).layout_show_services,
                                             style: TextStyle(
                                               fontFamily: 'Readex Pro',
                                               color: Colors.white,
@@ -428,7 +436,9 @@ class _LayoutScreenState extends State<LayoutScreen> {
                                         ),
                                         Expanded(
                                           child: Text(
-                                            'Show Dismissals',
+                                            S
+                                                .of(context)
+                                                .layout_show_dismissals,
                                             style: TextStyle(
                                               fontFamily: 'Readex Pro',
                                               color: Colors.white,
@@ -490,8 +500,13 @@ class _LayoutScreenState extends State<LayoutScreen> {
                                     Icon(
                                       Icons.exit_to_app,
                                       color: iconColor,
-                                      size: MediaQuery.of(context).size.width *
-                                          .03,
+                                      size: sqrt(MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              MediaQuery.of(context)
+                                                  .size
+                                                  .height) *
+                                          0.045,
                                     ),
                                     Expanded(
                                       child: Padding(
@@ -502,7 +517,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
                                             0,
                                             0),
                                         child: Text(
-                                          'Exit',
+                                          S.of(context).layout_exit,
                                           style: TextStyle(
                                             fontFamily: 'Readex Pro',
                                             color: Colors.white,

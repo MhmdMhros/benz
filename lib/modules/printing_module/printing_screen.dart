@@ -2,6 +2,7 @@
 
 import 'dart:io';
 
+import 'package:benz/generated/l10n.dart';
 import 'package:benz/models/car_model/car_model.dart';
 import 'package:benz/models/service_model/service_model.dart';
 import 'package:benz/modules/layout_module/layout_screen.dart';
@@ -9,7 +10,6 @@ import 'package:benz/shared/components.dart';
 import 'package:benz/shared/constants.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:pdf/pdf.dart';
 import 'package:printing/printing.dart';
 import 'package:flutter/material.dart';
@@ -69,7 +69,7 @@ class _PrintScreenState extends State<PrintScreen> {
             TextFormField(
               controller: _commentController,
               decoration: InputDecoration(
-                hintText: "Enter Comment",
+                hintText: S.of(context).print_enterComment,
                 enabledBorder: OutlineInputBorder(
                   borderRadius: const BorderRadius.all(Radius.circular(20.0)),
                   borderSide: BorderSide(color: mainColor),
@@ -105,7 +105,7 @@ class _PrintScreenState extends State<PrintScreen> {
                           MediaQuery.of(context).size.width * .02)),
                   onPressed: printInvoice,
                   child: Text(
-                    'Print Invoice',
+                    S.of(context).print_printInvoice,
                     style: TextStyle(
                       fontFamily: 'Readex Pro',
                       color: Colors.white,
@@ -229,6 +229,26 @@ class _PrintScreenState extends State<PrintScreen> {
                         ),
                       ],
                     ),
+                    pw.SizedBox(height: 5),
+                    if (comment.isNotEmpty) ...[
+                      pw.Text('Comment:',
+                          style: pw.TextStyle(
+                              fontSize: 16,
+                              fontWeight: pw.FontWeight.bold,
+                              font: font)),
+                      pw.Directionality(
+                        textDirection: pw.TextDirection.rtl,
+                        child: pw.Text(comment,
+                            style: pw.TextStyle(fontSize: 14, font: font)),
+                      ),
+                    ],
+                    if (comment.isEmpty) ...[
+                      pw.Text('Comment:',
+                          style: pw.TextStyle(
+                              fontSize: 16,
+                              fontWeight: pw.FontWeight.bold,
+                              font: font)),
+                    ],
                     pw.SizedBox(height: 10),
                   ],
                   pw.Table(
@@ -274,27 +294,6 @@ class _PrintScreenState extends State<PrintScreen> {
                       ),
                     ],
                   ),
-                  if (pageIndex == pageCount - 1) ...[
-                    pw.SizedBox(height: 10),
-                    if (comment.isNotEmpty)
-                      pw.Text('Comment:',
-                          style: pw.TextStyle(
-                              fontSize: 16,
-                              fontWeight: pw.FontWeight.bold,
-                              font: font)),
-                    if (comment.isEmpty)
-                      pw.Text('Comment:',
-                          style: pw.TextStyle(
-                              fontSize: 16,
-                              fontWeight: pw.FontWeight.bold,
-                              font: font)),
-                    pw.SizedBox(height: 10),
-                    pw.Directionality(
-                      textDirection: pw.TextDirection.rtl,
-                      child: pw.Text(comment,
-                          style: pw.TextStyle(fontSize: 14, font: font)),
-                    ),
-                  ],
                 ],
               ),
             );

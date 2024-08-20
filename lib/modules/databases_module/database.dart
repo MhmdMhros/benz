@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:benz/generated/l10n.dart';
 import 'package:benz/models/car_model/car_model.dart';
 import 'package:benz/models/dismissed_model/dismissed_model.dart';
 import 'package:benz/models/service_model/service_model.dart';
@@ -78,11 +79,11 @@ CREATE TABLE User (
         .insert('Car', carModel.toMap(),
             conflictAlgorithm: ConflictAlgorithm.replace)
         .then((value) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('Car added successfully')));
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(S.of(context).database_successAddCar)));
     }).catchError((Error) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('Failed!!!')));
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(S.of(context).database_failedAddCar)));
     });
   }
 
@@ -111,11 +112,10 @@ CREATE TABLE User (
 
     // If there's nothing to update, return early
     if (updatedValues.isEmpty) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('No fields to update!')));
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(S.of(context).database_noFieldstoUpdate)));
       return;
     }
-    print(updatedValues);
     await db
         .update(
             'Car', // The table to update
@@ -128,16 +128,16 @@ CREATE TABLE User (
         .then((value) {
       if (value > 0) {
         // Car was found and updated
-        ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: Text('Car updated successfully')));
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(S.of(context).database_successUpdateCar)));
       } else {
         // Car number not found
         ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Car not found with this car number')));
+            SnackBar(content: Text(S.of(context).database_carNotFound)));
       }
     }).catchError((error) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('Update failed!!!')));
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(S.of(context).database_failedUpdateCar)));
     });
   }
 
@@ -161,10 +161,10 @@ CREATE TABLE User (
     )
         .then((value) {
       ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Dismissed added successfully')));
+          SnackBar(content: Text(S.of(context).database_successAddDismissed)));
     }).catchError((Error) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('Failed!!!')));
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(S.of(context).database_failedAddDismissed)));
     });
   }
 
@@ -363,9 +363,6 @@ CREATE TABLE User (
     String monthString = month.toString().padLeft(2, '0');
     String yearString = year.toString();
 
-    print(monthString);
-    print(yearString);
-
     // Query the table for the specified day, month, and year.
     final List<Map<String, dynamic>> maps = await db.rawQuery('''
     SELECT * FROM Service 
@@ -401,9 +398,6 @@ CREATE TABLE User (
     String dayString = day.toString().padLeft(2, '0');
     String monthString = month.toString().padLeft(2, '0');
     String yearString = year.toString();
-    print(dayString);
-    print(monthString);
-    print(yearString);
 
     // Query the table for the specified day, month, and year.
     final List<Map<String, dynamic>> maps = await db.rawQuery('''
@@ -439,8 +433,6 @@ CREATE TABLE User (
     // Convert the day, month, and year to strings with leading zero if necessary
     // String dayString = day.toString().padLeft(2, '0');
     String yearString = year.toString();
-
-    print(yearString);
 
     // Query the table for the specified day, month, and year.
     final List<Map<String, dynamic>> maps = await db.rawQuery('''

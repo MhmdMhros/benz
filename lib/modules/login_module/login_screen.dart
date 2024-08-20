@@ -96,7 +96,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   DropdownButton<String>(
                     value: _selectedLanguage,
-                    items: [
+                    items: const [
                       DropdownMenuItem(
                         value: 'en',
                         child: Text('English'),

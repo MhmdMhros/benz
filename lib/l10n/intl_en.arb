@@ -33,13 +33,7 @@
     "search_mileage": "Mileage",
     "search_services": "Services",
     "search_car_not_found": "Car not found",
-    "search_change_password": "Change password",
-    "search_old_password": "Old password",
-    "search_new_password": "New password",
-    "search_change_password_success": "Change password successfully!!!",
-    "search_old_password_incorrect": "Old password is not correct",
-    "search_please_enter_old_password": "Please enter old password",
-    "search_please_enter_new_password": "Please enter new password",
+    "search_please_enter_car_number": "Please enter car number",
 
     "add_car_carNumber": "Car Number",
     "add_car_carModel": "Car Model",
@@ -52,6 +46,7 @@
     "add_car_phoneNumberEmpty": "Please enter phone number",
     "add_car_addCar": "Add Car",
     "add_car_updateCar": "Update Car",
+    "add_car_CarNumberisEmpty": "Car Number is empty",
 
     "add_service_carNumber": "Car Number",
     "add_service_serviceName": "Service Name",
@@ -66,7 +61,7 @@
     "add_dismissed_dismissedName": "Dismissed Name",
     "add_dismissed_cost": "Cost",
     "add_dismissed_note": "Note",
-    "add_dismissed_pleaseEnterTitleName": "Please enter title name",
+    "add_dismissed_pleaseEnterDismissedName": "Please enter dismissed name",
     "add_dismissed_pleaseEnterCost": "Please enter cost",
     "add_dismissed_pleaseEnterNote": "Please enter note",
     "add_dismissed_addDismissed": "Add Dismissed",
@@ -75,6 +70,8 @@
     "show_services_showServices": "Show Services",
     "show_services_numberOfServices": "Number of Services: ",
     "show_services_totalPrice": "Total Price: ",
+    "show_services_price": "Price: ",
+    "show_services_date": "Date: ",
     "show_services_day": "Day",
     "show_services_month": "Month",
     "show_services_year": "Year",
@@ -100,6 +97,14 @@
 
     "print_printInvoice": "Print Invoice",
     "print_enterComment": "Enter Comment",
-    "print_comment": "Comment:"
+
+    "database_successAddCar": "Car added successfully",
+    "database_failedAddCar": "Car added failed!!!",
+    "database_noFieldstoUpdate": "No fields to update!",
+    "database_successUpdateCar": "Car updated successfully",
+    "database_carNotFound": "Car not found with this car number",
+    "database_failedUpdateCar": "Update added failed!!!",
+    "database_successAddDismissed": "Dismissed added successfully",
+    "database_failedAddDismissed": "Dismissed added failed!!!"
 }
   

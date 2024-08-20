@@ -1,3 +1,4 @@
+import 'package:benz/generated/l10n.dart';
 import 'package:benz/models/car_model/car_model.dart';
 import 'package:benz/models/service_model/service_model.dart';
 import 'package:benz/modules/databases_module/database.dart';
@@ -35,7 +36,7 @@ class _SearchCarScreenState extends State<SearchCarScreen> {
             TextFormField(
               controller: _controller,
               decoration: InputDecoration(
-                hintText: "Car Number",
+                hintText: S.of(context).search_car_number,
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(20.0)),
                   borderSide: BorderSide(color: mainColor),
@@ -84,7 +85,7 @@ class _SearchCarScreenState extends State<SearchCarScreen> {
               ],
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please enter car number';
+                  return S.of(context).search_please_enter_car_number;
                 }
                 return null;
               },
@@ -106,7 +107,7 @@ class _SearchCarScreenState extends State<SearchCarScreen> {
               ),
               child: MaterialButton(
                 child: Text(
-                  "Search",
+                  S.of(context).search_search,
                   style: TextStyle(
                     fontFamily: 'Readex Pro',
                     color: Colors.white,
@@ -119,14 +120,13 @@ class _SearchCarScreenState extends State<SearchCarScreen> {
                       addSpaceBetweenEachLetter(_controller.text);
                   final dbHelper = DatabaseHelper();
                   CarModel? car = await dbHelper.getCarByNumber(carNumber);
-        
+
                   if (car == null) {
                     setState(() {
                       _widgetToShow = Container(
-                       
                         child: Center(
                           child: Text(
-                            'Car not found',
+                            S.of(context).search_car_not_found,
                             style: TextStyle(color: Colors.grey, fontSize: 40),
                           ),
                         ),
@@ -135,11 +135,10 @@ class _SearchCarScreenState extends State<SearchCarScreen> {
                   } else {
                     List<ServiceModel> services =
                         await dbHelper.getServicesByCarNumber(carNumber);
-        
+
                     setState(() {
                       _widgetToShow = SingleChildScrollView(
                         child: Container(
-                         
                           padding: EdgeInsets.all(16.0),
                           decoration: BoxDecoration(
                             color: Colors.grey,
@@ -149,25 +148,31 @@ class _SearchCarScreenState extends State<SearchCarScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Car Details',
+                                S.of(context).search_car_details,
                                 style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                               SizedBox(height: 8.0),
-                              _buildCarDetailRow('Owner Name', car.ownerName),
                               _buildCarDetailRow(
-                                  'Phone Number', car.phoneNumber),
-                              _buildCarDetailRow('Car Model', car.carModel),
+                                  S.of(context).search_owner_name,
+                                  car.ownerName),
+                              _buildCarDetailRow(
+                                  S.of(context).search_phone_number,
+                                  car.phoneNumber),
+                              _buildCarDetailRow(
+                                  S.of(context).search_car_model, car.carModel),
                               car.mileage != 0
                                   ? _buildCarDetailRow(
-                                      'Mileage', car.mileage.toString())
-                                  : _buildCarDetailRow('Mileage', "_"),
+                                      S.of(context).search_mileage,
+                                      car.mileage.toString())
+                                  : _buildCarDetailRow(
+                                      S.of(context).search_mileage, "_"),
                               Divider(color: Colors.grey),
                               SizedBox(height: 8.0),
                               Text(
-                                'Services',
+                                S.of(context).search_services,
                                 style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
@@ -205,7 +210,7 @@ class _SearchCarScreenState extends State<SearchCarScreen> {
         children: [
           Text(
             '$label:',
-            style: TextStyle(fontWeight: FontWeight.bold),
+            style: const TextStyle(fontWeight: FontWeight.bold),
           ),
           SizedBox(
             width: MediaQuery.of(context).size.width * 0.02,
