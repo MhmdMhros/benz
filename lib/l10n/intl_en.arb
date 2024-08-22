@@ -72,6 +72,7 @@
     "show_services_totalPrice": "Total Price: ",
     "show_services_price": "Price: ",
     "show_services_date": "Date: ",
+    "show_services_carNumber": "Car Number: ",
     "show_services_day": "Day",
     "show_services_month": "Month",
     "show_services_year": "Year",

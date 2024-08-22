@@ -7,7 +7,7 @@ import 'package:benz/shared/constants.dart';
 import 'package:flutter/material.dart';
 
 class LayoutScreen extends StatefulWidget {
-  bool isAdmin;
+  final bool isAdmin;
   LayoutScreen({super.key, required this.isAdmin});
 
   @override

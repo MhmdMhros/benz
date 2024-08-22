@@ -238,12 +238,12 @@ class _SearchCarScreenState extends State<SearchCarScreen> {
                   TextStyle(fontWeight: FontWeight.bold, color: Colors.black87),
             ),
           ),
-          SizedBox(width: 8.0),
+          SizedBox(width: MediaQuery.of(context).size.width * 0.1),
           Text(
             service.price.toString(),
             style: TextStyle(fontWeight: FontWeight.bold, color: mainColor),
           ),
-          SizedBox(width: 8.0),
+          SizedBox(width: MediaQuery.of(context).size.width * 0.04),
           Text(
             service.startDate,
             style:

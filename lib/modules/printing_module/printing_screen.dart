@@ -146,12 +146,13 @@ class _PrintScreenState extends State<PrintScreen> {
     final String startDate = services.isNotEmpty ? services[0].startDate : '';
 
     // Define maximum services per page
-    const int maxServicesPerPage = 10;
+    const int maxServicesPerPage = 8;
 
     // Determine how many pages are needed
     final int pageCount = (services.length / maxServicesPerPage).ceil();
 
     for (int pageIndex = 0; pageIndex < pageCount; pageIndex++) {
+      // Adjust the number of services per page dynamically
       final currentServices = services
           .skip(pageIndex * maxServicesPerPage)
           .take(maxServicesPerPage)
@@ -326,7 +327,7 @@ class _PrintScreenState extends State<PrintScreen> {
     await Printing.sharePdf(
       bytes: pdfBytes,
       filename:
-          'car_invoice_${carModel.carModel}_${DateFormat('yyyy-MM-dd').format(DateTime.now())}.pdf',
+          'car_invoice_${carModel.carModel}_${DateFormat('yyyy-MM-dd', 'en_US').format(DateTime.now())}.pdf',
     );
   }
 }

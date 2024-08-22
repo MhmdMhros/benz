@@ -167,6 +167,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Total Cost: "),
         "show_dismissals_yearHint":
             MessageLookupByLibrary.simpleMessage("Year"),
+        "show_services_carNumber":
+            MessageLookupByLibrary.simpleMessage("Car Number: "),
         "show_services_date": MessageLookupByLibrary.simpleMessage("Date: "),
         "show_services_day": MessageLookupByLibrary.simpleMessage("Day"),
         "show_services_enterDay":

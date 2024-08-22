@@ -24,7 +24,7 @@ class _AddDismissedScreenState extends State<AddDismissedScreen> {
         note: _note.text,
         titleName: _titleName.text,
         cost: double.parse(_cost.text),
-        date: DateFormat('yyyy-MM-dd').format(DateTime.now()),
+        date: DateFormat('yyyy-MM-dd', 'en_US').format(DateTime.now()),
       );
 
       DatabaseHelper dp = new DatabaseHelper();

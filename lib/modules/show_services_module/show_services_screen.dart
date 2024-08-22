@@ -1,6 +1,7 @@
 import 'package:benz/generated/l10n.dart';
 import 'package:benz/models/service_model/service_model.dart';
 import 'package:benz/modules/databases_module/database.dart';
+import 'package:benz/shared/components.dart';
 import 'package:benz/shared/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -261,7 +262,7 @@ class _ShowServicesScreenState extends State<ShowServicesScreen> {
                   .map<DropdownMenuItem<String>>((String value) {
                 return DropdownMenuItem<String>(
                   value: value,
-                  child: Text(value),
+                  child: Text(dropCheckServices(value, context)),
                 );
               }).toList(),
             ),
@@ -328,7 +329,7 @@ class _ShowServicesScreenState extends State<ShowServicesScreen> {
                   return ListTile(
                     title: Text(service.name),
                     subtitle: Text(
-                        '${S.of(context).show_services_price} ${service.price}, ${S.of(context).show_services_date} ${service.startDate}'),
+                        '\u200E${S.of(context).show_services_price} \u200E${service.price}   |   \u200E${S.of(context).show_services_date} \u200E${service.startDate}  |   \u200E${S.of(context).show_services_carNumber} \u200E${service.carNumber}'),
                   );
                 },
                 separatorBuilder: (context, index) => Container(

@@ -45,8 +45,8 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
         carNumber: '',
         name: '',
         price: 0,
-        startDate: DateFormat('yyyy-MM-dd').format(DateTime.now()),
-        endDate: DateFormat('yyyy-MM-dd').format(DateTime.now()),
+        startDate: DateFormat('yyyy-MM-dd', 'en_US').format(DateTime.now()),
+        endDate: DateFormat('yyyy-MM-dd', 'en_US').format(DateTime.now()),
       ));
       nameControllers.add(TextEditingController());
       priceControllers.add(TextEditingController());
@@ -88,8 +88,9 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
               carNumber: carNumber,
               name: nameControllers[i].text,
               price: double.tryParse(priceControllers[i].text) ?? 0,
-              startDate: DateFormat('yyyy-MM-dd').format(DateTime.now()),
-              endDate: DateFormat('yyyy-MM-dd')
+              startDate:
+                  DateFormat('yyyy-MM-dd', 'en_US').format(DateTime.now()),
+              endDate: DateFormat('yyyy-MM-dd', 'en_US')
                   .format(DateTime.now()) // or any date you want to use
               );
           await dbHelper.insertService(services[i]);

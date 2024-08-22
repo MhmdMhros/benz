@@ -1,6 +1,7 @@
 import 'package:benz/generated/l10n.dart';
 import 'package:benz/models/dismissed_model/dismissed_model.dart';
 import 'package:benz/modules/databases_module/database.dart';
+import 'package:benz/shared/components.dart';
 import 'package:benz/shared/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -261,7 +262,7 @@ class _ShowDismissalsScreenState extends State<ShowDismissalsScreen> {
                   .map<DropdownMenuItem<String>>((String value) {
                 return DropdownMenuItem<String>(
                   value: value,
-                  child: Text(value),
+                  child: Text(dropCheckDismissals(value, context)),
                 );
               }).toList(),
             ),
@@ -328,7 +329,7 @@ class _ShowDismissalsScreenState extends State<ShowDismissalsScreen> {
                   return ListTile(
                     title: Text(dismissal.titleName),
                     subtitle: Text(
-                        '${S.of(context).show_dismissals_price} ${dismissal.cost}, ${S.of(context).show_dismissals_date} ${dismissal.date}\n  ${S.of(context).show_dismissals_note} ${dismissal.note}'),
+                        '\u200E${S.of(context).show_dismissals_price} \u200E${dismissal.cost}   |   \u200E${S.of(context).show_dismissals_date} \u200E${dismissal.date}\n${S.of(context).show_dismissals_note} \u200E${dismissal.note}'),
                   );
                 },
                 separatorBuilder: (context, index) => Container(

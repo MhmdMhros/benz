@@ -710,6 +710,16 @@ class S {
     );
   }
 
+  /// `Car Number: `
+  String get show_services_carNumber {
+    return Intl.message(
+      'Car Number: ',
+      name: 'show_services_carNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Day`
   String get show_services_day {
     return Intl.message(

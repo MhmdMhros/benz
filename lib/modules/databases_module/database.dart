@@ -203,7 +203,7 @@ CREATE TABLE User (
 
     // Sort the list by date.
     dismissedList.sort(
-        (a, b) => DateTime.parse(a.date).compareTo(DateTime.parse(b.date)));
+        (a, b) => DateTime.parse(b.date).compareTo(DateTime.parse(a.date)));
 
     return dismissedList;
   }
@@ -239,7 +239,7 @@ CREATE TABLE User (
 
     // Sort the list by date.
     dismissedList.sort(
-        (a, b) => DateTime.parse(a.date).compareTo(DateTime.parse(b.date)));
+        (a, b) => DateTime.parse(b.date).compareTo(DateTime.parse(a.date)));
 
     return dismissedList;
   }
@@ -273,7 +273,7 @@ CREATE TABLE User (
 
     // Sort the list by date.
     dismissedList.sort(
-        (a, b) => DateTime.parse(a.date).compareTo(DateTime.parse(b.date)));
+        (a, b) => DateTime.parse(b.date).compareTo(DateTime.parse(a.date)));
 
     return dismissedList;
   }
@@ -310,7 +310,7 @@ CREATE TABLE User (
 
     // Sort the list by date.
     dismissedList.sort(
-        (a, b) => DateTime.parse(a.date).compareTo(DateTime.parse(b.date)));
+        (a, b) => DateTime.parse(b.date).compareTo(DateTime.parse(a.date)));
 
     return dismissedList;
   }
@@ -349,7 +349,7 @@ CREATE TABLE User (
     });
 
     // Sort the list based on the startDate
-    services.sort((a, b) => a.startDate.compareTo(b.startDate));
+    services.sort((a, b) => b.startDate.compareTo(a.startDate));
 
     return services;
   }
@@ -421,7 +421,7 @@ CREATE TABLE User (
     });
 
     // Sort the list based on the startDate
-    services.sort((a, b) => a.startDate.compareTo(b.startDate));
+    services.sort((a, b) => b.startDate.compareTo(a.startDate));
 
     return services;
   }
@@ -454,7 +454,7 @@ CREATE TABLE User (
     });
 
     // Sort the list based on the startDate
-    services.sort((a, b) => a.startDate.compareTo(b.startDate));
+    services.sort((a, b) => b.startDate.compareTo(a.startDate));
 
     return services;
   }

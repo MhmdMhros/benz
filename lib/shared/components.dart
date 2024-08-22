@@ -1,4 +1,5 @@
-import 'package:benz/shared/cache_helper.dart';
+import 'package:benz/generated/l10n.dart';
+import 'package:flutter/material.dart';
 
 String addSpaceBetweenEachLetter(String text) {
   String spacedText = '';
@@ -18,3 +19,23 @@ String serviceNavigation = "";
 int currentIndexScreen = 0;
 
 bool isAdmin = true;
+
+String dropCheckDismissals(String text, BuildContext context) {
+  if (text == 'Day') {
+    return S.of(context).show_dismissals_dayHint;
+  } else if (text == 'Month') {
+    return S.of(context).show_dismissals_monthHint;
+  } else {
+    return S.of(context).show_dismissals_yearHint;
+  }
+}
+
+String dropCheckServices(String text, BuildContext context) {
+  if (text == 'Day') {
+    return S.of(context).show_services_day;
+  } else if (text == 'Month') {
+    return S.of(context).show_services_month;
+  } else {
+    return S.of(context).show_services_year;
+  }
+}
