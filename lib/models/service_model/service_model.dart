@@ -3,8 +3,9 @@ class ServiceModel {
   late final String carNumber;
   late final String name;
   late final double price;
+  final double ? changeWhen;
   late final String startDate;
-  late final String endDate;
+
 
   ServiceModel({
     this.serviceID,
@@ -12,7 +13,8 @@ class ServiceModel {
     required this.name,
     required this.price,
     required this.startDate,
-    required this.endDate,
+     this.changeWhen
+  
   });
 
   Map<String, dynamic> toMap() {
@@ -22,7 +24,8 @@ class ServiceModel {
       'name': name,
       'price': price,
       'start_date': startDate,
-      'end_date': endDate,
+      'changeWhen': changeWhen,
+      
     };
   }
 }

@@ -10,10 +10,12 @@ import 'package:benz/shared/components.dart';
 import 'package:benz/shared/constants.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:pdf/pdf.dart';
 import 'package:printing/printing.dart';
 import 'package:flutter/material.dart';
 import 'package:pdf/widgets.dart' as pw;
+import 'package:sqlite3_flutter_libs/sqlite3_flutter_libs.dart';
 
 class PrintScreen extends StatefulWidget {
   final CarModel carModel;
@@ -26,6 +28,7 @@ class PrintScreen extends StatefulWidget {
 
 class _PrintScreenState extends State<PrintScreen> {
   final _commentController = TextEditingController();
+  
 
   void printInvoice() {
     final comment = _commentController.text;
@@ -58,6 +61,7 @@ class _PrintScreenState extends State<PrintScreen> {
         ),
       ),
       body: Container(
+        
         color: backgroundColor,
         width: double.infinity,
         height: double.infinity,
@@ -67,6 +71,7 @@ class _PrintScreenState extends State<PrintScreen> {
           children: [
             // TextFormField to add a comment
             TextFormField(
+              maxLines: 3,
               controller: _commentController,
               decoration: InputDecoration(
                 hintText: S.of(context).print_enterComment,
@@ -83,9 +88,12 @@ class _PrintScreenState extends State<PrintScreen> {
                   borderSide:
                       BorderSide(color: Color.fromARGB(255, 172, 13, 2)),
                 ),
+                
               ),
 
-              maxLines: 3,
+              inputFormatters: [
+            LengthLimitingTextInputFormatter(264), // Limit to 10 characters
+],
               // Allows multiline comments
             ),
             SizedBox(height: 20),
@@ -128,11 +136,14 @@ class _PrintScreenState extends State<PrintScreen> {
     required String comment,
   }) async {
     final doc = pw.Document();
+    
+    
 
     // Load the custom font
     final fontData =
         await rootBundle.load("assets/fonts/Cairo-VariableFont_slnt,wght.ttf");
     final font = pw.Font.ttf(fontData);
+    final ttf = pw.Font.ttf(fontData.buffer.asByteData());
 
     // Load the logo
     final logoData =
@@ -171,12 +182,66 @@ class _PrintScreenState extends State<PrintScreen> {
                     pw.Row(
                       children: [
                         pw.Image(logoImage, width: 70),
+                      
                         pw.SizedBox(width: 10),
-                        pw.Text('BENZ SERVICE CENTER',
+                        pw.Column(children: [
+                            pw.Text('BENZ SERVICE CENTER',
                             style: pw.TextStyle(
-                                fontSize: 24,
+                                fontSize: 26,
                                 fontWeight: pw.FontWeight.bold,
                                 font: font)),
+                              pw.Row(
+                        children: [ 
+                           pw.Text(
+                            '01144556478',
+                            style: pw.TextStyle(
+                              fontSize: 14,
+                              font: ttf,
+                            ),
+                          ),
+                        
+                          pw.SizedBox(width: 5),
+                          pw.Directionality(
+                            textDirection: pw.TextDirection.rtl,
+                            child: pw.Text(
+                              'أ/ احمد مصطفى' ,
+                              style: pw.TextStyle(
+                                fontSize: 14,
+                                font: ttf,
+                              ),
+                            ),
+                          ),
+                          pw.SizedBox(width: 15),
+                                pw.Text(
+                            '01010619046',
+                            style: pw.TextStyle(
+                              fontSize: 14,
+                              font: ttf,
+                            ),
+                          ),
+                        
+                          pw.SizedBox(width: 5),
+                          pw.Directionality(
+                            textDirection: pw.TextDirection.rtl,
+                            child: pw.Text(
+                              'م/ كريم عشماوي',
+                              style: pw.TextStyle(
+                                fontSize: 14,
+                                font: ttf,
+                              ),
+                            ),
+                          ),
+                          
+                         ],
+                      ),
+                                pw.Row(
+                        children: [ 
+                     
+                          
+                         ],
+                      ),
+                         
+                    ])
                       ],
                     ),
                     pw.SizedBox(height: 20),
@@ -232,18 +297,25 @@ class _PrintScreenState extends State<PrintScreen> {
                     ),
                     pw.SizedBox(height: 5),
                     if (comment.isNotEmpty) ...[
-                      pw.Text('Comment:',
-                          style: pw.TextStyle(
-                              fontSize: 16,
-                              fontWeight: pw.FontWeight.bold,
-                              font: font)),
-                      pw.Directionality(
-                        textDirection: pw.TextDirection.rtl,
-                        child: pw.Text(comment,
-                            style: pw.TextStyle(fontSize: 14, font: font)),
-                      ),
-                    ],
-                    if (comment.isEmpty) ...[
+  pw.Text(
+    'Comment:',
+    style: pw.TextStyle(
+      fontSize: 16,
+      fontWeight: pw.FontWeight.bold,
+      font: font,
+    ),
+  ),
+  pw.Directionality(
+    textDirection: pw.TextDirection.rtl,
+    child: pw.Text(
+      comment,
+      style: pw.TextStyle(fontSize: 10, font: font),
+      maxLines: 2,
+      // This will add "..." if text overflows
+    ),
+  ),
+],
+                  if (comment.isEmpty) ...[
                       pw.Text('Comment:',
                           style: pw.TextStyle(
                               fontSize: 16,
@@ -272,6 +344,13 @@ class _PrintScreenState extends State<PrintScreen> {
                                     fontWeight: pw.FontWeight.bold,
                                     font: font)),
                           ),
+                          pw.Padding(
+                            padding: pw.EdgeInsets.all(8),
+                            child: pw.Text('change when',
+                                style: pw.TextStyle(
+                                    fontWeight: pw.FontWeight.bold,
+                                    font: font)),
+                          ),
                         ],
                       ),
                       ...currentServices.map(
@@ -290,6 +369,11 @@ class _PrintScreenState extends State<PrintScreen> {
                               child: pw.Text(service.price.toStringAsFixed(2),
                                   style: pw.TextStyle(font: font)),
                             ),
+                             pw.Padding(
+                              padding: pw.EdgeInsets.all(8),
+                              child: pw.Text('${(service.changeWhen! + carModel.mileage).toStringAsFixed(2)}',
+                                  style: pw.TextStyle(font: font)),
+                            ),
                           ],
                         ),
                       ),
@@ -304,11 +388,11 @@ class _PrintScreenState extends State<PrintScreen> {
     }
 
     final pdfBytes = await doc.save();
-
-    const String desktopPath = 'C:\\Users\\H\\Desktop';
+  
+    
 
     // Create the folder on the desktop
-    const String folderPath = '$desktopPath/BenzInvoices';
+    const String folderPath = 'BenzInvoices';
     final Directory folder = Directory(folderPath);
 
     if (!await folder.exists()) {
@@ -317,7 +401,7 @@ class _PrintScreenState extends State<PrintScreen> {
 
     // Save the PDF file in the folder
     final String filePath =
-        '$folderPath/car_invoice_${carModel.carModel}_${DateFormat('yyyy-MM-dd').format(DateTime.now())}.pdf';
+        '$folderPath/\u200E${carModel.carNumber} \u200E${DateFormat('yyyy-MM-dd','en_US').format(DateTime.now())}.pdf';
     final File file = File(filePath);
 
     await file.writeAsBytes(pdfBytes);
@@ -327,7 +411,7 @@ class _PrintScreenState extends State<PrintScreen> {
     await Printing.sharePdf(
       bytes: pdfBytes,
       filename:
-          'car_invoice_${carModel.carModel}_${DateFormat('yyyy-MM-dd', 'en_US').format(DateTime.now())}.pdf',
+          '\u200E${carModel.carNumber} \u200E${DateFormat('yyyy-MM-dd', 'en_US').format(DateTime.now())}.pdf',
     );
   }
 }

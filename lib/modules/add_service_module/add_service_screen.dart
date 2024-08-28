@@ -21,6 +21,7 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
   List<ServiceModel> services = [];
   List<TextEditingController> nameControllers = [];
   List<TextEditingController> priceControllers = [];
+  List<TextEditingController> changeWhenControllers = [];
   bool _isLoading = false;
 
   void _addServiceField() async {
@@ -46,10 +47,11 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
         name: '',
         price: 0,
         startDate: DateFormat('yyyy-MM-dd', 'en_US').format(DateTime.now()),
-        endDate: DateFormat('yyyy-MM-dd', 'en_US').format(DateTime.now()),
+       changeWhen: 0,
       ));
       nameControllers.add(TextEditingController());
       priceControllers.add(TextEditingController());
+      changeWhenControllers.add(TextEditingController());
     });
   }
 
@@ -58,6 +60,7 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
       services.removeAt(index);
       nameControllers.removeAt(index);
       priceControllers.removeAt(index);
+      changeWhenControllers.removeAt(index);
     });
   }
 
@@ -90,8 +93,8 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
               price: double.tryParse(priceControllers[i].text) ?? 0,
               startDate:
                   DateFormat('yyyy-MM-dd', 'en_US').format(DateTime.now()),
-              endDate: DateFormat('yyyy-MM-dd', 'en_US')
-                  .format(DateTime.now()) // or any date you want to use
+                  changeWhen: double.tryParse(changeWhenControllers[i].text) ?? 0,
+            // or any date you want to use
               );
           await dbHelper.insertService(services[i]);
           done = true;
@@ -258,6 +261,28 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                                 ],
                               ),
                             ),
+                           const SizedBox(width: 8.0),
+                            Expanded(
+                              child: TextFormField(
+                                controller: changeWhenControllers[index],
+                                decoration: InputDecoration(
+                                  hintText: "change when",
+                                  border: const OutlineInputBorder(),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(color: mainColor),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(color: mainColor),
+                                  ),
+                                ),
+                                keyboardType: TextInputType.number,
+                                inputFormatters: [
+                                  FilteringTextInputFormatter
+                                      .digitsOnly, // Allow only digits
+                                ],
+                              ),
+                            ),
+                         
                             IconButton(
                               icon: const Icon(Icons.remove_circle),
                               onPressed: () => _removeServiceField(index),
