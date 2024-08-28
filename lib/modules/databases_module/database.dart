@@ -42,7 +42,7 @@ class DatabaseHelper {
             name TEXT NOT NULL, 
             price REAL NOT NULL, 
             start_date TEXT NOT NULL,
-            changeWhen REAL NOT NULL,
+            mileageChangeWhen REAL NOT NULL,
             
             FOREIGN KEY (carNumber) REFERENCES Car (carNumber)
           );
@@ -344,7 +344,7 @@ CREATE TABLE User (
         name: maps[i]['name'],
         price: maps[i]['price'],
         startDate: maps[i]['start_date'],
-        changeWhen: maps[i]['changeWhen'],
+        mileageChangeWhen: maps[i]['changeWhen'],
       );
     });
 
@@ -379,7 +379,7 @@ CREATE TABLE User (
         name: maps[i]['name'],
         price: maps[i]['price'],
         startDate: maps[i]['start_date'],
-        changeWhen: maps[i]['changeWhen'],
+        mileageChangeWhen: maps[i]['changeWhen'],
       );
     });
 
@@ -416,7 +416,7 @@ CREATE TABLE User (
         name: maps[i]['name'],
         price: maps[i]['price'],
         startDate: maps[i]['start_date'],
-        changeWhen: maps[i]['changeWhen'],
+        mileageChangeWhen: maps[i]['changeWhen'],
       );
     });
 
@@ -449,7 +449,7 @@ CREATE TABLE User (
         name: maps[i]['name'],
         price: maps[i]['price'],
         startDate: maps[i]['start_date'],
-        changeWhen: maps[i]['changeWhen'],
+        mileageChangeWhen: maps[i]['changeWhen'],
       );
     });
 

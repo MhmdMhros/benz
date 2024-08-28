@@ -51,6 +51,7 @@
     "add_service_carNumber": "Car Number",
     "add_service_serviceName": "Service Name",
     "add_service_price": "Price",
+    "add_service_mileageChangeWhen": "Mileage Change When",
     "add_service_addService": "Add Service",
     "add_service_confirm": "Confirm",
     "add_service_carNumberEmpty": "Car number must not be empty",

@@ -52,6 +52,7 @@
     "add_service_carNumber": "رقم السيارة",
     "add_service_serviceName": "اسم الخدمة",
     "add_service_price": "السعر",
+    "add_service_mileageChangeWhen": "تغيير المسافة المقطوعة بعد",
     "add_service_addService": "إضافة خدمة",
     "add_service_confirm": "تأكيد",
     "add_service_carNumberEmpty": "رقم السيارة لا يجب أن يكون فارغًا",

@@ -62,6 +62,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Car number must not be empty"),
         "add_service_confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
         "add_service_failed": MessageLookupByLibrary.simpleMessage("Failed!!!"),
+        "add_service_mileageChangeWhen":
+            MessageLookupByLibrary.simpleMessage("Mileage Change When"),
         "add_service_price": MessageLookupByLibrary.simpleMessage("Price"),
         "add_service_serviceName":
             MessageLookupByLibrary.simpleMessage("Service Name"),

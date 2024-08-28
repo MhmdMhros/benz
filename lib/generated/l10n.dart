@@ -520,6 +520,16 @@ class S {
     );
   }
 
+  /// `Mileage Change When`
+  String get add_service_mileageChangeWhen {
+    return Intl.message(
+      'Mileage Change When',
+      name: 'add_service_mileageChangeWhen',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Add Service`
   String get add_service_addService {
     return Intl.message(

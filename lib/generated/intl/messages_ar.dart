@@ -66,6 +66,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "رقم السيارة لا يجب أن يكون فارغًا"),
         "add_service_confirm": MessageLookupByLibrary.simpleMessage("تأكيد"),
         "add_service_failed": MessageLookupByLibrary.simpleMessage("فشل!!!"),
+        "add_service_mileageChangeWhen":
+            MessageLookupByLibrary.simpleMessage("تغيير المسافة المقطوعة بعد"),
         "add_service_price": MessageLookupByLibrary.simpleMessage("السعر"),
         "add_service_serviceName":
             MessageLookupByLibrary.simpleMessage("اسم الخدمة"),

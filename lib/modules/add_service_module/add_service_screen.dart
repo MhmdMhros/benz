@@ -21,7 +21,7 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
   List<ServiceModel> services = [];
   List<TextEditingController> nameControllers = [];
   List<TextEditingController> priceControllers = [];
-  List<TextEditingController> changeWhenControllers = [];
+  List<TextEditingController> mileageChangeWhenControllers = [];
   bool _isLoading = false;
 
   void _addServiceField() async {
@@ -47,11 +47,11 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
         name: '',
         price: 0,
         startDate: DateFormat('yyyy-MM-dd', 'en_US').format(DateTime.now()),
-       changeWhen: 0,
+        mileageChangeWhen: 0,
       ));
       nameControllers.add(TextEditingController());
       priceControllers.add(TextEditingController());
-      changeWhenControllers.add(TextEditingController());
+      mileageChangeWhenControllers.add(TextEditingController());
     });
   }
 
@@ -60,7 +60,7 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
       services.removeAt(index);
       nameControllers.removeAt(index);
       priceControllers.removeAt(index);
-      changeWhenControllers.removeAt(index);
+      mileageChangeWhenControllers.removeAt(index);
     });
   }
 
@@ -88,14 +88,14 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
         if (nameControllers[i].text.isNotEmpty &&
             priceControllers[i].text.isNotEmpty) {
           services[i] = ServiceModel(
-              carNumber: carNumber,
-              name: nameControllers[i].text,
-              price: double.tryParse(priceControllers[i].text) ?? 0,
-              startDate:
-                  DateFormat('yyyy-MM-dd', 'en_US').format(DateTime.now()),
-                  changeWhen: double.tryParse(changeWhenControllers[i].text) ?? 0,
+            carNumber: carNumber,
+            name: nameControllers[i].text,
+            price: double.tryParse(priceControllers[i].text) ?? 0,
+            startDate: DateFormat('yyyy-MM-dd', 'en_US').format(DateTime.now()),
+            mileageChangeWhen:
+                double.tryParse(mileageChangeWhenControllers[i].text) ?? 0,
             // or any date you want to use
-              );
+          );
           await dbHelper.insertService(services[i]);
           done = true;
         }
@@ -261,12 +261,14 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                                 ],
                               ),
                             ),
-                           const SizedBox(width: 8.0),
+                            const SizedBox(width: 8.0),
                             Expanded(
                               child: TextFormField(
-                                controller: changeWhenControllers[index],
+                                controller: mileageChangeWhenControllers[index],
                                 decoration: InputDecoration(
-                                  hintText: "change when",
+                                  hintText: S
+                                      .of(context)
+                                      .add_service_mileageChangeWhen,
                                   border: const OutlineInputBorder(),
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(color: mainColor),
@@ -282,7 +284,6 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
                                 ],
                               ),
                             ),
-                         
                             IconButton(
                               icon: const Icon(Icons.remove_circle),
                               onPressed: () => _removeServiceField(index),

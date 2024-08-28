@@ -1,16 +1,13 @@
-# benz
+BENZ
+A Flutter application designed for managing car services, dismissals, and administrative tasks. The app supports multiple languages and offers a user-friendly interface for both admins and regular users.
 
-A new Flutter project.
+Features
+User Login: Supports login for both admins and users with secure password validation.
+Car Management: Add and update car details including car number, model, owner name, phone number, and mileage.
+Service Management: Add services associated with cars, including details such as service name and price.
+Dismissal Management: Add and track dismissed items with associated costs and notes.
+Localization: Supports both English and Arabic languages. Users can switch between languages within the app.
+Invoice Printing: Generate and print invoices for car services with user comments.
+Password Management: Admins can change their password securely within the app.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Screenshots
