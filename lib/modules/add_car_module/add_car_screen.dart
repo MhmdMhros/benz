@@ -25,7 +25,8 @@ class _AddCarScreenState extends State<AddCarScreen> {
   Future<void> _insertCar() async {
     if (_formKey.currentState!.validate()) {
       final car = CarModel(
-        carNumber: addSpaceBetweenEachLetter(_carNumberController.text),
+        carNumber: addSpaceBetweenEachLetter(
+            reverseArabicLetters(_carNumberController.text)),
         carModel: _carModelController.text,
         ownerName: _ownerNameController.text,
         phoneNumber: _phoneNumberController.text,
@@ -53,7 +54,8 @@ class _AddCarScreenState extends State<AddCarScreen> {
     if (_carNumberController.text.isNotEmpty) {
       DatabaseHelper dp = DatabaseHelper();
       await dp.updateCar(
-          carNumber: addSpaceBetweenEachLetter(_carNumberController.text),
+          carNumber: addSpaceBetweenEachLetter(
+              reverseArabicLetters(_carNumberController.text)),
           newOwnerName: _ownerNameController.text,
           newPhoneNumber: _phoneNumberController.text,
           newMileage: _mileageController.text,

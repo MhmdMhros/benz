@@ -116,8 +116,8 @@ class _SearchCarScreenState extends State<SearchCarScreen> {
                   ),
                 ),
                 onPressed: () async {
-                  String carNumber =
-                      addSpaceBetweenEachLetter(_controller.text);
+                  String carNumber = addSpaceBetweenEachLetter(
+                      reverseArabicLetters(_controller.text));
                   final dbHelper = DatabaseHelper();
                   CarModel? car = await dbHelper.getCarByNumber(carNumber);
 

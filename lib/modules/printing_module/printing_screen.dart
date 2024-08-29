@@ -233,7 +233,7 @@ class _PrintScreenState extends State<PrintScreen> {
                     ),
                     pw.SizedBox(height: 20),
                     pw.Directionality(
-                      textDirection: pw.TextDirection.ltr,
+                      textDirection: pw.TextDirection.rtl,
                       child: pw.Text('Car Number:   ${carModel.carNumber}',
                           style: pw.TextStyle(fontSize: 16, font: font)),
                     ),

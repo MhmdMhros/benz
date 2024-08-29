@@ -344,7 +344,7 @@ CREATE TABLE User (
         name: maps[i]['name'],
         price: maps[i]['price'],
         startDate: maps[i]['start_date'],
-        mileageChangeWhen: maps[i]['changeWhen'],
+        mileageChangeWhen: maps[i]['mileageChangeWhen'],
       );
     });
 
@@ -379,7 +379,7 @@ CREATE TABLE User (
         name: maps[i]['name'],
         price: maps[i]['price'],
         startDate: maps[i]['start_date'],
-        mileageChangeWhen: maps[i]['changeWhen'],
+        mileageChangeWhen: maps[i]['mileageChangeWhen'],
       );
     });
 
@@ -416,7 +416,7 @@ CREATE TABLE User (
         name: maps[i]['name'],
         price: maps[i]['price'],
         startDate: maps[i]['start_date'],
-        mileageChangeWhen: maps[i]['changeWhen'],
+        mileageChangeWhen: maps[i]['mileageChangeWhen'],
       );
     });
 
@@ -449,7 +449,7 @@ CREATE TABLE User (
         name: maps[i]['name'],
         price: maps[i]['price'],
         startDate: maps[i]['start_date'],
-        mileageChangeWhen: maps[i]['changeWhen'],
+        mileageChangeWhen: maps[i]['mileageChangeWhen'],
       );
     });
 

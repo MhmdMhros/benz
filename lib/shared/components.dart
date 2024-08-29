@@ -38,5 +38,34 @@ String dropCheckServices(String text, BuildContext context) {
   } else {
     return S.of(context).show_services_year;
   }
-  
+}
+
+String reverseArabicLetters(String input) {
+  // List to store Arabic letters
+  List<String> arabicLetters = [];
+
+  // Collect Arabic letters from the input
+  for (var char in input.runes) {
+    if (char >= 0x0600 && char <= 0x06FF) {
+      arabicLetters.add(String.fromCharCode(char));
+    }
+  }
+
+  // Reverse the collected Arabic letters
+  arabicLetters = arabicLetters.reversed.toList();
+
+  // Reconstruct the new string with reversed Arabic letters
+  StringBuffer result = StringBuffer();
+  int arabicIndex = 0;
+
+  for (var char in input.runes) {
+    if (char >= 0x0600 && char <= 0x06FF) {
+      result.write(arabicLetters[arabicIndex]);
+      arabicIndex++;
+    } else {
+      result.write(String.fromCharCode(char));
+    }
+  }
+
+  return result.toString();
 }

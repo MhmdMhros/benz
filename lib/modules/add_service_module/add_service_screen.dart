@@ -32,7 +32,7 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
           SnackBar(content: Text(S.of(context).add_service_carNumberEmpty)));
       return;
     }
-    carNumber = addSpaceBetweenEachLetter(carNumber);
+    carNumber = addSpaceBetweenEachLetter(reverseArabicLetters(carNumber));
     final dbHelper = DatabaseHelper();
     CarModel? car = await dbHelper.getCarByNumber(carNumber);
     if (car == null) {
@@ -71,7 +71,8 @@ class _AddServiceScreenState extends State<AddServiceScreen> {
 
     final dbHelper = DatabaseHelper();
     String carNumber = _carNumberController.text;
-    carNumber = addSpaceBetweenEachLetter(_carNumberController.text);
+    carNumber = addSpaceBetweenEachLetter(
+        reverseArabicLetters(_carNumberController.text));
     if (carNumber.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text(S.of(context).add_service_carNumberEmpty)));
