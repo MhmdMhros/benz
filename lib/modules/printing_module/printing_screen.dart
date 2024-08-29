@@ -183,7 +183,7 @@ class _PrintScreenState extends State<PrintScreen> {
                               style: pw.TextStyle(
                                   fontSize: 26,
                                   fontWeight: pw.FontWeight.bold,
-                                  font: font)),
+                                  font: ttf)),
                           pw.Row(
                             children: [
                               pw.Text(
@@ -216,7 +216,7 @@ class _PrintScreenState extends State<PrintScreen> {
                               pw.Directionality(
                                 textDirection: pw.TextDirection.rtl,
                                 child: pw.Text(
-                                  'م/ كريم عشماوي',
+                                  'م/ كريم عشماوى',
                                   style: pw.TextStyle(
                                     fontSize: 14,
                                     font: ttf,
@@ -241,19 +241,19 @@ class _PrintScreenState extends State<PrintScreen> {
                     pw.Directionality(
                       textDirection: pw.TextDirection.rtl,
                       child: pw.Text('Car Model:   ${carModel.carModel}',
-                          style: pw.TextStyle(fontSize: 16, font: font)),
+                          style: pw.TextStyle(fontSize: 16, font: ttf)),
                     ),
                     pw.SizedBox(height: 5),
                     pw.Directionality(
                       textDirection: pw.TextDirection.rtl,
                       child: pw.Text('Owner Name:   ${carModel.ownerName}',
-                          style: pw.TextStyle(fontSize: 16, font: font)),
+                          style: pw.TextStyle(fontSize: 16, font: ttf)),
                     ),
                     pw.SizedBox(height: 5),
                     pw.Directionality(
                       textDirection: pw.TextDirection.rtl,
                       child: pw.Text('Phone Number:   ${carModel.phoneNumber}',
-                          style: pw.TextStyle(fontSize: 16, font: font)),
+                          style: pw.TextStyle(fontSize: 16, font: ttf)),
                     ),
                     pw.SizedBox(height: 5),
                     pw.Row(
@@ -262,23 +262,22 @@ class _PrintScreenState extends State<PrintScreen> {
                           textDirection: pw.TextDirection.rtl,
                           child: carModel.mileage != 0
                               ? pw.Text('Mileage:   ${carModel.mileage}',
-                                  style: pw.TextStyle(fontSize: 16, font: font))
+                                  style: pw.TextStyle(fontSize: 16, font: ttf))
                               : pw.Text('Mileage:   _',
-                                  style:
-                                      pw.TextStyle(fontSize: 16, font: font)),
+                                  style: pw.TextStyle(fontSize: 16, font: ttf)),
                         ),
                         pw.SizedBox(width: 30),
                         pw.Directionality(
                           textDirection: pw.TextDirection.rtl,
                           child: pw.Text(
                               'Total:   ${totalPrice.toStringAsFixed(2)}',
-                              style: pw.TextStyle(fontSize: 16, font: font)),
+                              style: pw.TextStyle(fontSize: 16, font: ttf)),
                         ),
                         pw.SizedBox(width: 30),
                         pw.Directionality(
                           textDirection: pw.TextDirection.rtl,
                           child: pw.Text('Date:   $startDate',
-                              style: pw.TextStyle(fontSize: 16, font: font)),
+                              style: pw.TextStyle(fontSize: 16, font: ttf)),
                         ),
                       ],
                     ),
@@ -289,14 +288,14 @@ class _PrintScreenState extends State<PrintScreen> {
                         style: pw.TextStyle(
                           fontSize: 16,
                           fontWeight: pw.FontWeight.bold,
-                          font: font,
+                          font: ttf,
                         ),
                       ),
                       pw.Directionality(
                         textDirection: pw.TextDirection.rtl,
                         child: pw.Text(
                           comment,
-                          style: pw.TextStyle(fontSize: 10, font: font),
+                          style: pw.TextStyle(fontSize: 10, font: ttf),
                           maxLines: 2,
                           // This will add "..." if text overflows
                         ),
@@ -307,7 +306,7 @@ class _PrintScreenState extends State<PrintScreen> {
                           style: pw.TextStyle(
                               fontSize: 16,
                               fontWeight: pw.FontWeight.bold,
-                              font: font)),
+                              font: ttf)),
                     ],
                     pw.SizedBox(height: 10),
                   ],
@@ -321,22 +320,19 @@ class _PrintScreenState extends State<PrintScreen> {
                             padding: pw.EdgeInsets.all(8),
                             child: pw.Text('Service Name',
                                 style: pw.TextStyle(
-                                    fontWeight: pw.FontWeight.bold,
-                                    font: font)),
+                                    fontWeight: pw.FontWeight.bold, font: ttf)),
                           ),
                           pw.Padding(
                             padding: pw.EdgeInsets.all(8),
                             child: pw.Text('Price',
                                 style: pw.TextStyle(
-                                    fontWeight: pw.FontWeight.bold,
-                                    font: font)),
+                                    fontWeight: pw.FontWeight.bold, font: ttf)),
                           ),
                           pw.Padding(
                             padding: pw.EdgeInsets.all(8),
                             child: pw.Text('Mileage Change When',
                                 style: pw.TextStyle(
-                                    fontWeight: pw.FontWeight.bold,
-                                    font: font)),
+                                    fontWeight: pw.FontWeight.bold, font: ttf)),
                           ),
                         ],
                       ),
@@ -348,13 +344,13 @@ class _PrintScreenState extends State<PrintScreen> {
                               child: pw.Directionality(
                                 textDirection: pw.TextDirection.rtl,
                                 child: pw.Text(service.name,
-                                    style: pw.TextStyle(font: font)),
+                                    style: pw.TextStyle(font: ttf)),
                               ),
                             ),
                             pw.Padding(
                               padding: pw.EdgeInsets.all(8),
                               child: pw.Text(service.price.toStringAsFixed(2),
-                                  style: pw.TextStyle(font: font)),
+                                  style: pw.TextStyle(font: ttf)),
                             ),
                             pw.Padding(
                               padding: pw.EdgeInsets.all(8),
@@ -366,7 +362,7 @@ class _PrintScreenState extends State<PrintScreen> {
                                               carModel.mileage)
                                           .toStringAsFixed(2)
                                       : '_',
-                                  style: pw.TextStyle(font: font)),
+                                  style: pw.TextStyle(font: ttf)),
                             ),
                           ],
                         ),
