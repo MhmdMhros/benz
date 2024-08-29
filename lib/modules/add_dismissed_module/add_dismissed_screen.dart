@@ -3,6 +3,7 @@ import 'package:benz/models/dismissed_model/dismissed_model.dart';
 import 'package:benz/modules/databases_module/database.dart';
 import 'package:benz/shared/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 
 class AddDismissedScreen extends StatefulWidget {
@@ -109,6 +110,10 @@ class _AddDismissedScreenState extends State<AddDismissedScreen> {
                   }
                   return null;
                 },
+                  inputFormatters: [
+                                  FilteringTextInputFormatter
+                                      .digitsOnly, // Allow only digits
+                                ],
               ),
               SizedBox(height: MediaQuery.of(context).size.height * .04),
               TextFormField(

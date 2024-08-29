@@ -464,7 +464,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
                               MediaQuery.of(context).size.width * .015,
                               0,
                               0,
-                              0),
+                               MediaQuery.of(context).size.width * .015),
                           child: Container(
                             height: MediaQuery.of(context).size.height * .08,
                             decoration: BoxDecoration(
