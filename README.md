@@ -64,27 +64,27 @@ flutter run
 
 ## Screenshots
 
-![[benz3.png]]
+![Login Screen](assets/screenshots/benz1.png)
 
-![[benz4.png]]
+![Change Password Screen](assets/screenshots/benz2.png)
 
-![[benz5.png]]
+![Home Screen](assets/screenshots/benz3.png)
 
-![[benz6.png]]
+![Search for a Car Screen](assets/screenshots/benz8.png)
 
-![[benz7.png]]
+![Add and Update Car Screen](assets/screenshots/benz7.png)
 
-![[benz8.png]]
+![Add Service Screen](assets/screenshots/benz4.png)
 
-![[benz9.png]]
+![Add Dismissed Screen](assets/screenshots/benz10.png)
 
-![[benz10.png]]
+![Show Services Screen](assets/screenshots/benz9.png)
 
-![[benz11.png]]
+![Show Dismissals Screen](assets/screenshots/benz11.png)
 
-![[benz12.png]]
+![Comment Screen](assets/screenshots/benz5.png)
 
-![[benz1.png]]
+![PDF](assets/screenshots/benz6.png)
 
-![[benz2.png]]
+
 
