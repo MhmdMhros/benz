@@ -10,12 +10,10 @@ import 'package:benz/shared/components.dart';
 import 'package:benz/shared/constants.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:pdf/pdf.dart';
 import 'package:printing/printing.dart';
 import 'package:flutter/material.dart';
 import 'package:pdf/widgets.dart' as pw;
-import 'package:sqlite3_flutter_libs/sqlite3_flutter_libs.dart';
 
 class PrintScreen extends StatefulWidget {
   final CarModel carModel;
