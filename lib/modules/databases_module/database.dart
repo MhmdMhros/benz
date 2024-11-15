@@ -168,6 +168,19 @@ CREATE TABLE User (
     });
   }
 
+  Future<void> deleteDismissed(int dismissedId, BuildContext context) async {
+    final db = await createDatabase();
+    try {
+      await db.delete(
+        'Dismissed',
+        where: 'dismissedId = ?',
+        whereArgs: [dismissedId],
+      );
+
+      // ignore: empty_catches
+    } catch (error) {}
+  }
+
   Future<List<CarModel>> getAllCars() async {
     final db = await createDatabase();
     final List<Map<String, dynamic>> maps = await db.query('Car');

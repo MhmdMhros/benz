@@ -322,21 +322,22 @@ class _ShowServicesScreenState extends State<ShowServicesScreen> {
             SizedBox(height: MediaQuery.of(context).size.height * .02),
             Expanded(
               flex: 4,
-              child: ListView.separated(
+              child: ListView.builder(
                 itemCount: _services.length,
                 itemBuilder: (context, index) {
                   final service = _services[index];
-                  return ListTile(
-                    title: Text(service.name),
-                    subtitle: Text(
-                        '\u200E${S.of(context).show_services_price} \u200E${service.price}   |   \u200E${S.of(context).show_services_date} \u200E${service.startDate}  |   \u200E${S.of(context).show_services_carNumber} \u200E${service.carNumber}'),
+                  return Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    color: Colors.grey[200], // Background color
+                    child: ListTile(
+                      title: Text(service.name),
+                      subtitle: Text(
+                          '\u200E${S.of(context).show_services_price} \u200E${service.price}   |   \u200E${S.of(context).show_services_date} \u200E${service.startDate}  |   \u200E${S.of(context).show_services_carNumber} \u200E${service.carNumber}'),
+                    ),
                   );
                 },
-                separatorBuilder: (context, index) => Container(
-                  width: double.infinity,
-                  height: 1,
-                  color: mainColor,
-                ),
               ),
             ),
           ],

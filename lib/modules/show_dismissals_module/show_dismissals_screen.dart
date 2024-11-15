@@ -322,21 +322,35 @@ class _ShowDismissalsScreenState extends State<ShowDismissalsScreen> {
             SizedBox(height: MediaQuery.of(context).size.height * .02),
             Expanded(
               flex: 4,
-              child: ListView.separated(
+              child: ListView.builder(
                 itemCount: _dismissals.length,
                 itemBuilder: (context, index) {
                   final dismissal = _dismissals[index];
-                  return ListTile(
-                    title: Text(dismissal.titleName),
-                    subtitle: Text(
-                        '\u200E${S.of(context).show_dismissals_price} \u200E${dismissal.cost}   |   \u200E${S.of(context).show_dismissals_date} \u200E${dismissal.date}\n${S.of(context).show_dismissals_note} \u200E${dismissal.note}'),
+                  return Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    color: Colors.grey[200], // Background color
+                    child: ListTile(
+                      title: Text(dismissal.titleName),
+                      subtitle: Text(
+                        '\u200E${S.of(context).show_dismissals_price} \u200E${dismissal.cost}   |   \u200E${S.of(context).show_dismissals_date} \u200E${dismissal.date}\n${S.of(context).show_dismissals_note} \u200E${dismissal.note}',
+                      ),
+                      trailing: IconButton(
+                        icon: const Icon(Icons.delete, color: Colors.red),
+                        onPressed: () {
+                          setState(() {
+                            _dbHelper.deleteDismissed(
+                                dismissal.dismissedId!, context);
+                            _dismissals.removeAt(index);
+                            _numDismissals = _dismissals.length;
+                            _totalCost -= dismissal.cost;
+                          });
+                        },
+                      ),
+                    ),
                   );
                 },
-                separatorBuilder: (context, index) => Container(
-                  width: double.infinity,
-                  height: 1,
-                  color: mainColor,
-                ),
               ),
             ),
           ],

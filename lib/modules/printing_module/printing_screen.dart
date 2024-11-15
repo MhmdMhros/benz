@@ -185,7 +185,7 @@ class _PrintScreenState extends State<PrintScreen> {
                           pw.Row(
                             children: [
                               pw.Text(
-                                '01144556478',
+                                '01144556578',
                                 style: pw.TextStyle(
                                   fontSize: 14,
                                   font: ttf,
@@ -203,24 +203,6 @@ class _PrintScreenState extends State<PrintScreen> {
                                 ),
                               ),
                               pw.SizedBox(width: 15),
-                              pw.Text(
-                                '01010619046',
-                                style: pw.TextStyle(
-                                  fontSize: 14,
-                                  font: ttf,
-                                ),
-                              ),
-                              pw.SizedBox(width: 5),
-                              pw.Directionality(
-                                textDirection: pw.TextDirection.rtl,
-                                child: pw.Text(
-                                  'م/ كريم عشماوى',
-                                  style: pw.TextStyle(
-                                    fontSize: 14,
-                                    font: ttf,
-                                  ),
-                                ),
-                              ),
                             ],
                           ),
                           pw.Row(
